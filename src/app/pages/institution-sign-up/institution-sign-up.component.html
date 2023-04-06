@@ -1,30 +1,69 @@
 <div class="background">
   <app-login-navbar></app-login-navbar>
   <div class="sign-up-card px-6 my-6 card border-rd-24 mx-auto">
-    <form class="d-flex flex-column">
+    <form class="d-flex flex-column" [formGroup]="institutionSignUpForm">
       <h1 class="text-secondary text-center">Formulario de Registro</h1>
       <h2 class="text-secondary">Datos Institucionales</h2>
       <div class="d-flex flex-space-between image-input-data">
-        <app-image-input class="mr-3"></app-image-input>
+        <div class="mr-3 image-input-container">
+          <app-image-input (imageChanged)="handleImageChange($event)"></app-image-input>
+          <span class="text-error text-center span-center"><sup>&ast;</sup>El logo es requerido.</span>
+        </div>
         <div class="d-flex flex-column sign-up-data">
-          <input type="text" placeholder="Nombre de la Institución" class="focus-primary my-2">
-          <input type="text" placeholder="Sector al que pertenece" class="focus-primary my-2">
+          <input type="text" placeholder="Nombre de la Institución" class="focus-primary my-2" id="name"
+                 formControlName="name">
+          <span class="text-error"><sup>&ast;</sup> El nombre de la institución es requerido. Ej: UCB</span>
+          <input type="text" placeholder="Sector al que pertenece" class="focus-primary my-2" id="area"
+                 formControlName="area">
+          <span class="text-error"><sup>&ast;</sup>El sector es requerido. Ej: Educativo</span>
         </div>
       </div>
-      <textarea name="asdf" id="asdf" cols="30" rows="10" class="focus-primary my-2" placeholder="Descripción de la Institución (max. 200 palabras)"></textarea>
+      <textarea cols="30" rows="10"
+                class="focus-primary my-2" placeholder="Descripción de la Institución (max. 200 palabras)"
+                id="description" formControlName="description"
+      ></textarea>
+      <span class="text-error"><sup>&ast;</sup> La descripción es requerida.</span>
+      <span class="text-error"><sup>&ast;</sup> La descripción no puede exceder 200 palabras.</span>
       <h2 class="text-secondary">Contacto de la Institución</h2>
       <div class="d-flex flex-space-between sign-up-names">
-        <input type="text" placeholder="Nombres" class="focus-primary my-2 w-50 mr-1">
-        <input type="text" placeholder="Apellidos" class="focus-primary my-2 w-50 ml-1">
+        <div class="d-flex flex-column my-2 w-50 mr-1">
+          <input type="text" placeholder="Nombres" class="focus-primary" id="contactFirstName"
+                     formControlName="contactFirstName">
+          <span class="text-error"><sup>&ast;</sup> Los nombres son requeridos.</span>
+        </div>
+        <div class="d-flex flex-column my-2 w-50 mr-1">
+          <input type="text" placeholder="Apellidos" class="focus-primary" id="contactLastName"
+                     formControlName="contactLastName">
+          <span class="text-error"><sup>&ast;</sup> Los apellidos son requeridos.</span>
+        </div>
       </div>
-      <input type="email" inputmode="email" placeholder="Correo electrónico" class="focus-primary my-2" formnovalidate>
-      <input type="text" placeholder="Cargo" class="focus-primary my-2" formnovalidate>
-      <input type="text" placeholder="Teléfono" class="focus-primary my-2">
+      <input type="email" inputmode="email" placeholder="Correo electrónico"
+             class="focus-primary my-2" formnovalidate id="contactEmail"
+             formControlName="contactEmail"
+      >
+      <span class="text-error"><sup>&ast;</sup> El correo electrónico es requerido.</span>
+      <span class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej: admin@ucb.edu.bo</span>
+      <input type="text" placeholder="Cargo" class="focus-primary my-2" id="contactPosition"
+             formControlName="contactPosition" formnovalidate>
+      <span class="text-error"><sup>&ast;</sup> El cargo es requerido. Ej: Director</span>
+      <input type="text" placeholder="Teléfono" class="focus-primary my-2" id="contactPhone"
+             formControlName="contactPhone">
+      <span class="text-error"><sup>&ast;</sup> El teléfono es requerido. Ej: 77788999</span>
+      <span class="text-error"><sup>&ast;</sup> El teléfono debe contener números.</span>
+      <span class="text-error"><sup>&ast;</sup> El teléfono debe contener 8 dígitos.</span>
       <h2 class="text-secondary">Datos de Acceso</h2>
-      <input type="email" inputmode="email" placeholder="Correo electrónico" class="focus-primary my-2">
-      <input type="password" placeholder="Contraseña" class="focus-primary my-2">
-      <input type="password" placeholder="Confirmar contraseña" class="focus-primary my-2">
-      <button class="btn btn-primary btn-rounded w-50 mx-auto my-3">Registrarse</button>
+      <input type="email" inputmode="email" placeholder="Correo electrónico" class="focus-primary my-2" id="email"
+             formControlName="email">
+      <span class="text-error"><sup>&ast;</sup> El correo electrónico es requerido.</span>
+      <span class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej: admin@ucb.edu.bo</span><input type="password" placeholder="Contraseña" class="focus-primary my-2" id="password"
+             formControlName="password">
+      <span class="text-error"><sup>&ast;</sup> La contraseña es requerida.</span>
+      <span class="text-error"><sup>&ast;</sup> La contraseña debe contener al menos 8 caracteres.</span>
+      <input type="password" placeholder="Confirmar contraseña" class="focus-primary my-2" id="confirmPassword"
+             formControlName="confirmPassword">
+      <span class="text-error"><sup>&ast;</sup> Las contraseñas no coinciden.</span>
+      <button type="button" class="btn btn-primary btn-rounded w-50 mx-auto my-3" (click)="submit()">Registrarse
+      </button>
     </form>
   </div>
 </div>

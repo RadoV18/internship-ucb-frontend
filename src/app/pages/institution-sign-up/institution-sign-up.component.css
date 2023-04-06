@@ -55,7 +55,7 @@
     flex-direction: column;
   }
 
-  .sign-up-names input {
+  .sign-up-names div {
     margin: 0.5rem 0;
     width: 100%;
   }
@@ -67,7 +67,7 @@
     flex-direction: column;
   }
 
-  .image-input-data app-image-input {
+  .image-input-data .image-input-container {
     margin: 0.5rem auto;
   }
 }

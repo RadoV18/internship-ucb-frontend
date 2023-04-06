@@ -56,6 +56,11 @@ span, .text {
   line-height: 2;
 }
 
+.span-center {
+  display: table;
+  margin: 0 auto;
+}
+
 @media(max-width: 768px) {
   h1, .h1 {
     line-height: 1.75;
@@ -112,6 +117,8 @@ span, .text {
 
 .text-error {
   color: var(--error) !important;
+  font-size: 0.75rem;
+  line-height: 1;
 }
 
 /* text alignment */
