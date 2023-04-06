@@ -1,0 +1,73 @@
+.background::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(7.5px);
+}
+
+.background {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../../../assets/images/ucb-background.png);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: normal;
+  overflow: auto;
+}
+
+.background > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sign-up-card {
+  width: 35%;
+}
+
+.sign-up-data {
+  flex: 1;
+  max-width: 100%;
+}
+
+.image-input {
+  background-color: #7f7f7f;
+  border-radius: 50%;
+}
+
+@media (max-width: 1100px) {
+  .sign-up-card {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sign-up-card {
+    width: 80%;
+  }
+
+  .sign-up-names {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sign-up-names input {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+}
+
+@media(max-width: 450px) {
+  .image-input-data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image-input-data app-image-input {
+    margin: 0.5rem auto;
+  }
+}

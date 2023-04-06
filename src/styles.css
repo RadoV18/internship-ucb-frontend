@@ -15,6 +15,16 @@
   font-family: var(--font-family);
 }
 
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  display: block;
+}
+
 h1, h2, h3, h4, h5 {
   margin: 0;
 }
@@ -46,12 +56,40 @@ span, .text {
   line-height: 2;
 }
 
+@media(max-width: 768px) {
+  h1, .h1 {
+    line-height: 1.75;
+  }
+
+  h2, .h2 {
+    line-height: 1.75;
+  }
+
+  h3, .h3 {
+    line-height: 1.75;
+  }
+
+  h4, .h4 {
+    line-height: 1.75;
+  }
+
+  span, .text {
+    line-height: 1.75;
+  }
+}
+
 .text-regular {
   font-weight: normal;
 }
 
 .text-bold {
   font-weight: bold;
+}
+
+/* card container */
+.card {
+  background-color: var(--white);
+  padding: 20px;
 }
 
 /* Text color */
@@ -313,8 +351,9 @@ span, .text {
 
 /* Inputs */
 input {
-  height: 28px;
-  padding: 8px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 14px;
   font-size: 16px;
   line-height: 1;
   border: 1px solid var(--gray-light);
@@ -333,7 +372,7 @@ input:focus {
 }
 
 textarea {
-  padding: 8px;
+  padding: 16px;
   font-size: 16px;
   line-height: 1;
   border: 1px solid var(--gray-light);
@@ -888,15 +927,9 @@ textarea:focus {
   width: 25%;
 }
 
-/* card container */
-.card {
-  background-color: var(--white);
-  padding: 20px;
-}
-
-/* Containers */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

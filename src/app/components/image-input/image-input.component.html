@@ -1,0 +1,9 @@
+<div class="image-upload">
+  <label for="upload-input" class="upload-label">
+    <img src="./assets/images/upload-1.svg" alt="Upload Icon" class="upload-icon">
+  </label>
+  <div class="image-preview" [ngClass]="{'bg-white': imageUrl !== defaultImageUrl}">
+    <img [src]="imageUrl" alt="Image Preview" id="preview-image">
+  </div>
+  <input #fileInput id="upload-input" type="file" accept="image/*" (change)="previewImage(fileInput)">
+</div>
