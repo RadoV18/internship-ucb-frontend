@@ -3,8 +3,8 @@
 import { FormGroup, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 export function matchingPasswordValidator(control: FormGroup): ValidationErrors | null {
-  const password = control.get('password');
-  const confirmPassword = control.get('confirmPassword');
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
 
-  return password && confirmPassword && password.value !== confirmPassword.value ? { 'matchingPassword': true } : null;
+    return password && confirmPassword && password.value !== confirmPassword.value ? { 'matchingPassword': true } : null;
 }
