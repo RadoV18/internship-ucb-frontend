@@ -1,0 +1,169 @@
+<div class="container border-rd-12 border-primary">
+  <form [formGroup]="internshipForm" (ngSubmit)="onSubmit()">
+    <h1 class="text-primary">Datos de la convocatoria</h1>
+    <div class="form-group my-4 flex flex-column">
+      <input
+        name="title"
+        id="title"
+        placeholder="Titulo"
+        formControlName="title"
+      />
+    </div>
+    <div class="form-group form-group my-4 flex flex-column">
+      <textarea
+        placeholder="Description"
+        name="description"
+        id="description"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="form-group form-group my-4 flex flex-column">
+      <input
+        placeholder="Fecha de Inicio"
+        name="start-date"
+        id="start-date"
+        type="text"
+        onfocus="(this.type='date')"
+        formControlName="startDate"
+      />
+    </div>
+    <div class="form-group form-group my-4 flex flex-column">
+      <input
+        placeholder="Fecha de Finalizacion"
+        name="end-date"
+        id="end-date"
+        type="text"
+        onfocus="(this.type='datetime-local')"
+        formControlName="endDate"
+      />
+    </div>
+    <h2 class="text-primary">Funciones</h2>
+    <div class="my-4 flex flex-column">
+      <div class="flex flex-row">
+        <input
+          placeholder="Funcion"
+          class="list-input"
+          name="roles"
+          id="roles"
+          type="text"
+          formControlName="role"
+        />
+        <button
+          class="btn btn-primary list-btn"
+          type="button"
+          (click)="addRole()"
+        >
+          +
+        </button>
+      </div>
+      <ul>
+        <li class="m-8 border" *ngFor="let role of roleList; let i = index">
+          <span> {{ role.description }}</span>
+          <button type="button" class="btn" (click)="deleteRole(i)">x</button>
+        </li>
+      </ul>
+    </div>
+    <h2 class="text-primary">Requisitos</h2>
+    <div class="my-4 flex flex-column">
+      <div class="flex flex-row">
+        <input
+          placeholder="Requisito"
+          class="list-input"
+          name="requirements"
+          id="requirements"
+          type="text"
+          formControlName="requirement"
+        />
+        <button
+          class="btn btn-primary list-btn"
+          type="button"
+          (click)="addRequirement()"
+        >
+          +
+        </button>
+      </div>
+      <ul>
+        <li
+          class="m-8 border"
+          *ngFor="let requirement of requirementList; let i = index"
+        >
+          <span> {{ requirement.description }}</span>
+          <button type="button" class="btn" (click)="deleteRequirement(i)">
+            x
+          </button>
+        </li>
+      </ul>
+    </div>
+    <h2 class="text-primary">Beneficios</h2>
+    <div class="my-4 flex flex-column">
+      <div class="flex flex-row">
+        <input
+          placeholder="Beneficio"
+          class="list-input"
+          name="benefits"
+          id="benefits"
+          type="text"
+          formControlName="benefit"
+        />
+        <button
+          class="btn btn-primary list-btn"
+          type="button"
+          (click)="addBenefit()"
+        >
+          +
+        </button>
+      </div>
+      <ul>
+        <li class="border" *ngFor="let benefit of benefitList; let i = index">
+          <span>{{ benefit.description }} </span>
+          <button type="button" class="btn" (click)="deleteBenefit(i)">
+            x
+          </button>
+        </li>
+      </ul>
+    </div>
+    <h2 class="text-primary">Carreras</h2>
+    <div class="my-8 flex flex-column">
+      <select
+        placeholder="carrera"
+        class="my-4"
+        name="major"
+        id="major"
+        type="text"
+        formControlName="major"
+        (change)="addMajor()"
+      >
+        <option selected disabled>Carrera</option>
+        <option *ngFor="let major of majors" [ngValue]="major">
+          {{ major.name }}
+        </option>
+      </select>
+    </div>
+    <ul>
+      <li class="m-8 border" *ngFor="let major of majorList; let i = index">
+        <span> {{ major.name }}</span>
+        <button type="button" class="btn" (click)="deleteMajor(i)">x</button>
+      </li>
+    </ul>
+    <div>
+      <h2 class="text-primary">Ciudad</h2>
+      <div class="flex flex-column">
+        <select formControlName="city">
+          <option *ngFor="let city of cities" [ngValue]="city">
+            {{ city.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="flex flex-column my-12">
+      <button
+        [disabled]="!internshipForm.valid"
+        class="btn btn-primary"
+        type="submit"
+        id="saveButton"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

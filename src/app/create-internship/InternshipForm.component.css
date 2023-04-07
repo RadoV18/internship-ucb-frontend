@@ -1,0 +1,29 @@
+ul{
+    margin: 0;
+    padding-inline-start: 0;
+}
+li {
+    margin: 8px 0; 
+    list-style: none; 
+    padding: 5px  0px 5px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.list-btn{
+    margin-left: 5px;
+}
+.flex{
+    justify-content: space-between;
+}
+.list-input{
+    width: 95%;
+}   
+select , option{
+    height: 46.5px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+}

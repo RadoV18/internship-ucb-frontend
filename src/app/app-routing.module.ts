@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateInternshipComponent } from './create-internship/create-internship.component';
+import { InternshipFormComponent } from './create-internship/InternshipForm.component';
 
 const routes: Routes = [
-  { path: 'internship', component: CreateInternshipComponent },
+  { path: 'internship', component: InternshipFormComponent },
 ];
 
 @NgModule({
