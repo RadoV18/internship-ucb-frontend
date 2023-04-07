@@ -1,0 +1,24 @@
+<app-modal [displayModal]="displayModal">
+  <h2 title class="text-secondary text-center">Cuenta verificada</h2>
+  <div body class="mb-3 d-flex flex-column">
+    <span class="text-center">Tu cuenta ha sido verificada con éxito.</span>
+    <span *ngIf="!needsVerification" class="text-center">Ya puedes iniciar sesión.</span>
+    <span *ngIf="needsVerification" class="text-center">Un administrador revisará tu cuenta y te notificaremos cuando esté lista.</span>
+  </div>
+  <div footer class="d-flex">
+    <button class="btn btn-primary btn-rounded w-50 mx-auto" (click)="close()">Ir a Inicio</button>
+  </div>
+</app-modal>
+<div class="background">
+  <app-login-navbar></app-login-navbar>
+  <div class="verification-code-card my-6 card border-rd-24 mx-auto">
+    <div class="d-flex flex-column align-center">
+      <img src="./assets/images/verification-code.svg" alt="Código de verificación" class="verification-code-image">
+      <h2 class="text-primary text-center">Verifica tu dirección de correo</h2>
+      <span class="text-center">Ingresa el código que enviamos a {{ email }}</span>
+      <app-verification-code [error]="!this.isSuccesful" (getVerificationCode)="setVerificationCode($event)" class="my-3"></app-verification-code>
+      <span *ngIf="!this.isSuccesful" class="text-error text-center mb-3">El código es incorrecto.</span>
+      <button class="btn btn-primary btn-rounded w-50" (click)="submit()">Verificar</button>
+    </div>
+  </div>
+</div>
