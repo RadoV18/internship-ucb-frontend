@@ -7,6 +7,7 @@ import { InstitutionSignUpComponent } from './pages/institution-sign-up/institut
 import { LoginNavbarComponent } from './components/login-navbar/login-navbar.component';
 import { ImageInputComponent } from './components/image-input/image-input.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     ImageInputComponent
   ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
+      BrowserModule,
+      AppRoutingModule,
+      ReactiveFormsModule,
+      HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]
