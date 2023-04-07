@@ -5,6 +5,8 @@ import { InstitutionSignUpDto } from "../dto/institution.sign.up.dto";
 import {Observable} from "rxjs";
 import {ResponseDto} from "../dto/response.dto";
 import {VerificationCodeDto} from "../dto/verification.code.dto";
+import {VerificationCodeComponent} from "../components/verification-code/verification-code.component";
+import {VerificationCodeReqDto} from "../dto/verification.code.req.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,19 @@ export class SignUpService {
     return this.http.post<ResponseDto<VerificationCodeDto>>(
       `${environment.API_URL}/api/sign-up/institution`,
       formData,
+      {
+        headers: headers
+      }
+    );
+  }
+
+  public verificationCode(verificationCodeReqDto : VerificationCodeReqDto): Observable<ResponseDto<boolean>> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<ResponseDto<boolean>>(
+      `${environment.API_URL}/api/sign-up/verification-code`,
+      verificationCodeReqDto,
       {
         headers: headers
       }

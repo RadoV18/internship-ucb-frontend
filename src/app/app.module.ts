@@ -8,13 +8,19 @@ import { LoginNavbarComponent } from './components/login-navbar/login-navbar.com
 import { ImageInputComponent } from './components/image-input/image-input.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
+import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginNavbarComponent,
     InstitutionSignUpComponent,
-    ImageInputComponent
+    ImageInputComponent,
+    VerificationCodePageComponent,
+    VerificationCodeComponent,
+    ModalComponent
   ],
     imports: [
       BrowserModule,
