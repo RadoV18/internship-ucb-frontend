@@ -1,0 +1,13 @@
+.file-display {
+  padding: 6px 12px;
+}
+
+.pdf-input-cancel {
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  background-color: var(--white);
+  color: var(--gray);
+  text-shadow: 0 1px 0 #fff;
+  cursor: pointer;
+}
