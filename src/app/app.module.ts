@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InternshipFormComponent } from './create-internship/InternshipForm.component';
+import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

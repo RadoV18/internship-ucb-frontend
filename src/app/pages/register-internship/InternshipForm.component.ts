@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { InternshipService } from '../services/internship.service';
+import { InternshipService } from '../../services/internship.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Role } from '../models/role';
-import { Requirement } from '../models/requirement';
-import { Benefit } from '../models/benefit';
-import { Major } from '../models/major';
-import { City } from '../models/city';
+import { Role } from '../../dto/role';
+import { Requirement } from '../../dto/requirement';
+import { Benefit } from '../../dto/benefit';
+import { Major } from '../../dto/major';
+import { City } from '../../dto/city';
 
 @Component({
   selector: 'app-internship-form',
