@@ -9,3 +9,7 @@ a {
     width: 45%;
     text-decoration: none;
 }
+
+.response-error {
+    padding: 0 10%;
+}

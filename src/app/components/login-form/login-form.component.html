@@ -1,7 +1,9 @@
-<form class="login-form px-6 my-6 card border-rd-24 mx-auto d-flex flex-column">
+<form class="login-form px-6 my-6 card border-rd-24 mx-auto d-flex flex-column" [formGroup] = "form" (ngSubmit)="login()">
     <h1 class="text-center text-2xl font-bold mb-4">Ingresar</h1>
+    <span *ngIf="error" class="text-error response-error"><sup>&ast;</sup> {{ error }}</span>
+
     <div class="d-flex flex-column my-3 mx-auto w-80">
-        <input type="text" placeholder="Correo Electrónico" class="focus-primary" id="email" formControlName="email">
+        <input type="email" placeholder="Correo Electrónico" class="focus-primary" id="email" formControlName="email">
     </div>
 
     <div class="d-flex flex-column my-3 mx-auto w-80">
@@ -9,7 +11,8 @@
     </div>
 
     <div class="d-flex flex-column my-3">
-        <button type="button" class="btn btn-primary btn-rounded w-50 mx-auto my-1" (click)="login()">Iniciar Sesión</button>
+        
+        <button class="btn btn-primary btn-rounded w-50 mx-auto my-1">Iniciar Sesión</button>
         <a class="btn btn-outline-primary btn-rounded mx-auto my-1" routerLink="/registro/institucion" role="button">Regístrate</a>
     </div>
 </form>
