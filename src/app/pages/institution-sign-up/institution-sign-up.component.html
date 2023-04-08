@@ -1,0 +1,87 @@
+<div class="background">
+  <app-login-navbar></app-login-navbar>
+  <div class="sign-up-card px-6 my-6 card border-rd-24 mx-auto">
+    <form class="d-flex flex-column" [formGroup]="institutionSignUpForm">
+      <h1 class="text-secondary text-center">Formulario de Registro</h1>
+      <h2 class="text-secondary">Datos Institucionales</h2>
+      <div class="d-flex flex-space-between image-input-data">
+        <div class="mr-3 image-input-container" #imageInput id="imageInput">
+          <app-image-input (imageChanged)="handleImageChange($event)"></app-image-input>
+          <span *ngIf="formSubmitted && this.institutionLogo === null"
+            class="text-error text-center span-center"><sup>&ast;</sup>El logo es requerido.</span>
+        </div>
+        <div class="d-flex flex-column sign-up-data">
+          <input type="text" placeholder="Nombre de la Institución" class="focus-primary my-2" id="name"
+                 formControlName="name">
+          <span *ngIf="institutionSignUpForm.get('name')?.errors?.['required'] && institutionSignUpForm.get('name')?.touched"
+            class="text-error"><sup>&ast;</sup> El nombre de la institución es requerido. Ej: UCB</span>
+          <input type="text" placeholder="Sector al que pertenece" class="focus-primary my-2" id="area"
+                 formControlName="area">
+          <span *ngIf="institutionSignUpForm.get('area')?.errors?.['required'] && institutionSignUpForm.get('area')?.touched"
+            class="text-error"><sup>&ast;</sup>El sector es requerido. Ej: Educativo</span>
+        </div>
+      </div>
+      <textarea cols="30" rows="10"
+                class="focus-primary my-2" placeholder="Descripción de la Institución (max. 200 palabras)"
+                id="description" formControlName="description"
+      ></textarea>
+      <span *ngIf="institutionSignUpForm.get('description')?.errors?.['required'] && institutionSignUpForm.get('description')?.touched"
+        class="text-error"><sup>&ast;</sup> La descripción es requerida.</span>
+      <span *ngIf="institutionSignUpForm.get('description')?.errors?.['wordCount'] && institutionSignUpForm.get('description')?.touched"
+        class="text-error"><sup>&ast;</sup> La descripción no puede exceder 200 palabras.</span>
+      <h2 class="text-secondary">Contacto de la Institución</h2>
+      <div class="d-flex flex-space-between sign-up-names">
+        <div class="d-flex flex-column my-2 w-50 mr-1">
+          <input type="text" placeholder="Nombres" class="focus-primary" id="contactFirstName"
+                     formControlName="contactFirstName">
+          <span *ngIf="institutionSignUpForm.get('contactFirstName')?.errors?.['required'] && institutionSignUpForm.get('contactFirstName')?.touched"
+            class="text-error"><sup>&ast;</sup> Los nombres son requeridos.</span>
+        </div>
+        <div class="d-flex flex-column my-2 w-50 mr-1">
+          <input type="text" placeholder="Apellidos" class="focus-primary" id="contactLastName"
+                     formControlName="contactLastName">
+          <span *ngIf="institutionSignUpForm.get('contactLastName')?.errors?.['required'] && institutionSignUpForm.get('contactLastName')?.touched"
+            class="text-error"><sup>&ast;</sup> Los apellidos son requeridos.</span>
+        </div>
+      </div>
+      <input type="email" inputmode="email" placeholder="Correo electrónico"
+             class="focus-primary my-2" formnovalidate id="contactEmail"
+             formControlName="contactEmail"
+      >
+      <span *ngIf="institutionSignUpForm.get('contactEmail')?.errors?.['required'] && institutionSignUpForm.get('contactEmail')?.touched"
+        class="text-error"><sup>&ast;</sup> El correo electrónico es requerido.</span>
+      <span *ngIf="institutionSignUpForm.get('contactEmail')?.errors?.['email'] && institutionSignUpForm.get('contactEmail')?.touched"
+        class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej: admin@ucb.edu.bo</span>
+      <input type="text" placeholder="Cargo" class="focus-primary my-2" id="contactPosition"
+             formControlName="contactPosition" formnovalidate>
+      <span *ngIf="institutionSignUpForm.get('contactPosition')?.errors?.['required'] && institutionSignUpForm.get('contactPosition')?.touched"
+        class="text-error"><sup>&ast;</sup> El cargo es requerido. Ej: Director</span>
+      <input type="text" placeholder="Teléfono" class="focus-primary my-2" id="contactPhone"
+             formControlName="contactPhone">
+      <span *ngIf="institutionSignUpForm.get('contactPhone')?.errors?.['required'] && institutionSignUpForm.get('contactPhone')?.touched"
+        class="text-error"><sup>&ast;</sup> El teléfono es requerido. Ej: 77788999</span>
+      <span *ngIf="institutionSignUpForm.get('contactPhone')?.errors?.['numbersOnly'] && institutionSignUpForm.get('contactPhone')?.touched"
+        class="text-error"><sup>&ast;</sup> El teléfono debe contener números.</span>
+      <span *ngIf="institutionSignUpForm.get('contactPhone')?.errors?.['pattern'] && institutionSignUpForm.get('contactPhone')?.touched"
+        class="text-error"><sup>&ast;</sup> El teléfono debe contener 8 dígitos.</span>
+      <h2 class="text-secondary">Datos de Acceso</h2>
+      <input type="email" inputmode="email" placeholder="Correo electrónico" class="focus-primary my-2" id="email"
+             formControlName="email">
+      <span *ngIf="institutionSignUpForm.get('email')?.errors?.['required'] && institutionSignUpForm.get('email')?.touched"
+        class="text-error"><sup>&ast;</sup> El correo electrónico es requerido.</span>
+      <span *ngIf="institutionSignUpForm.get('email')?.errors?.['email'] && institutionSignUpForm.get('email')?.touched"
+        class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej: admin@ucb.edu.bo</span><input type="password" placeholder="Contraseña" class="focus-primary my-2" id="password"
+        formControlName="password">
+      <span *ngIf="institutionSignUpForm.get('password')?.errors?.['required'] && institutionSignUpForm.get('password')?.touched"
+        class="text-error"><sup>&ast;</sup> La contraseña es requerida.</span>
+      <span *ngIf="institutionSignUpForm.get('password')?.errors?.['minlength'] && institutionSignUpForm.get('password')?.touched"
+        class="text-error"><sup>&ast;</sup> La contraseña debe contener al menos 8 caracteres.</span>
+      <input type="password" placeholder="Confirmar contraseña" class="focus-primary my-2" id="confirmPassword"
+             formControlName="confirmPassword">
+      <span *ngIf="institutionSignUpForm.get('confirmPassword')?.value !== institutionSignUpForm.get('password')?.value && institutionSignUpForm.get('confirmPassword')?.touched"
+        class="text-error"><sup>&ast;</sup> Las contraseñas no coinciden.</span>
+      <button type="button" class="btn btn-primary btn-rounded w-50 mx-auto my-3" (click)="submit()">Registrarse
+      </button>
+    </form>
+  </div>
+</div>

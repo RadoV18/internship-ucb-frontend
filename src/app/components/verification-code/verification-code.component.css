@@ -1,0 +1,36 @@
+.verification-code-container {
+  height: 75px;
+  padding: 0 2rem;
+}
+
+.verification-code-input {
+  width: calc(80% / 6);
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+.error {
+  border: 1px solid var(--error);
+}
+
+@media (max-width: 768px) {
+  .verification-code-container {
+    padding: 0 1rem;
+  }
+
+  .verification-code-input {
+    width: calc(85% / 6);
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .verification-code-container {
+    padding: 0;
+  }
+
+  .verification-code-input {
+    width: calc(90% / 6);
+    font-size: 1rem;
+  }
+}

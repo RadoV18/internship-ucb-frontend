@@ -1,0 +1,16 @@
+<form class="login-form px-6 my-6 card border-rd-24 d-flex flex-column" [formGroup] = "form" (ngSubmit)="login()">
+    <img src="./assets/images/logo-ucb-internship.svg" class="mx-auto my-3" alt="Logo UCB Internship">
+
+    <div class="d-flex flex-column my-2 mx-auto w-80">
+        <input type="email" placeholder="Correo Electrónico" class="focus-primary" id="email" formControlName="email">
+    </div>
+
+    <div class="d-flex flex-column my-2 mx-auto w-80">
+        <input type="password" placeholder="Contraseña" class="focus-primary" id="password" formControlName="password">
+    </div>
+    <span *ngIf="error" class="text-error response-error"><sup>&ast;</sup> {{ error }}</span>
+    <div class="d-flex flex-column my-2">
+        <button class="btn btn-primary btn-rounded w-50 mx-auto my-1">Iniciar Sesión</button>
+        <a class="btn btn-outline-primary btn-rounded mx-auto my-1" routerLink="/registro/institucion" role="button">Regístrate</a>
+    </div>
+</form>

@@ -1,0 +1,20 @@
+<div class="d-flex flex-space-between verification-code-container">
+  <input id="input0" type="text" pattern="\d*" maxlength="1" class="verification-code-input text-center"
+    [ngClass]="error ? 'error' : ''"
+    (keyup)="focusNext($event, 'input0', 'input1', false)">
+  <input id="input1" type="text" pattern="\d*" maxlength="1" class="verification-code-input text-center"
+    [ngClass]="error ? 'error' : ''"
+    (keyup)="focusNext($event, 'input0', 'input2', false)">
+  <input id="input2" type="text" pattern="\d*" maxlength="1" class="verification-code-input text-center"
+    [ngClass]="error ? 'error' : ''"
+    (keyup)="focusNext($event, 'input1', 'input3', false)">
+  <input id="input3" type="text" pattern="\d*" maxlength="1" class="verification-code-input text-center"
+    [ngClass]="error ? 'error' : ''"
+    (keyup)="focusNext($event, 'input2', 'input4', false)">
+  <input id="input4" type="text" pattern="\d*" maxlength="1" class="verification-code-input text-center"
+    [ngClass]="error ? 'error' : ''"
+    (keyup)="focusNext($event, 'input3', 'input5', false)">
+  <input id="input5" type="text" pattern="\d*" maxlength="1" class="verification-code-input text-center"
+    [ngClass]="error ? 'error' : ''"
+    (keyup)="focusNext($event, 'input4', 'input5', true)">
+</div>

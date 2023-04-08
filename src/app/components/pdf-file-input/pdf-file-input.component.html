@@ -1,0 +1,12 @@
+<div class="w-100 d-flex flex-column my-2">
+  <label for="pdf-input" class="btn btn-secondary d-flex align-center">
+    <img src="./assets/images/cloud-upload.svg" alt="Subir archivo" />
+    <span class="w-100 text-center">Subir CV</span>
+  </label>
+  <div *ngIf="filename !== ''" class="mt-2 border border-rd-8 d-flex flex-space-between align-center file-display">
+    <img src="./assets/images/pdf-icon.svg" alt="pdf" />
+    <span class="ml-2 text-left">{{ filename }}</span>
+    <button class="pdf-input-cancel" (click)="cancel(pdfInput)">&times;</button>
+  </div>
+  <input #pdfInput id="pdf-input" type="file" accept="application/pdf" class="d-none" (change)="setFile(pdfInput)" />
+</div>
