@@ -19,6 +19,13 @@ li {
 .list-input{
     width: 95%;
 }   
+.delete-btn{
+    background-color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
 select , option{
     height: 46.5px;
     padding: 8px;
@@ -26,4 +33,7 @@ select , option{
     line-height: 1;
     border: 1px solid var(--gray-light);
     border-radius: 8px;
+}
+.invalid-input{
+    border: 2px #ff3232 solid;
 }

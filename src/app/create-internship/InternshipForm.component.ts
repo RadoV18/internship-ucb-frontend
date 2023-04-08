@@ -34,31 +34,30 @@ export class InternshipFormComponent {
   newBenefit = '';
   internshipForm = new FormGroup({
     title: new FormControl('', [
-      Validators.minLength(5),
       Validators.maxLength(50),
-      Validators.pattern('[a-zA-Z ]*'),
+      Validators.pattern('[a-zA-Z1-9 ]*'),
       Validators.required,
     ]),
     description: new FormControl('', [
-      Validators.minLength(5),
       Validators.maxLength(500),
-      Validators.pattern('[a-zA-Z ]*'),
+      Validators.pattern('[a-zA-Z1-9 ]*'),
       Validators.required,
     ]),
     startDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', [Validators.required]),
     major: new FormControl<Major | null>(null, []),
-    role: new FormControl('', []),
-    requirement: new FormControl('', []),
-    benefit: new FormControl('', []),
+    role: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
+    requirement: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
+    benefit: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
     city: new FormControl<City | null>(null, [Validators.required]),
   });
   addMajor() {
     const major = this.internshipForm.get('major')?.value;
+
     if (major) {
-      if (
-        this.majorList.filter((m) => m.majorId === major.majorId).length === 0
-      ) {
+      const isMajorListed =
+        this.majorList.filter((m) => m.majorId === major.majorId).length > 0;
+      if (!isMajorListed) {
         this.majorList = [...this.majorList, major];
         this.internshipForm.get('major')?.reset();
       } else {
@@ -66,7 +65,7 @@ export class InternshipFormComponent {
         this.internshipForm.get('major')?.reset();
       }
     } else {
-      alert('Please enter major');
+      alert('Please Select a major');
     }
   }
   addRole() {
@@ -120,8 +119,6 @@ export class InternshipFormComponent {
   }
 
   onSubmit() {
-    console.log('submit');
-    console.table(this.internshipForm.value);
     if (this.roleList.length === 0) {
       alert('Please add at least one role');
       return;
