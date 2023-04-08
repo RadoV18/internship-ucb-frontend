@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { PdfFileInputComponent } from './components/pdf-file-input/pdf-file-input.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ModalComponent } from './components/modal/modal.component';
     ImageInputComponent,
     VerificationCodePageComponent,
     VerificationCodeComponent,
-    ModalComponent
+    ModalComponent,
+    PdfFileInputComponent
   ],
     imports: [
       BrowserModule,
