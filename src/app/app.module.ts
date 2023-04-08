@@ -11,6 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 import { PdfFileInputComponent } from './components/pdf-file-input/pdf-file-input.component';
 
 @NgModule({
@@ -22,6 +24,8 @@ import { PdfFileInputComponent } from './components/pdf-file-input/pdf-file-inpu
     VerificationCodePageComponent,
     VerificationCodeComponent,
     ModalComponent,
+    LoginComponent,
+    LoginFormComponent,
     PdfFileInputComponent
   ],
     imports: [
