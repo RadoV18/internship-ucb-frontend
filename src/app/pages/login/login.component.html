@@ -1,4 +1,21 @@
-<div class="background"> 
+<app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="setDisplayModal(false)" >
+  <h2 title class="text-secondary text-center account-type-title">Elige un tipo de cuenta</h2>
+  <div body class="d-flex my-4 account-type-container">
+    <div class="card shadow border-rd-12 ml-4 mr-5 account-type-card" (click)="redirectTo('estudiante')">
+      <img src="./assets/images/student-lg.svg" alt="Estudiante">
+      <h4 class="text-secondary text-center">Estudiante</h4>
+    </div>
+    <div class="card shadow border-rd-12 mx-5 account-type-card" (click)="redirectTo('graduado')">
+      <img src="./assets/images/graduate-lg.svg" alt="Graduado">
+      <h4 class="text-secondary text-center">Graduado</h4>
+    </div>
+    <div class="card shadow border-rd-12 ml-5 mr-4 account-type-card" (click)="redirectTo('institucion')">
+      <img src="./assets/images/institution-lg.svg" alt="Institución">
+      <h4 class="text-secondary text-center">Institución</h4>
+    </div>
+  </div>
+</app-modal>
+<div class="background">
     <app-login-navbar></app-login-navbar>
-    <login-form></login-form>
+    <login-form (signUpClicked)="setDisplayModal($event)"></login-form>
 </div>
