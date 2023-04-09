@@ -4,8 +4,10 @@ import { InstitutionSignUpComponent } from "./pages/institution-sign-up/institut
 import { VerificationCodePageComponent } from "./pages/verification-code-page/verification-code-page.component";
 import { StudentSignUpComponent } from './pages/student-sign-up/student-sign-up.component';
 import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-up.component';
+import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,11 +15,12 @@ const routes: Routes = [
   { path: 'registro/graduado', component: GraduateSignUpComponent },
   { path: 'registro/institucion', component: InstitutionSignUpComponent },
   { path: 'ingresar', component: LoginComponent },
-  { path: 'codigo-de-verificacion', component: VerificationCodePageComponent }
+  { path: 'codigo-de-verificacion', component: VerificationCodePageComponent },
+  { path: 'internship', component: InternshipFormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
