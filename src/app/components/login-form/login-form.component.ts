@@ -44,7 +44,7 @@ export class LoginFormComponent {
     if (this.error === '') {
       this.authenticationService.postLogin(this.form.value.email, this.form.value.password).subscribe({
         next: (response) => {
-          //TODO: Save user data in local storage and handle global user
+          this.authenticationService.setAuthenticatedUser(this.form.value.email);
           this.router.navigate(['/']);
         },
         error: (error) => {
