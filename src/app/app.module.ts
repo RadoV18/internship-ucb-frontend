@@ -9,6 +9,8 @@ import { ImageInputComponent } from './components/image-input/image-input.compon
 import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { StudentSignUpComponent } from './pages/student-sign-up/student-sign-up.component';
+import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -17,8 +19,27 @@ import { InternshipFormComponent } from './pages/register-internship/InternshipF
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    LoginNavbarComponent,
+    InstitutionSignUpComponent,
+    ImageInputComponent,
+    VerificationCodePageComponent,
+    VerificationCodeComponent,
+    ModalComponent,
+    StudentSignUpComponent,
+    GraduateSignUpComponent,
+    LoginComponent,
+    LoginFormComponent,
+    HomeComponent,
+    PdfFileInputComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

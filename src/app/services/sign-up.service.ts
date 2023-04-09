@@ -2,17 +2,44 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { InstitutionSignUpDto } from "../dto/institution.sign.up.dto";
-import {Observable} from "rxjs";
-import {ResponseDto} from "../dto/response.dto";
-import {VerificationCodeDto} from "../dto/verification.code.dto";
-import {VerificationCodeReqDto} from "../dto/verification.code.req.dto";
+import { Observable } from "rxjs";
+import { ResponseDto } from "../dto/response.dto";
+import { VerificationCodeDto } from "../dto/verification.code.dto";
+import { VerificationCodeComponent } from "../components/verification-code/verification-code.component";
+import { VerificationCodeReqDto } from "../dto/verification.code.req.dto";
+import { StudentSignUpDto } from '../dto/student.sign.up.dto';
+import { GraduateSignUpDto } from '../dto/graduate.sign.up.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignUpService {
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { }
+
+  public studentSignUp(student: StudentSignUpDto, profilePicture : File, cvFile : File): Observable<ResponseDto<VerificationCodeDto>> {
+    // multipart/form-data request
+    const formData = new FormData();
+    // append student data
+    formData.append('data', JSON.stringify(student));
+    // append profile picture
+    formData.append('profilePicture', profilePicture);
+    // append cv file
+    formData.append('cvFile', cvFile);
+    return this.http.post<any>(`${environment.API_URL}/api/sign-up/student`, formData);
+  }
+
+  public graduateSignUp(graduate: GraduateSignUpDto, profilePicture : File, cvFile : File): Observable<ResponseDto<VerificationCodeDto>> {
+    // multipart/form-data request
+    const formData = new FormData();
+    // append graduate data
+    formData.append('data', JSON.stringify(graduate));
+    // append profile picture
+    formData.append('profilePicture', profilePicture);
+    // append cv file
+    formData.append('cvFile', cvFile);
+    return this.http.post<any>(`${environment.API_URL}/api/sign-up/graduate`, graduate);
+  }
 
   public institutionSignUp(institution: InstitutionSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
     // multipart/form-data request
@@ -38,7 +65,7 @@ export class SignUpService {
     );
   }
 
-  public verificationCode(verificationCodeReqDto : VerificationCodeReqDto): Observable<ResponseDto<boolean>> {
+  public verificationCode(verificationCodeReqDto: VerificationCodeReqDto): Observable<ResponseDto<boolean>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
