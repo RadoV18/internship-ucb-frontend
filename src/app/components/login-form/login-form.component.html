@@ -11,6 +11,6 @@
     <span *ngIf="error" class="text-error response-error"><sup>&ast;</sup> {{ error }}</span>
     <div class="d-flex flex-column my-2">
         <button class="btn btn-primary btn-rounded w-50 mx-auto my-1">Iniciar Sesión</button>
-        <a class="btn btn-outline-primary btn-rounded mx-auto my-1" routerLink="/registro/institucion" role="button">Regístrate</a>
+        <button type="button" class="btn btn-outline-primary btn-rounded mx-auto my-1 w-50" (click)="signUpClicked.emit(true)">Regístrate</button>
     </div>
 </form>

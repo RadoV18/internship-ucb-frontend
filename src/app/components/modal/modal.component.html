@@ -1,6 +1,11 @@
 <div class="modal" *ngIf="displayModal">
   <div class="modal-content">
     <div class="modal-header">
+      <div *ngIf="disposable">
+        <button class="close" (click)="onDispose.emit()">
+          &times;
+        </button>
+      </div>
       <ng-content select="[title]"></ng-content>
     </div>
     <div class="modal-body">

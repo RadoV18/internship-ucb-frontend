@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -15,6 +15,7 @@ interface ILoginForm {
 })
 
 export class LoginFormComponent {
+  @Output() public signUpClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   private formState: ILoginForm = {
     email: '',
@@ -25,7 +26,7 @@ export class LoginFormComponent {
 
   form : FormGroup
 
-  constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router: Router){ 
+  constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router: Router){
     this.form = this.formBuilder.group(this.formState);
   }
 
