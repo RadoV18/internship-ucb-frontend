@@ -1,0 +1,7 @@
+.admin-navbar {
+    background-color: var(--tertiary);
+}
+
+.admin-navbar img {
+    max-height: 48px;
+}

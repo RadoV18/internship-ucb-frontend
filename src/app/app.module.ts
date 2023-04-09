@@ -9,6 +9,7 @@ import { ImageInputComponent } from './components/image-input/image-input.compon
 import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { MenuAdminComponent } from './pages/menu-admin/menu-admin.component';
 import { StudentSignUpComponent } from './pages/student-sign-up/student-sign-up.component';
 import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,16 +18,26 @@ import { HomeComponent } from './pages/home/home.component';
 import { PdfFileInputComponent } from './components/pdf-file-input/pdf-file-input.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginNavbarComponent,
     InstitutionSignUpComponent,
+    InternshipFormComponent,
+    MenuAdminComponent,
     ImageInputComponent,
     VerificationCodePageComponent,
     VerificationCodeComponent,
     ModalComponent,
+    LoginComponent,
+    LoginFormComponent,
+    HomeComponent,
+    PdfFileInputComponent,
+    AdminNavbarComponent,
+    AdminSidebarComponent
     StudentSignUpComponent,
     GraduateSignUpComponent,
     LoginComponent,
@@ -38,6 +49,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
     HttpClientModule
   ],
   providers: [],
