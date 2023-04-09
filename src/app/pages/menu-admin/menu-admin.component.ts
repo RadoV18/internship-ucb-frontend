@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
-import { ColumnMode } from '@swimlane/ngx-datatable';
-import { InstitutionService } from 'src/app/services/institution.service';
+import { AdminService } from 'src/app/services/admin.service';
+import {InstitutionDto} from "../../dto/institution.dto";
 
+interface InstitutionTableData {
+  id: number;
+  name: string;
+  email: string;
+  area: string;
+  contactName: string;
+}
 
 @Component({
   selector: 'app-menu-admin',
@@ -9,36 +16,28 @@ import { InstitutionService } from 'src/app/services/institution.service';
   styleUrls: ['./menu-admin.component.css']
 })
 export class MenuAdminComponent {
-  // rows = [
-  //   { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-  //   { name: 'Dany', gender: 'Male', company: 'KFC' },
-  //   { name: 'Molly', gender: 'Female', company: 'Burger King' }
-  // ]; 
-  // columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
-  instituciones: Array<any> = [];
-  columns1 = [{ prop: 'area', name: 'nombre'}, { prop: 'area', name: 'Apellidos'}, { prop: 'area', name: 'Correo'}];
 
-  columns2 = [{ prop: 'Nombres'}, { prop: 'Apellidos' }, { prop: 'Correo' }];
+  institutions : Array<InstitutionTableData> = [];
+  graduates = [];
+  constructor(private adminService : AdminService){  }
 
-  // rows1 = [
-  //   { Nombres: 'Larry', Apellidos: 'apellido' , Correo: "email1@ucb.edu.bo"},
-  //   { Nombres: 'Lauren', Apellidos: 'apellido', Correo: "email2@ucb.edu.bo"}
-  // ];
-  rows1: Array<any> = [];
+  ngOnInit() {
+    this.adminService.getNewInstitutions().subscribe({
+      next: (data: Array<InstitutionDto>) => {
+        this.institutions = data.map((institution: InstitutionDto) => {
+          return {
+            id: institution.institutionId,
+            name: institution.name,
+            email: institution.contactEmail,
+            area: institution.area,
+            contactName: institution.contactFirstName + ' ' + institution.contactLastName
+          }
+        });
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
 
-  rows2 = [
-    { Nombres: 'Larry', Apellidos: 'apellido' , Correo: "email1@ucb.edu.bo"},
-    { Nombres: 'Lauren', Apellidos: 'apellido', Correo: "email2@ucb.edu.bo"}
-  ];
-
-  ColumnMode = ColumnMode;
-  institutions: Array<any> = [];
-  constructor(private institution:InstitutionService){
-    this.institution.getDataAPI().subscribe((resp: any) =>{
-      // console.log(resp[0]['user_ucb_id']);
-      this.instituciones.push(resp);
-    })
-    console.log(this.instituciones);
-    this.rows1 = this.instituciones;
   }
 }

@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './login-navbar.component.html',
   styleUrls: ['./login-navbar.component.css']
 })
+
 export class LoginNavbarComponent {
 
 }
