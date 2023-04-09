@@ -11,6 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { StudentSignUpComponent } from './pages/student-sign-up/student-sign-up.component';
+import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-up.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ModalComponent } from './components/modal/modal.component';
     ImageInputComponent,
     VerificationCodePageComponent,
     VerificationCodeComponent,
-    ModalComponent
+    ModalComponent,
+    StudentSignUpComponent,
+    GraduateSignUpComponent
   ],
     imports: [
       BrowserModule,

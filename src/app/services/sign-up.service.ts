@@ -2,18 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { InstitutionSignUpDto } from "../dto/institution.sign.up.dto";
-import {Observable} from "rxjs";
-import {ResponseDto} from "../dto/response.dto";
-import {VerificationCodeDto} from "../dto/verification.code.dto";
-import {VerificationCodeComponent} from "../components/verification-code/verification-code.component";
-import {VerificationCodeReqDto} from "../dto/verification.code.req.dto";
+import { Observable } from "rxjs";
+import { ResponseDto } from "../dto/response.dto";
+import { VerificationCodeDto } from "../dto/verification.code.dto";
+import { VerificationCodeComponent } from "../components/verification-code/verification-code.component";
+import { VerificationCodeReqDto } from "../dto/verification.code.req.dto";
+import { StudentSignUpDto } from '../dto/student.sign.up.dto';
+import { GraduateSignUpDto } from '../dto/graduate.sign.up.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignUpService {
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { }
+
+  public studentSignUp(student: StudentSignUpDto) {
+    return this.http.post<any>(`${environment.API_URL}/api/student`, student);
+  }
+
+  public graduateSignUp(graduate: GraduateSignUpDto) {
+    return this.http.post<any>(`${environment.API_URL}/api/graduate`, graduate);
+  }
 
   public institutionSignUp(institution: InstitutionSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
     // multipart/form-data request
@@ -41,7 +51,7 @@ export class SignUpService {
     );
   }
 
-  public verificationCode(verificationCodeReqDto : VerificationCodeReqDto): Observable<ResponseDto<boolean>> {
+  public verificationCode(verificationCodeReqDto: VerificationCodeReqDto): Observable<ResponseDto<boolean>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });

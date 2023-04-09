@@ -1,0 +1,98 @@
+<div class="background">
+    <app-login-navbar></app-login-navbar>
+    <div class="sign-up-card px-6 my-6 card border-rd-24 mx-auto">
+        <form class="d-flex flex-column" [formGroup]="graduateSignUpForm">
+            <h1 class="text-secondary text-center">Formulario de Registro</h1>
+            <h2 class="text-secondary">Datos del graduado</h2>
+            <div class="d-flex flex-space-between image-input-data">
+                <div class="mr-3 image-input-container" #imageInput id="imageInput">
+                    <app-image-input (imageChanged)="handleImageChange($event)"></app-image-input>
+                    <span *ngIf="formSubmitted && this.institutionLogo === null"
+                        class="text-error text-center span-center"><sup>&ast;</sup>El logo es requerido.</span>
+                </div>
+                <div class="d-flex flex-column sign-up-data">
+                    <!-- FIRST NAME INPUT -->
+                    <input type="text" placeholder="Nombres" class="focus-primary my-2" id="firstName"
+                        formControlName="firstName">
+                    <span
+                        *ngIf="graduateSignUpForm.get('firstName')?.errors?.['required'] && graduateSignUpForm.get('firstName')?.touched"
+                        class="text-error"><sup>&ast;</sup> El nombre del estudiante es requerido. Ej: UCB</span>
+
+                    <!-- LAST NAME INPUT -->
+                    <input type="text" placeholder="Apellidos" class="focus-primary my-2" id="lastName"
+                        formControlName="lastName">
+                    <span
+                        *ngIf="graduateSignUpForm.get('lastName')?.errors?.['required'] && graduateSignUpForm.get('lastName')?.touched"
+                        class="text-error"><sup>&ast;</sup>El apellido del estudiante es requerido. Ej: Educativo</span>
+                </div>
+            </div>
+            <!-- C.I. INPUT -->
+            <input type="text" placeholder="C.I." class="focus-primary my-2" id="ci" formControlName="ci">
+            <span *ngIf="graduateSignUpForm.get('ci')?.errors?.['required'] && graduateSignUpForm.get('ci')?.touched"
+                class="text-error"><sup>&ast;</sup> El C.I. del estudiante es requerido. Ej: UCB</span>
+
+            <!-- PHONE NUMBER INPUT -->
+            <input type="text" placeholder="Celular" class="focus-primary my-2" id="phoneNumber"
+                formControlName="phoneNumber">
+            <span
+                *ngIf="graduateSignUpForm.get('phoneNumber')?.errors?.['required'] && graduateSignUpForm.get('phoneNumber')?.touched"
+                class="text-error"><sup>&ast;</sup>El celular del estudiante es requerido. Ej: Educativo</span>
+
+
+
+            <h2 class="text-secondary">Datos academicos</h2>
+            <!-- MAJOR INPUT -->
+            <input type="number" placeholder="Carrera" class="focus-primary my-2" formnovalidate id="campusMajorId"
+                formControlName="campusMajorId">
+            <span
+                *ngIf="graduateSignUpForm.get('campusMajorId')?.errors?.['required'] && graduateSignUpForm.get('campusMajorId')?.touched"
+                class="text-error"><sup>&ast;</sup> La carrera es requerido.</span>
+
+            <!-- GRADUATION DATE INPUT -->
+            <input type="date" placeholder="Fecha de graduacion" class="focus-primary my-2" id="graduationDate"
+                formControlName="graduationDate" formnovalidate>
+            <span
+                *ngIf="graduateSignUpForm.get('graduationDate')?.errors?.['required'] && graduateSignUpForm.get('graduationDate')?.touched"
+                class="text-error"><sup>&ast;</sup> La fecha de graduacion es requerido.</span>
+
+
+
+            <h2 class="text-secondary">Datos de Acceso</h2>
+            <!-- USERNAME INPUT -->
+            <input type="text" placeholder="Usuario" class="focus-primary my-2" id="username" formControlName="username"
+                formnovalidate>
+            <span
+                *ngIf="graduateSignUpForm.get('username')?.errors?.['required'] && graduateSignUpForm.get('username')?.touched"
+                class="text-error"><sup>&ast;</sup> El usuario es requerido.</span>
+
+            <!-- EMAIL INPUT -->
+            <input type="email" inputmode="email" placeholder="Correo electrónico" class="focus-primary my-2" id="email"
+                formControlName="email">
+            <span
+                *ngIf="graduateSignUpForm.get('email')?.errors?.['required'] && graduateSignUpForm.get('email')?.touched"
+                class="text-error"><sup>&ast;</sup> El correo electrónico es requerido.</span>
+            <span *ngIf="graduateSignUpForm.get('email')?.errors?.['email'] && graduateSignUpForm.get('email')?.touched"
+                class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej:
+                admin@ucb.edu.bo</span>
+
+            <!-- PASSWORD INPUT -->
+            <input type="password" placeholder="Contraseña" class="focus-primary my-2" id="password"
+                formControlName="password">
+            <span
+                *ngIf="graduateSignUpForm.get('password')?.errors?.['required'] && graduateSignUpForm.get('password')?.touched"
+                class="text-error"><sup>&ast;</sup> La contraseña es requerida.</span>
+            <span
+                *ngIf="graduateSignUpForm.get('password')?.errors?.['minlength'] && graduateSignUpForm.get('password')?.touched"
+                class="text-error"><sup>&ast;</sup> La contraseña debe contener al menos 8 caracteres.</span>
+
+            <!-- CONFIRM PASSWORD INPUT -->
+            <input type="password" placeholder="Confirmar contraseña" class="focus-primary my-2" id="confirmPassword"
+                formControlName="confirmPassword">
+            <span
+                *ngIf="graduateSignUpForm.get('confirmPassword')?.value !== graduateSignUpForm.get('password')?.value && graduateSignUpForm.get('confirmPassword')?.touched"
+                class="text-error"><sup>&ast;</sup> Las contraseñas no coinciden.</span>
+            <button type="button" class="btn btn-primary btn-rounded w-50 mx-auto my-3" (click)="submit()">Registrarse
+            </button>
+        </form>
+    </div>
+</div>
