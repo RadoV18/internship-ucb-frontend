@@ -28,26 +28,24 @@ export class SignUpService {
   public institutionSignUp(institution: InstitutionSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
     // multipart/form-data request
     const formData = new FormData();
-    formData.append('name', institution.name);
-    formData.append('area', institution.area);
-    formData.append('description', institution.description);
-    formData.append('contactFirstName', institution.contactFirstName);
-    formData.append('contactLastName', institution.contactLastName);
-    formData.append('contactPosition', institution.contactPosition);
-    formData.append('contactEmail', institution.contactEmail);
-    formData.append('contactPhone', institution.contactPhone);
-    formData.append('email', institution.email);
-    formData.append('password', institution.password);
-    formData.append('logo', institution.logo);
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data'
-    });
+    // append to the data the institution object without the logo
+    formData.append('data', JSON.stringify({
+      name: institution.name,
+      area: institution.area,
+      description: institution.description,
+      contactFirstName: institution.contactFirstName,
+      contactLastName: institution.contactLastName,
+      contactPosition: institution.contactPosition,
+      contactEmail: institution.contactEmail,
+      contactPhone: institution.contactPhone,
+      email: institution.email,
+      password: institution.password
+    }));
+    // append the logo
+    formData.append('image', institution.logo);
     return this.http.post<ResponseDto<VerificationCodeDto>>(
       `${environment.API_URL}/api/sign-up/institution`,
-      formData,
-      {
-        headers: headers
-      }
+      formData
     );
   }
 

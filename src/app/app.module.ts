@@ -13,6 +13,10 @@ import { VerificationCodeComponent } from './components/verification-code/verifi
 import { ModalComponent } from './components/modal/modal.component';
 import { StudentSignUpComponent } from './pages/student-sign-up/student-sign-up.component';
 import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-up.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { HomeComponent } from './pages/home/home.component';
+import { PdfFileInputComponent } from './components/pdf-file-input/pdf-file-input.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-
     VerificationCodeComponent,
     ModalComponent,
     StudentSignUpComponent,
-    GraduateSignUpComponent
+    GraduateSignUpComponent,
+    LoginComponent,
+    LoginFormComponent,
+    HomeComponent,
+    PdfFileInputComponent
   ],
     imports: [
       BrowserModule,

@@ -416,6 +416,11 @@ textarea:focus {
   box-shadow:inset 0 0 0 1px var(--tertiary);
 }
 
+/* display */
+.d-none {
+  display: none;
+}
+
 /* flexbox */
 .d-flex {
   display: flex;
