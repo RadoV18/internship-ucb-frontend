@@ -58,8 +58,6 @@
             <span
                 *ngIf="studentSignUpForm.get('semester')?.errors?.['required'] && studentSignUpForm.get('semester')?.touched"
                 class="text-error"><sup>&ast;</sup> El semestre es requerido.</span>
-            <app-pdf-file-input (fileChanged)="handleFileChange($event)"></app-pdf-file-input>
-
 
             <h2 class="text-secondary">Datos de Acceso</h2>
 
