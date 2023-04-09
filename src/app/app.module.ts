@@ -11,6 +11,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { MenuAdminComponent } from './pages/menu-admin/menu-admin.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +23,15 @@ import { ModalComponent } from './components/modal/modal.component';
     ImageInputComponent,
     VerificationCodePageComponent,
     VerificationCodeComponent,
-    ModalComponent
+    ModalComponent,
+    MenuAdminComponent
   ],
     imports: [
       BrowserModule,
       AppRoutingModule,
       ReactiveFormsModule,
-      HttpClientModule
+      HttpClientModule,
+      NgxDatatableModule
     ],
   providers: [],
   bootstrap: [AppComponent]

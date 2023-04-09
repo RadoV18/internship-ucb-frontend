@@ -1,0 +1,40 @@
+<div class="nav-bar-admin">
+    <div>
+        <nav class="navMenu">
+            <a href="#">Home</a>
+            <a href="#">Blog</a>
+            <a href="#">Work</a>
+            <a href="#">About</a>
+            <div class="dot"></div>
+        </nav>
+    </div>
+    <img src="assets\images\logo-ucb-internship-blue.svg" style="width:300px" alt="">
+</div>
+<section class="body">
+    <h1 class="text-secondary text-center">Estudiantes</h1>
+    <ngx-datatable
+        class="material"
+        [rows]="rows1"
+        [columns]="columns1"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="0"
+        [rowHeight]="100"
+    >
+      </ngx-datatable>
+      <br />
+      <h1 class="text-secondary text-center">instituciones</h1>
+      <ngx-datatable
+        class="material"
+        [rows]="rows1"
+        [columns]="columns1"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="0"
+        [rowHeight]="100"
+    >
+      </ngx-datatable>
+    <!-- <div>
+        <ngx-datatable [rows]="rows" [columns]="columns"> </ngx-datatable>
+    </div> -->
+</section>
