@@ -4,6 +4,8 @@ import { matchingPasswordValidator } from "../../validators/matching-password-va
 import { SignUpService } from "../../services/sign-up.service";
 import { StudentSignUpDto } from "../../dto/student.sign.up.dto";
 import { Router } from "@angular/router";
+import {ResponseDto} from "../../dto/response.dto";
+import {VerificationCodeDto} from "../../dto/verification.code.dto";
 
 @Component({
   selector: 'app-student-sign-up',
@@ -13,7 +15,8 @@ import { Router } from "@angular/router";
 export class StudentSignUpComponent {
 
   studentSignUpForm: FormGroup;
-  institutionLogo: File | null = null;
+  profilePicture : File | null = null;
+  cvFile : File | null = null;
   formSubmitted: boolean = false;
   @ViewChild('imageInput') imageInput: ElementRef;
 
@@ -29,7 +32,6 @@ export class StudentSignUpComponent {
       phoneNumber: ['', [Validators.required]],
       campusMajorId: ['', [Validators.required]],
       semester: ['', [Validators.required]],
-      username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
@@ -39,13 +41,21 @@ export class StudentSignUpComponent {
   }
 
   handleImageChange(event: File) {
-    this.institutionLogo = event;
+    this.profilePicture = event;
+  }
+
+  handleFileChange(event: File) {
+    this.cvFile = event;
   }
 
   submit() {
     this.formSubmitted = true;
-    if (this.institutionLogo == null) {
+    if (this.profilePicture == null) {
       this.imageInput.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if(this.cvFile == null) {
+      return;
     }
     if (this.studentSignUpForm.invalid) {
       return;
@@ -53,25 +63,29 @@ export class StudentSignUpComponent {
     const studentSignUpDto: StudentSignUpDto = {
       personDto: {
         signupRequestDto: {
-          username: this.studentSignUpForm.value.username,
           email: this.studentSignUpForm.value.email,
           password: this.studentSignUpForm.value.password
         },
         firstName: this.studentSignUpForm.value.firstName,
         lastName: this.studentSignUpForm.value.lastName,
         ci: this.studentSignUpForm.value.ci,
-        phoneNumber: this.studentSignUpForm.value.phoneNumber,
-        cv: ""
+        phoneNumber: this.studentSignUpForm.value.phoneNumber
       },
       campusMajorId: this.studentSignUpForm.value.campusMajorId,
       semester: this.studentSignUpForm.value.semester
-    }
-    console.log(studentSignUpDto);
+    };
 
-    this.signUpService.studentSignUp(studentSignUpDto).subscribe((data: any) => {
-      console.log(data);
-    }, (error) => {
-      console.log(error);
+    this.signUpService.studentSignUp(studentSignUpDto, this.profilePicture, this.cvFile).subscribe({
+      next: (response : ResponseDto<VerificationCodeDto>) => {
+        if(response.success) {
+          localStorage.setItem('uuid', response.data.uuid);
+          localStorage.setItem('email', response.data.email);
+          this.router.navigate(['/codigo-de-verificacion']);
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      }
     });
   }
 }

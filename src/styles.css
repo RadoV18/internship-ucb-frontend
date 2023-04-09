@@ -378,6 +378,10 @@ input:focus {
   outline: none !important;
 }
 
+input[type="date"]:not(.has-value):before{
+  content: attr(placeholder);
+}
+
 textarea {
   padding: 16px;
   font-size: 16px;

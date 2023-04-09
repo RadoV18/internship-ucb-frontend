@@ -17,12 +17,28 @@ export class SignUpService {
 
   constructor(private http: HttpClient) { }
 
-  public studentSignUp(student: StudentSignUpDto) {
-    return this.http.post<any>(`${environment.API_URL}/api/student`, student);
+  public studentSignUp(student: StudentSignUpDto, profilePicture : File, cvFile : File): Observable<ResponseDto<VerificationCodeDto>> {
+    // multipart/form-data request
+    const formData = new FormData();
+    // append student data
+    formData.append('data', JSON.stringify(student));
+    // append profile picture
+    formData.append('profilePicture', profilePicture);
+    // append cv file
+    formData.append('cvFile', cvFile);
+    return this.http.post<any>(`${environment.API_URL}/api/sign-up/student`, formData);
   }
 
-  public graduateSignUp(graduate: GraduateSignUpDto) {
-    return this.http.post<any>(`${environment.API_URL}/api/graduate`, graduate);
+  public graduateSignUp(graduate: GraduateSignUpDto, profilePicture : File, cvFile : File): Observable<ResponseDto<VerificationCodeDto>> {
+    // multipart/form-data request
+    const formData = new FormData();
+    // append graduate data
+    formData.append('data', JSON.stringify(graduate));
+    // append profile picture
+    formData.append('profilePicture', profilePicture);
+    // append cv file
+    formData.append('cvFile', cvFile);
+    return this.http.post<any>(`${environment.API_URL}/api/sign-up/graduate`, graduate);
   }
 
   public institutionSignUp(institution: InstitutionSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {

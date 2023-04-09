@@ -1,7 +1,6 @@
 export interface GraduateSignUpDto {
     personDto: {
         signupRequestDto: {
-            username: string;
             email: string;
             password: string;
         }
@@ -9,8 +8,7 @@ export interface GraduateSignUpDto {
         lastName: string;
         ci: string;
         phoneNumber: string;
-        cv: string;
     }
     campusMajorId: number;
-    graduationDate: string;
+    graduationDate: number;
 }

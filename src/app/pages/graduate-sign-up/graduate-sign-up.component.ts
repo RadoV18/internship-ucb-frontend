@@ -4,6 +4,8 @@ import { matchingPasswordValidator } from "../../validators/matching-password-va
 import { SignUpService } from "../../services/sign-up.service";
 import { GraduateSignUpDto } from "../../dto/graduate.sign.up.dto";
 import { Router } from "@angular/router";
+import {ResponseDto} from "../../dto/response.dto";
+import {VerificationCodeDto} from "../../dto/verification.code.dto";
 
 @Component({
   selector: 'app-graduate-sign-up',
@@ -12,8 +14,10 @@ import { Router } from "@angular/router";
 })
 export class GraduateSignUpComponent {
   graduateSignUpForm: FormGroup;
-  institutionLogo: File | null = null;
+  profilePicture: File | null = null;
+  cvFile: File | null = null;
   formSubmitted: boolean = false;
+  currentYear : number = new Date().getFullYear();
   @ViewChild('imageInput') imageInput: ElementRef;
 
   constructor(
@@ -27,8 +31,7 @@ export class GraduateSignUpComponent {
       ci: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
       campusMajorId: ['', [Validators.required]],
-      graduationDate: ['', [Validators.required]],
-      username: ['', [Validators.required]],
+      graduationDate: ['', [Validators.required, Validators.min(1900), Validators.max(this.currentYear)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
@@ -38,13 +41,21 @@ export class GraduateSignUpComponent {
   }
 
   handleImageChange(event: File) {
-    this.institutionLogo = event;
+    this.profilePicture = event;
+  }
+
+  handleFileChange(event: File) {
+    this.cvFile = event;
   }
 
   submit() {
     this.formSubmitted = true;
-    if (this.institutionLogo == null) {
+    if (this.profilePicture == null) {
       this.imageInput.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if(this.cvFile == null) {
+      return;
     }
     if (this.graduateSignUpForm.invalid) {
       return;
@@ -52,25 +63,29 @@ export class GraduateSignUpComponent {
     const graduateSignUpDto: GraduateSignUpDto = {
       personDto: {
         signupRequestDto: {
-          username: this.graduateSignUpForm.value.username,
           email: this.graduateSignUpForm.value.email,
           password: this.graduateSignUpForm.value.password
         },
         firstName: this.graduateSignUpForm.value.firstName,
         lastName: this.graduateSignUpForm.value.lastName,
         ci: this.graduateSignUpForm.value.ci,
-        phoneNumber: this.graduateSignUpForm.value.phoneNumber,
-        cv: ""
+        phoneNumber: this.graduateSignUpForm.value.phoneNumber
       },
       campusMajorId: this.graduateSignUpForm.value.campusMajorId,
       graduationDate: this.graduateSignUpForm.value.graduationDate
-    }
-    console.log(graduateSignUpDto);
+    };
 
-    this.signUpService.graduateSignUp(graduateSignUpDto).subscribe((data: any) => {
-      console.log(data);
-    }, (error) => {
-      console.log(error);
+    this.signUpService.graduateSignUp(graduateSignUpDto, this.profilePicture, this.cvFile).subscribe({
+      next: (response : ResponseDto<VerificationCodeDto>) => {
+        if(response.success) {
+          localStorage.setItem('uuid', response.data.uuid);
+          localStorage.setItem('email', response.data.email);
+          this.router.navigate(['/codigo-de-verificacion']);
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      }
     });
   }
 }
