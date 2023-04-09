@@ -10,7 +10,8 @@ import { VerificationCodePageComponent } from './pages/verification-code-page/ve
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { MenuAdminComponent } from './pages/menu-admin/menu-admin.component';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { StudentSignUpComponent } from './pages/student-sign-up/student-sign-up.component';
+import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -37,14 +38,20 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     PdfFileInputComponent,
     AdminNavbarComponent,
     AdminSidebarComponent
+    StudentSignUpComponent,
+    GraduateSignUpComponent,
+    LoginComponent,
+    LoginFormComponent,
+    HomeComponent,
+    PdfFileInputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    NgxDatatableModule
+    FormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
