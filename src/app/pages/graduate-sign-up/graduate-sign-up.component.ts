@@ -4,8 +4,8 @@ import { matchingPasswordValidator } from "../../validators/matching-password-va
 import { SignUpService } from "../../services/sign-up.service";
 import { GraduateSignUpDto } from "../../dto/graduate.sign.up.dto";
 import { Router } from "@angular/router";
-import {ResponseDto} from "../../dto/response.dto";
-import {VerificationCodeDto} from "../../dto/verification.code.dto";
+import { ResponseDto } from "../../dto/response.dto";
+import { VerificationCodeDto } from "../../dto/verification.code.dto";
 
 @Component({
   selector: 'app-graduate-sign-up',
@@ -17,7 +17,7 @@ export class GraduateSignUpComponent {
   profilePicture: File | null = null;
   cvFile: File | null = null;
   formSubmitted: boolean = false;
-  currentYear : number = new Date().getFullYear();
+  currentYear: number = new Date().getFullYear();
   @ViewChild('imageInput') imageInput: ElementRef;
 
   constructor(
@@ -54,7 +54,7 @@ export class GraduateSignUpComponent {
       this.imageInput.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    if(this.cvFile == null) {
+    if (this.cvFile == null) {
       return;
     }
     if (this.graduateSignUpForm.invalid) {
@@ -64,20 +64,22 @@ export class GraduateSignUpComponent {
       personDto: {
         signupRequestDto: {
           email: this.graduateSignUpForm.value.email,
-          password: this.graduateSignUpForm.value.password
+          password: this.graduateSignUpForm.value.password,
+          s3_profile_picture: this.profilePicture!!
         },
         firstName: this.graduateSignUpForm.value.firstName,
         lastName: this.graduateSignUpForm.value.lastName,
         ci: this.graduateSignUpForm.value.ci,
-        phoneNumber: this.graduateSignUpForm.value.phoneNumber
+        phoneNumber: this.graduateSignUpForm.value.phoneNumber,
+        s3_cv: this.cvFile!!
       },
       campusMajorId: this.graduateSignUpForm.value.campusMajorId,
       graduationDate: this.graduateSignUpForm.value.graduationDate
-    };
+    }
 
-    this.signUpService.graduateSignUp(graduateSignUpDto, this.profilePicture, this.cvFile).subscribe({
-      next: (response : ResponseDto<VerificationCodeDto>) => {
-        if(response.success) {
+    this.signUpService.graduateSignUp(graduateSignUpDto).subscribe({
+      next: (response: ResponseDto<VerificationCodeDto>) => {
+        if (response.success) {
           localStorage.setItem('uuid', response.data.uuid);
           localStorage.setItem('email', response.data.email);
           this.router.navigate(['/codigo-de-verificacion']);
