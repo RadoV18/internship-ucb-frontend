@@ -4,8 +4,8 @@ import { matchingPasswordValidator } from "../../validators/matching-password-va
 import { SignUpService } from "../../services/sign-up.service";
 import { StudentSignUpDto } from "../../dto/student.sign.up.dto";
 import { Router } from "@angular/router";
-import {ResponseDto} from "../../dto/response.dto";
-import {VerificationCodeDto} from "../../dto/verification.code.dto";
+import { ResponseDto } from "../../dto/response.dto";
+import { VerificationCodeDto } from "../../dto/verification.code.dto";
 
 @Component({
   selector: 'app-student-sign-up',
@@ -15,8 +15,8 @@ import {VerificationCodeDto} from "../../dto/verification.code.dto";
 export class StudentSignUpComponent {
 
   studentSignUpForm: FormGroup;
-  profilePicture : File | null = null;
-  cvFile : File | null = null;
+  profilePicture: File | null = null;
+  cvFile: File | null = null;
   formSubmitted: boolean = false;
   @ViewChild('imageInput') imageInput: ElementRef;
 
@@ -54,7 +54,7 @@ export class StudentSignUpComponent {
       this.imageInput.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    if(this.cvFile == null) {
+    if (this.cvFile == null) {
       return;
     }
     if (this.studentSignUpForm.invalid) {
@@ -64,20 +64,22 @@ export class StudentSignUpComponent {
       personDto: {
         signupRequestDto: {
           email: this.studentSignUpForm.value.email,
-          password: this.studentSignUpForm.value.password
+          password: this.studentSignUpForm.value.password,
+          s3_profile_picture: this.profilePicture!!
         },
         firstName: this.studentSignUpForm.value.firstName,
         lastName: this.studentSignUpForm.value.lastName,
         ci: this.studentSignUpForm.value.ci,
-        phoneNumber: this.studentSignUpForm.value.phoneNumber
+        phoneNumber: this.studentSignUpForm.value.phoneNumber,
+        s3_cv: this.cvFile!!
       },
       campusMajorId: this.studentSignUpForm.value.campusMajorId,
       semester: this.studentSignUpForm.value.semester
-    };
+    }
 
-    this.signUpService.studentSignUp(studentSignUpDto, this.profilePicture, this.cvFile).subscribe({
-      next: (response : ResponseDto<VerificationCodeDto>) => {
-        if(response.success) {
+    this.signUpService.studentSignUp(studentSignUpDto).subscribe({
+      next: (response: ResponseDto<VerificationCodeDto>) => {
+        if (response.success) {
           localStorage.setItem('uuid', response.data.uuid);
           localStorage.setItem('email', response.data.email);
           this.router.navigate(['/codigo-de-verificacion']);
