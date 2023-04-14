@@ -17,8 +17,27 @@ import { InternshipFormComponent } from './pages/register-internship/InternshipF
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    InstitutionSignUpComponent,
+    LoginNavbarComponent,
+    ImageInputComponent,
+    VerificationCodePageComponent,
+    VerificationCodeComponent,
+    ModalComponent,
+    LoginComponent,
+    LoginFormComponent,
+    HomeComponent,
+    PdfFileInputComponent,
+    InternshipFormComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
