@@ -64,15 +64,31 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     InstitutionInternshipDetailsComponent,
     InternshipApplicantsTableComponent,
     HomeAdminInstitutionComponent,
-    HomeAdminGraduatesComponent
+    HomeAdminGraduatesComponent,
+    InstitutionSignUpComponent,
+    LoginNavbarComponent,
+    ImageInputComponent,
+    VerificationCodePageComponent,
+    VerificationCodeComponent,
+    ModalComponent,
+    LoginComponent,
+    LoginFormComponent,
+    HomeComponent,
+    PdfFileInputComponent,
+    InternshipFormComponent,
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     HttpClientModule
+  ,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
     {
