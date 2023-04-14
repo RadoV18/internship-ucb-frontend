@@ -2,17 +2,78 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { InstitutionSignUpDto } from "../dto/institution.sign.up.dto";
-import {Observable} from "rxjs";
-import {ResponseDto} from "../dto/response.dto";
-import {VerificationCodeDto} from "../dto/verification.code.dto";
-import {VerificationCodeReqDto} from "../dto/verification.code.req.dto";
+import { Observable } from "rxjs";
+import { ResponseDto } from "../dto/response.dto";
+import { VerificationCodeDto } from "../dto/verification.code.dto";
+import { VerificationCodeComponent } from "../components/verification-code/verification-code.component";
+import { VerificationCodeReqDto } from "../dto/verification.code.req.dto";
+import { StudentSignUpDto } from '../dto/student.sign.up.dto';
+import { GraduateSignUpDto } from '../dto/graduate.sign.up.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignUpService {
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { }
+
+  public studentSignUp(student: StudentSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
+    // multipart/form-data request
+    const formData = new FormData();
+    // append to the data the institution object without the logo
+    formData.append('data', JSON.stringify(
+      {
+        personDto: {
+          userDto: {
+            email: student.personDto.signupRequestDto.email,
+            password: student.personDto.signupRequestDto.password,
+          },
+          firstName: student.personDto.firstName,
+          lastName: student.personDto.lastName,
+          ci: student.personDto.ci,
+          phoneNumber: student.personDto.phoneNumber
+        },
+        campusMajorId: student.campusMajorId,
+        semester: student.semester
+      }
+    ));
+    // append the logo
+    formData.append('profilePicture', student.personDto.s3_cv);
+    formData.append('cvFile', student.personDto.s3_cv);
+    return this.http.post<ResponseDto<VerificationCodeDto>>(
+      `${environment.API_URL}/api/sign-up/student`,
+      formData
+    );
+  }
+
+  public graduateSignUp(graduate: GraduateSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
+    // multipart/form-data request
+    const formData = new FormData();
+    // append to the data the institution object without the logo
+    formData.append('data', JSON.stringify(
+      {
+        personDto: {
+          userDto: {
+            email: graduate.personDto.signupRequestDto.email,
+            password: graduate.personDto.signupRequestDto.password,
+          },
+          firstName: graduate.personDto.firstName,
+          lastName: graduate.personDto.lastName,
+          ci: graduate.personDto.ci,
+          phoneNumber: graduate.personDto.phoneNumber
+        },
+        graduationDate: graduate.graduationDate,
+        campusMajorId: graduate.campusMajorId
+      }
+    ));
+    // append the logo
+    formData.append('profilePicture', graduate.personDto.s3_cv);
+    formData.append('cvFile', graduate.personDto.s3_cv);
+    return this.http.post<ResponseDto<VerificationCodeDto>>(
+      `${environment.API_URL}/api/sign-up/graduate`,
+      formData
+    );
+  }
 
   public institutionSignUp(institution: InstitutionSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
     // multipart/form-data request
@@ -38,7 +99,7 @@ export class SignUpService {
     );
   }
 
-  public verificationCode(verificationCodeReqDto : VerificationCodeReqDto): Observable<ResponseDto<boolean>> {
+  public verificationCode(verificationCodeReqDto: VerificationCodeReqDto): Observable<ResponseDto<boolean>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });

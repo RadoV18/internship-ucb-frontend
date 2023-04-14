@@ -1,7 +1,7 @@
 /* Start background */
 /* TODO: Move this to a separate file, maybe refactor to have a single container/bg */
 
-.background::before 
+.background::before
 {
     content: "";
     position: fixed;
@@ -9,8 +9,8 @@
     height: 100%;
     backdrop-filter: blur(7.5px);
 }
-  
-.background 
+
+.background
 {
     height: 100vh;
     width: 100vw;
@@ -25,10 +25,54 @@
     overflow: auto;
 }
 
-.background > * 
+.background > *
 {
     position: relative;
     z-index: 1;
 }
 
 /* End background */
+
+/* Start account type */
+
+.account-type-card {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
+.account-type-card:hover {
+    cursor: pointer;
+    border: 1px solid var(--primary);
+}
+
+@media (max-width: 768px) {
+    .account-type-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .account-type-card {
+        width: 100%;
+        margin: 0 0 1rem 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .account-type-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .account-type-card img {
+        max-width: 64px;
+        max-height: 64px;
+    }
+
+    .account-type-title {
+        margin-top: 2rem;
+    }
+}

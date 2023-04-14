@@ -1,0 +1,94 @@
+<div class="background">
+    <app-login-navbar></app-login-navbar>
+    <div class="sign-up-card px-6 my-6 card border-rd-24 mx-auto">
+        <form class="d-flex flex-column" [formGroup]="studentSignUpForm">
+            <h1 class="text-secondary text-center">Formulario de Registro</h1>
+            <h2 class="text-secondary">Datos Personales</h2>
+            <div class="d-flex flex-space-between image-input-data">
+                <div class="mr-3 image-input-container" #imageInput id="imageInput">
+                    <app-image-input (imageChanged)="handleImageChange($event)"></app-image-input>
+                    <span *ngIf="formSubmitted && this.profilePicture === null"
+                        class="text-error text-center span-center"><sup>&ast;</sup>La foto de perfil es requerida.</span>
+                </div>
+                <div class="d-flex flex-column sign-up-data">
+                    <!-- FIRST NAME INPUT -->
+                    <input type="text" placeholder="Nombres" class="focus-primary my-2" id="firstName"
+                        formControlName="firstName">
+                    <span
+                        *ngIf="studentSignUpForm.get('firstName')?.errors?.['required'] && studentSignUpForm.get('firstName')?.touched"
+                        class="text-error"><sup>&ast;</sup> El nombre del estudiante es requerido.</span>
+
+                    <!-- LAST NAME INPUT -->
+                    <input type="text" placeholder="Apellidos" class="focus-primary my-2" id="lastName"
+                        formControlName="lastName">
+                    <span
+                        *ngIf="studentSignUpForm.get('lastName')?.errors?.['required'] && studentSignUpForm.get('lastName')?.touched"
+                        class="text-error"><sup>&ast;</sup>El apellido del estudiante es requerido.</span>
+                </div>
+            </div>
+            <!-- C.I. INPUT -->
+            <input type="text" placeholder="C.I." class="focus-primary my-2" id="ci" formControlName="ci">
+            <span *ngIf="studentSignUpForm.get('ci')?.errors?.['required'] && studentSignUpForm.get('ci')?.touched"
+                class="text-error"><sup>&ast;</sup> El C.I. del estudiante es requerido.</span>
+
+            <!-- PHONE NUMBER INPUT -->
+            <input type="text" placeholder="Celular" class="focus-primary my-2" id="phoneNumber"
+                formControlName="phoneNumber">
+            <span
+                *ngIf="studentSignUpForm.get('phoneNumber')?.errors?.['required'] && studentSignUpForm.get('phoneNumber')?.touched"
+                class="text-error"><sup>&ast;</sup>El celular del estudiante es requerido.</span>
+            <!-- PDF file input -->
+            <app-pdf-file-input (fileChanged)="handleFileChange($event)"></app-pdf-file-input>
+            <span *ngIf="formSubmitted && this.cvFile === null"
+                  class="text-error text-center span-center"><sup>&ast;</sup>El CV es requerido.</span>
+
+
+
+            <h2 class="text-secondary">Datos Académicos</h2>
+            <!-- MAJOR INPUT -->
+            <input type="text" placeholder="Carrera" class="focus-primary my-2" formnovalidate id="campusMajorId"
+                formControlName="campusMajorId">
+            <span
+                *ngIf="studentSignUpForm.get('campusMajorId')?.errors?.['required'] && studentSignUpForm.get('campusMajorId')?.touched"
+                class="text-error"><sup>&ast;</sup> La carrera es requerida.</span>
+
+            <!-- SEMESTER INPUT -->
+            <input type="number" placeholder="Semestre" class="focus-primary my-2" id="semester" min="1" max="10"
+                formControlName="semester" formnovalidate>
+            <span
+                *ngIf="studentSignUpForm.get('semester')?.errors?.['required'] && studentSignUpForm.get('semester')?.touched"
+                class="text-error"><sup>&ast;</sup> El semestre es requerido.</span>
+
+            <h2 class="text-secondary">Datos de Acceso</h2>
+
+            <!-- EMAIL INPUT -->
+            <input type="email" inputmode="email" placeholder="Correo electrónico" class="focus-primary my-2" id="email"
+                formControlName="email">
+            <span
+                *ngIf="studentSignUpForm.get('email')?.errors?.['required'] && studentSignUpForm.get('email')?.touched"
+                class="text-error"><sup>&ast;</sup> El correo electrónico es requerido.</span>
+            <span *ngIf="studentSignUpForm.get('email')?.errors?.['email'] && studentSignUpForm.get('email')?.touched"
+                class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej:
+                admin@ucb.edu.bo</span>
+
+            <!-- PASSWORD INPUT -->
+            <input type="password" placeholder="Contraseña" class="focus-primary my-2" id="password"
+                formControlName="password">
+            <span
+                *ngIf="studentSignUpForm.get('password')?.errors?.['required'] && studentSignUpForm.get('password')?.touched"
+                class="text-error"><sup>&ast;</sup> La contraseña es requerida.</span>
+            <span
+                *ngIf="studentSignUpForm.get('password')?.errors?.['minlength'] && studentSignUpForm.get('password')?.touched"
+                class="text-error"><sup>&ast;</sup> La contraseña debe contener al menos 8 caracteres.</span>
+
+            <!-- CONFIRM PASSWORD INPUT -->
+            <input type="password" placeholder="Confirmar contraseña" class="focus-primary my-2" id="confirmPassword"
+                formControlName="confirmPassword">
+            <span
+                *ngIf="studentSignUpForm.get('confirmPassword')?.value !== studentSignUpForm.get('password')?.value && studentSignUpForm.get('confirmPassword')?.touched"
+                class="text-error"><sup>&ast;</sup> Las contraseñas no coinciden.</span>
+            <button type="button" class="btn btn-primary btn-rounded w-50 mx-auto my-3" (click)="submit()">Registrarse
+            </button>
+        </form>
+    </div>
+</div>
