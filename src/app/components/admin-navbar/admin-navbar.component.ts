@@ -20,4 +20,8 @@ export class AdminNavbarComponent {
       }
     });
   }
+
+  toggleSidebar() {
+    console.log("toggle sidebar");
+  }
 }

@@ -8,6 +8,10 @@
     max-height: 48px;
 }
 
+.hamburger-button {
+    display: none;
+}
+
 .hamburger-logo img {
     height: 56px;
 }
@@ -53,4 +57,28 @@
 a {
     color: var(--text);
     text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .hamburger-logo {
+        height: 100%;
+    }
+
+    .hamburger-logo img {
+        display: none;
+    }
+
+    .hamburger-button {
+        display: block;
+        height: 48px;
+        width: 48px;
+        background: none;
+        border: none;
+    }
+
+    .hamburger-button img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+    }
 }

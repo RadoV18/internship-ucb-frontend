@@ -1,15 +1,72 @@
 .admin-sidebar {
-    border-right: 1px solid var(--secondary);
-    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 250px;
+    min-height: calc(100vh - 64px);
+    background-color: var(--tertiary-dark);
 }
 
-.admin-sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
+.sidebar-header {
+    display: none;
 }
 
-.admin-sidebar a:hover {
-    background-color: #ddd;
+.sidebar-section {
+    margin: 16px 0;
+}
+
+.sidebar-section li {
+    padding: 0 12px;
+    height: 48px;
+}
+
+.sidebar-section li:hover {
+    cursor: pointer;
+    background-color: var(--tertiary-light);
+}
+
+.sidebar-title {
+    font-size: 12px;
+}
+
+.sidebar-option {
+    color: var(--white);
+}
+
+.sidebar-option span {
+    flex: 1;
+    margin-left: 8px;
+    text-align: left;
+}
+
+.notification {
+    border-radius: 50%;
+    background-color: var(--error);
+    color: var(--white);
+    font-size: 12px;
+    padding: 4px;
+}
+
+@media (max-width: 480px) {
+    .admin-sidebar {
+        top: 0;
+        min-height: 100vh;
+    }
+
+    .sidebar-header {
+        display: flex;
+    }
+
+    .sidebar-header .logo {
+        width: 75%;
+    }
+
+    .hamburger-button {
+        display: block;
+        height: 48px;
+        width: 48px;
+        background: none;
+        border: none;
+    }
 }
