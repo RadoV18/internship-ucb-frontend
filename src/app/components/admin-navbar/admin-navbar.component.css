@@ -1,7 +1,56 @@
 .admin-navbar {
-    background-color: var(--tertiary);
+    background-color: var(--tertiary-light);
+    box-sizing: border-box;
+    height: 64px;
 }
 
 .admin-navbar img {
     max-height: 48px;
+}
+
+.hamburger-logo img {
+    height: 56px;
+}
+
+.profile-options-container {
+    position: relative;
+}
+
+.profile-options {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.profile-options:hover {
+    cursor: pointer;
+}
+
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+    background-color: var(--white);
+    position: absolute;
+    top: 32px;
+    right: 0;
+    min-width: 150px;
+    padding: 8px 0;
+}
+
+.dropdown-item {
+    padding: 12px 20px;
+}
+
+.dropdown-item:hover {
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
 }

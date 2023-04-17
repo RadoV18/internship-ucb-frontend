@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AdminNavbarComponent {
 
+  @ViewChild('toggleButton') toggleButton: ElementRef;
+  @ViewChild('dropdownMenu') dropdownMenu: ElementRef;
+  showOptions: boolean = false;
+
+  constructor(private renderer: Renderer2) {
+    this.renderer.listen('window', 'click', (e: Event) => {
+      if(this.toggleButton.nativeElement.contains(e.target)) {
+        this.showOptions = !this.showOptions;
+      } else if (e.target !== this.dropdownMenu.nativeElement) {
+        this.showOptions = false;
+      }
+    });
+  }
 }

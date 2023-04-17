@@ -2,9 +2,12 @@
   --primary: #00aaad;
   --secondary: #008080;
   --tertiary: #00427a;
+  --tertiary-light: #0056a0;
+  --tertiary-dark: #00315b;
   --error: #ff3232;
   --white: #fff;
   --black: #000;
+  --text: #303030;
   --gray: #7f7f7f;
   --gray-light: #7f7f7f7f;
   --gray-dark: #4d4d4d;
