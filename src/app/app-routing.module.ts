@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 import { HomeAdminComponent } from "./pages/home-admin/home-admin.component";
+import { HomeInstitutionComponent } from "./pages/home-institution/home-institution.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'registro/graduado', component: GraduateSignUpComponent },
   { path: 'registro/institucion', component: InstitutionSignUpComponent },
   { path: 'codigo-de-verificacion', component: VerificationCodePageComponent },
-  { path: 'inicio/administrador', component: HomeAdminComponent},
+  { path: 'administrador/inicio', component: HomeAdminComponent},
+  { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
   { path: 'internship', component: InternshipFormComponent },
 ];

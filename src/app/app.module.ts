@@ -20,6 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
+import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
+import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
+import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
     LoginFormComponent,
     HomeComponent,
     PdfFileInputComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    HomeInstitutionComponent,
+    InstitutionNavbarComponent,
+    InstitutionSidebarComponent
   ],
   imports: [
     BrowserModule,

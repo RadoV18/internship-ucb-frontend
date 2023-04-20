@@ -1,5 +1,5 @@
-<app-admin-navbar></app-admin-navbar>
-<app-admin-sidebar></app-admin-sidebar>
+<app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
+<app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
 <div class="admin-content">
     content
 </div>
