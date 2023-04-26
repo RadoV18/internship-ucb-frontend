@@ -1,4 +1,4 @@
-.admin-sidebar {
+.institution-sidebar {
     box-sizing: border-box;
     position: absolute;
     top: 64px;
@@ -49,14 +49,14 @@
 }
 
 @media (max-width: 480px) {
-    .admin-sidebar {
+    .institution-sidebar {
         top: 0;
         left: -250px;
         min-height: 100vh;
         transition: left 0.3s ease;
     }
 
-    .admin-sidebar.show {
+    .institution-sidebar.show {
         left: 0;
     }
 

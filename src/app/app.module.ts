@@ -9,7 +9,6 @@ import { ImageInputComponent } from './components/image-input/image-input.compon
 import { VerificationCodePageComponent } from './pages/verification-code-page/verification-code-page.component';
 import { VerificationCodeComponent } from './components/verification-code/verification-code.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { MenuAdminComponent } from './pages/menu-admin/menu-admin.component';
 import { StudentSignUpComponent } from './pages/student-sign-up/student-sign-up.component';
 import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -20,6 +19,10 @@ import { InternshipFormComponent } from './pages/register-internship/InternshipF
 import { HttpClientModule } from '@angular/common/http';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
+import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
+import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
+import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
+import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,6 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     LoginNavbarComponent,
     InstitutionSignUpComponent,
     InternshipFormComponent,
-    MenuAdminComponent,
     ImageInputComponent,
     VerificationCodePageComponent,
     VerificationCodeComponent,
@@ -43,7 +45,11 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     LoginComponent,
     LoginFormComponent,
     HomeComponent,
-    PdfFileInputComponent
+    PdfFileInputComponent,
+    HomeAdminComponent,
+    HomeInstitutionComponent,
+    InstitutionNavbarComponent,
+    InstitutionSidebarComponent
   ],
   imports: [
     BrowserModule,

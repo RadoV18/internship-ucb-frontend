@@ -1,0 +1,9 @@
+.institution-content {
+    margin-left: 250px;
+}
+
+@media (max-width: 480px) {
+    .institution-content {
+        margin-left: 0;
+    }
+}

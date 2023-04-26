@@ -1,0 +1,9 @@
+.admin-content {
+    margin-left: 250px;
+}
+
+@media (max-width: 480px) {
+    .admin-content {
+        margin-left: 0;
+    }
+}
