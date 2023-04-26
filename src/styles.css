@@ -365,6 +365,7 @@ input {
   line-height: 1;
   border: 1px solid var(--gray-light);
   border-radius: 8px;
+  color: var(--gray);
 }
 
 input::-moz-placeholder,

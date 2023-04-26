@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InternshipService } from '../../services/internship.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../dto/role';
@@ -6,49 +6,54 @@ import { Requirement } from '../../dto/requirement';
 import { Benefit } from '../../dto/benefit';
 import { Major } from '../../dto/major';
 import { City } from '../../dto/city';
+import { CityService } from 'src/app/services/city.service';
+import { MajorService } from 'src/app/services/major.service';
 
 @Component({
   selector: 'app-internship-form',
   templateUrl: './InternshipForm.component.html',
   styleUrls: ['./InternshipForm.component.css'],
 })
-export class InternshipFormComponent {
-  constructor(private internshipService: InternshipService) {}
+export class InternshipFormComponent implements OnInit {
+  constructor(
+    private internshipService: InternshipService,
+    private cityService: CityService,
+    private majorService: MajorService
+  ) {}
+  ngOnInit(): void {
+    this.cityService.getCities().subscribe((data) => {
+      this.cities = data;
+    });
+    this.majorService.getMajors().subscribe((data) => {
+      this.majors = data;
+    });
+  }
   roleList: Role[] = [];
   requirementList: Requirement[] = [];
   benefitList: Benefit[] = [];
   majorList: Major[] = [];
-  majors: Major[] = [
-    new Major(1, 'Computer Science'),
-    new Major(2, 'Information Technology'),
-    new Major(3, 'Software Engineering'),
-  ];
-  cities: City[] = [
-    { cityId: 1, name: 'New York' },
-    { cityId: 2, name: 'Rome' },
-    { cityId: 3, name: 'London' },
-    { cityId: 4, name: 'Istanbul' },
-  ];
+  majors: Major[];
+  cities: City[];
   newRole = '';
   newRequirement = '';
   newBenefit = '';
   internshipForm = new FormGroup({
     title: new FormControl('', [
       Validators.maxLength(50),
-      Validators.pattern('[a-zA-Z1-9 ]*'),
+      Validators.pattern('[a-zA-Z1-9 :ñ]*'),
       Validators.required,
     ]),
     description: new FormControl('', [
       Validators.maxLength(500),
-      Validators.pattern('[a-zA-Z1-9 ]*'),
+      Validators.pattern('[a-zA-Z1-9 :ñ]*'),
       Validators.required,
     ]),
     startDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', [Validators.required]),
     major: new FormControl<Major | null>(null, []),
-    role: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
-    requirement: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
-    benefit: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
+    role: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :ñ]*')]),
+    requirement: new FormControl('', [Validators.pattern('[a-zA-Z1-9 ñ:]*')]),
+    benefit: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :ñ]*')]),
     city: new FormControl<City | null>(null, [Validators.required]),
   });
   addMajor() {
@@ -154,11 +159,19 @@ export class InternshipFormComponent {
     };
     console.table(internship);
     this.internshipService.saveInternship(internship).subscribe({
-      next: (res) => {
-        alert('Internship created successfully');
+      next: (data) => {
+        if (data.status === 201) {
+          alert('Internship saved successfully');
+          this.internshipForm.reset();
+          this.benefitList = [];
+          this.roleList = [];
+          this.requirementList = [];
+        } else {
+          alert('Error saving internship please try again later');
+        }
       },
-      error: (err) => {
-        console.log(err);
+      error: (error) => {
+        console.error('There was an error!', error);
       },
     });
   }

@@ -1,17 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Major } from '../dto/major';
 
 @Injectable({
   providedIn: 'root',
 })
-export class InternshipService {
+export class MajorService {
   constructor(private http: HttpClient) {}
 
-  saveInternship(internship: any) {
-    return this.http.post(`${environment.API_URL}/internship`, internship, {
-      observe: 'response',
-      responseType: 'text',
-    });
+  getMajors() {
+    return this.http.get<Major[]>(`${environment.API_URL}/major`);
   }
 }

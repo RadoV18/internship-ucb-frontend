@@ -37,6 +37,8 @@ select{
     background-repeat: no-repeat;
     mix-blend-mode: normal;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
   }
   .background > * {
     position: relative;
@@ -44,10 +46,11 @@ select{
   }
 .container{
     background-color: #fff;
-    width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 70%;
 } 
+    
 .list-btn{
     margin-left: 5px;
 }
@@ -67,9 +70,9 @@ select{
 .invalid-input{
     border: 2px #ff3232 solid;
 }
-.text-error{
-    color: #ff3232;
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
+input[type="date"]:not(.has-value):before{
+    content:'' !important;
+  }
+input{
+    height: auto;
 }
