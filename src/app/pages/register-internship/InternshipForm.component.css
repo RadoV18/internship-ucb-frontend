@@ -61,6 +61,8 @@ select{
     background-repeat: no-repeat;
     mix-blend-mode: normal;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
   }
   .background > * {
     position: relative;
@@ -68,10 +70,11 @@ select{
   }
 .container{
     background-color: #fff;
-    width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 70%;
 } 
+    
 .list-btn{
     height: 32px;
     width: 32px;
@@ -109,3 +112,9 @@ select{
 input[type="date"]{
     content: attr('') !important;
   }
+input[type="date"]:not(.has-value):before{
+    content:'' !important;
+  }
+input{
+    height: auto;
+}

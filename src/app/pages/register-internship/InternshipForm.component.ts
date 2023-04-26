@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InternshipService } from '../../services/internship.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../dto/role';
@@ -15,6 +15,8 @@ import {
   dateValidator,
   minDateValidator,
 } from 'src/app/validators/date-validator';
+import { CityService } from 'src/app/services/city.service';
+import { MajorService } from 'src/app/services/major.service';
 
 @Component({
   selector: 'app-internship-form',
@@ -267,8 +269,8 @@ export class InternshipFormComponent {
           this.displayModal = true;
         }
       },
-      error: (err) => {
-        console.log(err);
+      error: (error) => {
+        console.error('There was an error!', error);
       },
     });
   }
