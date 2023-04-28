@@ -6,6 +6,8 @@ import { GraduateSignUpDto } from "../../dto/graduate.sign.up.dto";
 import { Router } from "@angular/router";
 import { ResponseDto } from "../../dto/response.dto";
 import { VerificationCodeDto } from "../../dto/verification.code.dto";
+import { CampusMajorDto } from 'src/app/dto/campusmajor.dto';
+import { CampusMajorService } from 'src/app/services/campus-major.service';
 
 @Component({
   selector: 'app-graduate-sign-up',
@@ -20,23 +22,31 @@ export class GraduateSignUpComponent {
   currentYear: number = new Date().getFullYear();
   @ViewChild('imageInput') imageInput: ElementRef;
 
+  campusMajors: CampusMajorDto[] | undefined;
+
   constructor(
     private formBuilder: FormBuilder,
     private signUpService: SignUpService,
-    private router: Router
+    private router: Router,
+    private campusMajorService: CampusMajorService
   ) {
     this.graduateSignUpForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       ci: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      campusMajorId: ['', [Validators.required]],
+      campusMajorId: [0, [Validators.required]],
       graduationDate: ['', [Validators.required, Validators.min(1900), Validators.max(this.currentYear)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
     }, {
       validator: matchingPasswordValidator
+    });
+
+    this.campusMajorService.getCampusMajors().subscribe((data: CampusMajorDto[]) => {
+      this.campusMajors = data;
+      console.log(this.campusMajors);
     });
   }
 
