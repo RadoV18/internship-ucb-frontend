@@ -1,11 +1,11 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-admin-sidebar',
-  templateUrl: './admin-sidebar.component.html',
-  styleUrls: ['./admin-sidebar.component.css']
+  selector: 'app-institution-sidebar',
+  templateUrl: './institution-sidebar.component.html',
+  styleUrls: ['./institution-sidebar.component.css']
 })
-export class AdminSidebarComponent {
+export class InstitutionSidebarComponent {
   @Input() show: boolean = false;
   @Output() toggleSidebarEvent = new EventEmitter<boolean>();
   private wasClickOutside: boolean = false;

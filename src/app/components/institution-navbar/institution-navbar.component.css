@@ -1,10 +1,10 @@
-.admin-navbar {
+.institution-navbar {
     background-color: var(--tertiary-light);
     box-sizing: border-box;
     height: 64px;
 }
 
-.admin-navbar img {
+.institution-navbar img {
     max-height: 48px;
 }
 
