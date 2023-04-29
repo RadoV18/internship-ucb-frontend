@@ -46,11 +46,20 @@
 
 
             <h2 class="text-secondary">Datos Académicos</h2>
-            <!-- MAJOR INPUT -->
-            <select type="number" name="campusMajorId" id="campusMajorId" formControlName="campusMajorId">
+            <!-- CAMPUS INPUT -->
+            <select name="campusId" id="campusId" [(ngModel)]="campusId" [ngModelOptions]="{standalone: true}"
+                (change)="selectedCampus()">
                 <option [ngValue]="undefined" selected>Select</option>
-                <option *ngFor="let campusMajor of campusMajors" [value]="campusMajor.campusMajorId">Campus:
-                    {{campusMajor.campus}} Carrera: {{campusMajor.major}}</option>
+                <option *ngFor="let campus of campuses" [value]="campus.campusId">{{campus.name}}
+                </option>
+            </select>
+
+            <!-- MAJOR INPUT -->
+            <select *ngIf="majors !== undefined" type="number" name="campusMajorId" id="campusMajorId"
+                formControlName="campusMajorId">
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let major of majors" [value]="major.campusMajorId">
+                    {{major.name}}</option>
             </select>
             <span
                 *ngIf="studentSignUpForm.get('campusMajorId')?.errors?.['required'] && studentSignUpForm.get('campusMajorId')?.touched"
