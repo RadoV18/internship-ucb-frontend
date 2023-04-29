@@ -1,3 +1,25 @@
+<app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="this.displayModal = false">
+    <h3 title class="mb-2">Opciones para Radomir Luis Vladislavic Nolasco</h3>
+    <div body>
+        <form [formGroup]="applicantOptions">
+            <div class="radio-buttons">
+                <div class="radio-container">
+                    <input type="radio" name="value" id="accept" value="1" formControlName="value">
+                    <label for="accept">Aceptar solicitud</label>
+                </div>
+                <div class="radio-container">
+                    <input type="radio" name="value" id="decline" value="0" formControlName="value">
+                    <label for="decline">Rechazar solicitud</label>
+                </div>
+            </div>
+            <textarea name="message" class="w-100" rows="5" id="message" placeholder="Enviar un mensaje a R" formControlName="message"></textarea>
+        </form>
+    </div>
+    <div footer class="d-flex flex-center align-center mt-3">
+        <button (click)="this.displayModal = false" class="btn btn-rounded btn-primary mx-3 w-25">Cancelar</button>
+        <button class="btn btn-rounded btn-primary mx-3 w-25" (click)="submitForm()">Confirmar</button>
+    </div>
+</app-modal>
 <div class="institution-home-wrapper">
     <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
     <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
