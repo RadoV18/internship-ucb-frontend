@@ -1,0 +1,23 @@
+<div class="institution-home-wrapper">
+    <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
+    <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
+    <div class="institution-content">
+        <div class="shadow border-rd-12 pb-4 content-card">
+            <h2 class="text-secondary text-center my-3">Convocatorias Activas</h2>
+            <div class="card-grid">
+                <!-- TODO: add ngFor -->
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+                <app-institution-internship-card></app-institution-internship-card>
+            </div>
+        </div>
+    </div>
+</div>
