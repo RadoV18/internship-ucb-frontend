@@ -17,7 +17,7 @@ export class InternshipService {
   }
 
   getActiveInternshipsByInstitutionId(id: number): Observable<ResponseDto<Array<ActiveInternshipDto>>> {
-    return this.http.get<ResponseDto<Array<ActiveInternshipDto>>>(`${environment.API_URL}/internships/institution/${id}`)
+    return this.http.get<ResponseDto<Array<ActiveInternshipDto>>>(`${environment.API_URL}/api/internships/institution/${id}`)
   }
 
   getApplicantsByInternshipId(id: number): Observable<ResponseDto<Array<ApplicantDto>>> {

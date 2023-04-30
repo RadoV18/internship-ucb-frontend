@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {AdminService} from "../../services/admin.service";
+import {InstitutionDto} from "../../dto/institution.dto";
+import {InternshipService} from "../../services/internship.service";
+import {ActiveInternshipDto} from "../../dto/active.internship.dto";
+import {ResponseDto} from "../../dto/response.dto";
 
 @Component({
   selector: 'app-active-internships-page',
@@ -7,6 +12,12 @@ import { Component } from '@angular/core';
 })
 export class ActiveInternshipsPageComponent {
   show: boolean = false;
+  private activeInternships: Array<ActiveInternshipDto> = [];
+
+
+  constructor(private internshipService: InternshipService) {
+
+  }
 
   toggleSidebar() {
     this.show = !this.show;
@@ -14,5 +25,16 @@ export class ActiveInternshipsPageComponent {
 
   setShow(show: boolean) {
     this.show = show;
+  }
+
+  ngOnInit() {
+    this.internshipService.getActiveInternshipsByInstitutionId(1).subscribe({
+      next: (response: ResponseDto<Array<ActiveInternshipDto>>) => {
+        this.activeInternships = response.data
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
   }
 }
