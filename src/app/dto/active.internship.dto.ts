@@ -1,7 +1,7 @@
 import {ApplicantSummaryDto} from "./applicant.summary.dto";
 
 export interface ActiveInternshipDto {
-  id: string;
+  id: number;
   title: string;
   dateFrom: Date;
   dateTo: Date;

@@ -12,11 +12,10 @@ import {ResponseDto} from "../../dto/response.dto";
 })
 export class ActiveInternshipsPageComponent {
   show: boolean = false;
-  private activeInternships: Array<ActiveInternshipDto> = [];
+  activeInternships: Array<ActiveInternshipDto> = [];
 
 
   constructor(private internshipService: InternshipService) {
-
   }
 
   toggleSidebar() {

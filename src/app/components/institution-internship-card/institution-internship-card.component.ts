@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-institution-internship-card',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./institution-internship-card.component.css']
 })
 export class InstitutionInternshipCardComponent {
+  @Input() id: number;
+  @Input() title: string;
+  @Input() dateFrom: Date;
+  @Input() dateTo: Date;
+  @Input() city: string;
+  @Input() count: number;
+  @Input() pictures: Array<string>
 
+  constructor(private router: Router) {
+  }
+
+  openDetails() {
+    this.router.navigate([`/institucion/convocatorias/${this.id}`])
+  }
 }

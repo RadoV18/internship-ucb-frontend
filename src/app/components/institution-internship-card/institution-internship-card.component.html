@@ -1,21 +1,21 @@
 <div class="px-3 pb-3 institution-internship-card shadow border-rd-12">
-    <h3>Pasantía de desarrollo de software</h3>
+    <h3>{{this.title}}</h3>
     <div class="internship-card-content">
         <div class="internship-card-data">
             <div class="internship-card-pictures">
+                <img src="assets/images/ucb-background.png" alt="">
                 <img src="/assets/images/ucb-background.png" alt="">
                 <img src="/assets/images/ucb-background.png" alt="">
                 <img src="/assets/images/ucb-background.png" alt="">
-                <img src="/assets/images/ucb-background.png" alt="">
-                <span class="card-user-count">99</span>
+                <span class="card-user-count">{{this.count}}</span>
             </div>
             <div class="internship-card-details">
-                <div><img src="assets/images/calendar-icon.svg" alt=""/> dd/mm/yyyy al dd/mm/yyyy</div>
-                <div><img src="assets/images/location-icon.svg" alt=""/>Santa Cruz</div>
+                <div><img src="assets/images/calendar-icon.svg" alt=""/>{{this.dateFrom}} {{this.dateTo}}</div>
+                <div><img src="assets/images/location-icon.svg" alt=""/>{{this.city}}</div>
             </div>
         </div>
         <div class="internship-card-button">
-            <button class="btn btn-primary btn-rounded">Más información</button>
+            <button class="btn btn-primary btn-rounded" (click)="openDetails()">Más información</button>
         </div>
     </div>
 </div>
