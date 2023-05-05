@@ -5,7 +5,6 @@
         <div class="shadow border-rd-12 pb-4 content-card">
             <h2 class="text-secondary text-center my-3">Convocatorias Activas</h2>
             <div class="card-grid">
-                <!-- TODO: add ngFor -->
                 <app-institution-internship-card *ngFor="let internship of activeInternships"
                     [id]="internship.id" [title]="internship.title" [dateFrom]="internship.dateFrom"
                     [dateTo]="internship.dateTo" [city]="internship.city" [count]="internship.applicants.count"

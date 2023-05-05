@@ -1,5 +1,5 @@
 <app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="this.displayModal = false">
-    <h3 title class="mb-2">Opciones para Radomir Luis Vladislavic Nolasco</h3>
+    <h3 title class="mb-2">Opciones para {{selectedApplicant.name}}</h3>
     <div body>
         <form [formGroup]="applicantOptions">
             <div class="radio-buttons">
@@ -12,7 +12,7 @@
                     <label for="decline">Rechazar solicitud</label>
                 </div>
             </div>
-            <textarea name="message" class="w-100" rows="5" id="message" placeholder="Enviar un mensaje a R" formControlName="message"></textarea>
+            <textarea name="message" class="w-100" rows="5" id="message" [placeholder]="getTextareaPlaceholder()" formControlName="message"></textarea>
         </form>
     </div>
     <div footer class="d-flex flex-center align-center mt-3">
@@ -25,7 +25,7 @@
     <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
     <div class="institution-content">
         <div class="shadow border-rd-12 pb-4 content-card">
-            <h2 class="text-secondary text-center">Pasantía de desarrollo de software</h2>
+            <h2 class="text-secondary text-center my-3">Pasantía de desarrollo de software</h2>
             <div class="table-container border-rd-8 w-100">
                 <table class="applicants-table">
                     <thead>
@@ -40,82 +40,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let applicant of applicants">
                             <td class="profile-picture">
-                                <img src="assets/images/ucb-background.png" alt="Foto de Perfil">
+                                <img [src]="applicant.profilePictureUrl" [alt]="applicant.name">
                             </td>
-                            <td>Radomir Luis Vladislavic Nolasco</td>
-                            <td>Administracion de empresas</td>
-                            <td>radomir.vladislavic@ucb.edu.bo</td>
-                            <td>dd/mm/aaaa</td>
-                            <td>Pendiente</td>
+                            <td>{{applicant.name}}</td>
+                            <td>{{applicant.major}}</td>
+                            <td>{{applicant.email}}</td>
+                            <td>{{applicant.submittedOn}}</td>
+                            <td>{{applicant.status}}</td>
                             <td class="col-actions">
                                 <div class="cv">
-                                    <a href="assets/cv.pdf" target="_blank">
+                                    <a [href]="applicant.cvUrl" target="_blank">
                                         <img src="assets/images/cv-icon.svg" alt="CV">
                                     </a>
                                 </div>
-                                <div class="applicant-options">
-                                    <img src="assets/images/internship-details.svg" alt="Opciones">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="profile-picture">
-                                <img src="assets/images/ucb-background.png" alt="Foto de Perfil">
-                            </td>
-                            <td>Radomir Luis Vladislavic Nolasco</td>
-                            <td>Administracion de empresas</td>
-                            <td>radomir.vladislavic@ucb.edu.bo</td>
-                            <td>dd/mm/aaaa</td>
-                            <td>Pendiente</td>
-                            <td class="col-actions">
-                                <div class="cv">
-                                    <a href="assets/cv.pdf" target="_blank">
-                                        <img src="assets/images/cv-icon.svg" alt="CV">
-                                    </a>
-                                </div>
-                                <div class="applicant-options">
-                                    <img src="assets/images/internship-details.svg" alt="Opciones">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="profile-picture">
-                                <img src="assets/images/ucb-background.png" alt="Foto de Perfil">
-                            </td>
-                            <td>Radomir Luis Vladislavic Nolasco</td>
-                            <td>Administracion de empresas</td>
-                            <td>radomir.vladislavic@ucb.edu.bo</td>
-                            <td>dd/mm/aaaa</td>
-                            <td>Pendiente</td>
-                            <td class="col-actions">
-                                <div class="cv">
-                                    <a href="assets/cv.pdf" target="_blank">
-                                        <img src="assets/images/cv-icon.svg" alt="CV">
-                                    </a>
-                                </div>
-                                <div class="applicant-options">
-                                    <img src="assets/images/internship-details.svg" alt="Opciones">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="profile-picture">
-                                <img src="assets/images/ucb-background.png" alt="Foto de Perfil">
-                            </td>
-                            <td>Radomir Luis Vladislavic Nolasco</td>
-                            <td>Administracion de empresas</td>
-                            <td>radomir.vladislavic@ucb.edu.bo</td>
-                            <td>dd/mm/aaaa</td>
-                            <td>Pendiente</td>
-                            <td class="col-actions">
-                                <div class="cv">
-                                    <a href="assets/cv.pdf" target="_blank">
-                                        <img src="assets/images/cv-icon.svg" alt="CV">
-                                    </a>
-                                </div>
-                                <div class="applicant-options">
+                                <div class="applicant-options" (click)="displayApplicantOptions(applicant)">
                                     <img src="assets/images/internship-details.svg" alt="Opciones">
                                 </div>
                             </td>

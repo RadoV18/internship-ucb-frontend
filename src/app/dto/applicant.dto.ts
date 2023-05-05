@@ -6,4 +6,5 @@ export interface ApplicantDto {
   submittedOn: Date;
   status: string;
   cvUrl: string;
+  profilePictureUrl: string;
 }
