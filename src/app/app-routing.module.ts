@@ -9,6 +9,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 import { HomeAdminComponent } from "./pages/home-admin/home-admin.component";
 import { HomeInstitutionComponent } from "./pages/home-institution/home-institution.component";
+import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/home-admin-institution.component';
+import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-admin-graduates.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
   { path: 'internship', component: InternshipFormComponent },
+  { path: 'administrador/instituciones', component: HomeAdminInstitutionComponent },
+  { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
 ];
 
 @NgModule({

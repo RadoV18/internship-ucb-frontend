@@ -171,10 +171,22 @@ span, .text {
   border-color: var(--primary);
 }
 
+.btn-danger {
+  color: #fff;
+  background-color: var(--error);
+  border-color: var(--error);
+}
+
+.btn-danger:hover {
+  background-color: #e54848;
+  border-color: #e54848;
+}
+
 .btn-primary:hover {
   background-color: #00989b;
   border-color: #00989b;
 }
+
 
 .btn-primary:hover:disabled {
   background-color: var(--primary);

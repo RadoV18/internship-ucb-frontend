@@ -1,0 +1,58 @@
+<app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
+<app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
+<app-modal [displayModal]="showModalGraduate" [disposable]="true">
+    <h1 class="title" title>{{titleGraduate}}</h1>
+    <div body *ngIf="graduateView != null">
+      <div>
+          <div>
+            <div class="bodyData">
+              <div class="child">
+                <h4>Nombres:</h4>
+                <p>{{graduateView.person.firstName}}</p>
+              </div>
+              <div class="child">
+                <h4>Apellidos</h4>
+                <p>{{graduateView.person.lastName}}</p>
+              </div>
+              <div class="child">
+                <h4>Telefono</h4>
+                <p>{{graduateView.person.phoneNumber}}</p>
+              </div>
+              <div class="child">
+                <h4>Email</h4>
+                <p>{{graduateView.person.userUcb.email}}</p>
+              </div>
+            </div>
+            <div footer>
+                <div class="footerData">
+                    <button class="btnFooter btn btn-primary" (click)="aprobar(graduateView)"> Aprobar</button>
+                    <button class="btnFooter btn btn-danger" (click)="rechazar()"> Rechazar</button>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</app-modal>
+<div class="admin-content">
+    <h1 class="tittle">Graduados</h1>
+      <div class="tableGraduates">
+        <table class="table">
+          <thead class="tableHead">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Tipo de cuenta</th>
+              <th scope="col">Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let graduate of listGraduates">
+              <th scope="row">{{graduate.graduateId}}</th>
+              <td>{{graduate.person.firstName}}</td>
+              <td>{{graduate.person.userUcb.email}}</td>
+              <td><button type="button" class="btn btn-primary" (click)="viewModalGraduate(graduate)">Detalle</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
