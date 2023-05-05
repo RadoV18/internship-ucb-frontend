@@ -8,13 +8,13 @@
     <div class="sidebar-section">
         <span class="text-white sidebar-title">Solicitudes de Registro</span>
         <ul>
-            <li class="d-flex flex-space-between align-center sidebar-option">
+            <li class="d-flex flex-space-between align-center sidebar-option" [routerLink]="['/administrador/graduados']" routerLinkActive="router-link-active" >
                 <img src="assets/images/graduate-white.svg" alt="Graduados">
                 <span>Graduados</span>
                 <div class="notification mr-2">99</div>
                 <img src="assets/images/arrow-right-sm.svg"  alt="">
             </li>
-            <li class="d-flex flex-space-between align-center sidebar-option">
+            <li class="d-flex flex-space-between align-center sidebar-option" [routerLink]="['/administrador/instituciones']" routerLinkActive="router-link-active" >
                 <img src="assets/images/institution-white.svg" alt="Instituciones">
                 <span>Instituciones</span>
                 <div class="notification mr-2 text-center">99</div>

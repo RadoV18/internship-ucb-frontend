@@ -1,0 +1,64 @@
+<app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
+<app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
+<app-modal [displayModal]="showModal" [disposable]="true">
+    <h1 class="title" title>{{title}}</h1>
+    <div body *ngIf="intitutionView != null">
+      <div>
+          <div>
+            <div class="bodyData">
+              <div class="child">
+                <h4>Nombre de la institucion:</h4>
+                <p>{{intitutionView.name}}</p>
+              </div>
+              <div class="child">
+                <h4>Area</h4>
+                <p>{{intitutionView.area}}</p>
+              </div>
+            </div>
+          </div>
+          <h4 class="title">Descripcion</h4>
+          <p>{{intitutionView.description}}</p>
+          <h4 class="title">Datos del contacto</h4>
+          <p class="child">{{intitutionView.contactFirstName}} {{intitutionView.contactLastName}}</p>
+          <div class="bodyData">
+            <div class="child">
+              <h4>Correo:</h4>
+              <p>{{intitutionView.contactEmail}}</p>
+            </div>
+            <div class="child">
+              <h4>Telefono:</h4>
+              <p>{{intitutionView.contactPhone}}</p>
+            </div>
+          </div>
+      </div>
+      <div footer>
+        <div class="footerData">
+            <button class="btnFooter btn btn-primary" (click)="aprobar(intitutionView)"> Aprobar</button>
+            <button class="btnFooter btn btn-danger" (click)="rechazar()"> Rechazar</button>
+        </div>
+      </div>
+    </div>
+</app-modal>
+<div class="admin-content">
+    <h1 class="tittle">Instituciones</h1>
+  <div class="tableGraduates">
+    <table class="table">
+      <thead class="tableHead">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo de cuenta</th>
+          <th scope="col">Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listInstitutions">
+          <th scope="row">{{item.institutionId}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.contactEmail}}</td>
+          <td><button type="button" class="btn btn-primary" (click)="viewModal(item)">Detalle</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
