@@ -8,7 +8,8 @@
                 <div class="mr-3 image-input-container" #imageInput id="imageInput">
                     <app-image-input (imageChanged)="handleImageChange($event)"></app-image-input>
                     <span *ngIf="formSubmitted && this.profilePicture === null"
-                        class="text-error text-center span-center"><sup>&ast;</sup>La foto de perfil es requerida.</span>
+                        class="text-error text-center span-center"><sup>&ast;</sup>La foto de perfil es
+                        requerida.</span>
                 </div>
                 <div class="d-flex flex-column sign-up-data">
                     <!-- FIRST NAME INPUT -->
@@ -44,25 +45,37 @@
 
 
             <h2 class="text-secondary">Datos Académicos</h2>
+            <!-- CAMPUS INPUT -->
+            <select name="campusId" id="campusId" [(ngModel)]="campusId" [ngModelOptions]="{standalone: true}"
+                (change)="selectedCampus()">
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let campus of campuses" [value]="campus.campusId">{{campus.name}}
+                </option>
+            </select>
+
             <!-- MAJOR INPUT -->
-            <input type="text" placeholder="Carrera" class="focus-primary my-2" formnovalidate id="campusMajorId"
+            <select *ngIf="majors !== undefined" type="number" name="campusMajorId" id="campusMajorId"
                 formControlName="campusMajorId">
+                <option [ngValue]="undefined" selected>Select</option>
+                <option *ngFor="let major of majors" [value]="major.campusMajorId">
+                    {{major.name}}</option>
+            </select>
             <span
                 *ngIf="graduateSignUpForm.get('campusMajorId')?.errors?.['required'] && graduateSignUpForm.get('campusMajorId')?.touched"
                 class="text-error"><sup>&ast;</sup> La carrera es requerida.</span>
 
             <!-- GRADUATION DATE INPUT -->
-            <input type="number" placeholder="Año de graduación" class="focus-primary my-2" id="graduationDate" min="1900" max="2100"
-                formControlName="graduationDate" formnovalidate>
+            <input type="number" placeholder="Año de graduación" class="focus-primary my-2" id="graduationDate"
+                min="1900" max="2100" formControlName="graduationDate" formnovalidate>
             <span
                 *ngIf="graduateSignUpForm.get('graduationDate')?.errors?.['required'] && graduateSignUpForm.get('graduationDate')?.touched"
                 class="text-error"><sup>&ast;</sup> La fecha de graduación es requerida.</span>
             <span
-              *ngIf="graduateSignUpForm.get('graduationDate')?.errors?.['min'] && graduateSignUpForm.get('graduationDate')?.touched"
-              class="text-error"><sup>&ast;</sup> Ingrese un año válido.</span>
+                *ngIf="graduateSignUpForm.get('graduationDate')?.errors?.['min'] && graduateSignUpForm.get('graduationDate')?.touched"
+                class="text-error"><sup>&ast;</sup> Ingrese un año válido.</span>
             <span
-              *ngIf="graduateSignUpForm.get('graduationDate')?.errors?.['max'] && graduateSignUpForm.get('graduationDate')?.touched"
-              class="text-error"><sup>&ast;</sup> Ingrese un año válido.</span>
+                *ngIf="graduateSignUpForm.get('graduationDate')?.errors?.['max'] && graduateSignUpForm.get('graduationDate')?.touched"
+                class="text-error"><sup>&ast;</sup> Ingrese un año válido.</span>
 
             <h2 class="text-secondary">Datos de Acceso</h2>
 
