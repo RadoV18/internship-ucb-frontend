@@ -1,4 +1,5 @@
 import {ApplicantSummaryDto} from "./applicant.summary.dto";
+import {Timestamp} from "rxjs";
 
 export interface ActiveInternshipDto {
   id: number;

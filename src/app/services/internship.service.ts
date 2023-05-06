@@ -13,11 +13,11 @@ export class InternshipService {
   constructor(private http: HttpClient) {}
 
   saveInternship(internship: any) {
-    return this.http.post(`${environment.API_URL}/internships`, internship);
+    return this.http.post(`${environment.API_URL}/api/internships`, internship);
   }
 
   getActiveInternshipsByInstitutionId(id: number): Observable<ResponseDto<Array<ActiveInternshipDto>>> {
-    return this.http.get<ResponseDto<Array<ActiveInternshipDto>>>(`${environment.API_URL}/api/internships/institution/${id}`)
+    return this.http.get<ResponseDto<Array<ActiveInternshipDto>>>(`${environment.API_URL}/api/internships/institution/${id}/active`)
   }
 
   getApplicantsByInternshipId(id: number): Observable<ResponseDto<Array<ApplicantDto>>> {

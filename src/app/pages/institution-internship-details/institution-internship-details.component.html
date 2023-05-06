@@ -1,5 +1,5 @@
-<app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="this.displayModal = false">
-    <h3 title class="mb-2">Opciones para {{selectedApplicant.name}}</h3>
+<app-modal [widthClass]="'w-25'" [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
+    <h3 title class="mb-2">Opciones para {{selectedApplicant.firstName + " " + selectedApplicant.lastName}}</h3>
     <div body>
         <form [formGroup]="applicantOptions">
             <div class="radio-buttons">
@@ -16,8 +16,8 @@
         </form>
     </div>
     <div footer class="d-flex flex-center align-center mt-3">
-        <button (click)="this.displayModal = false" class="btn btn-rounded btn-primary mx-3 w-25">Cancelar</button>
-        <button class="btn btn-rounded btn-primary mx-3 w-25" (click)="submitForm()">Confirmar</button>
+        <button (click)="disposeModal()" class="btn btn-rounded btn-primary mx-3">Cancelar</button>
+        <button class="btn btn-rounded btn-primary mx-3 " (click)="submitForm()">Confirmar</button>
     </div>
 </app-modal>
 <div class="institution-home-wrapper">
@@ -25,7 +25,7 @@
     <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
     <div class="institution-content">
         <div class="shadow border-rd-12 pb-4 content-card">
-            <h2 class="text-secondary text-center my-3">Pasantía de desarrollo de software</h2>
+            <h2 class="text-secondary text-center my-3">{{this.title}}</h2>
             <div class="table-container border-rd-8 w-100">
                 <table class="applicants-table">
                     <thead>
@@ -42,13 +42,13 @@
                     <tbody>
                         <tr *ngFor="let applicant of applicants">
                             <td class="profile-picture">
-                                <img [src]="applicant.profilePictureUrl" [alt]="applicant.name">
+                                <img [src]="applicant.profilePictureUrl" [alt]="applicant.firstName + ' ' + applicant.lastName" >
                             </td>
-                            <td>{{applicant.name}}</td>
+                            <td>{{applicant.firstName + " " + applicant.lastName}}</td>
                             <td>{{applicant.major}}</td>
                             <td>{{applicant.email}}</td>
-                            <td>{{applicant.submittedOn}}</td>
-                            <td>{{applicant.status}}</td>
+                            <td>{{applicant.submittedOn | date: 'dd/MM/YYYY'}}</td>
+                            <td>{{this.submissionStatus[Number(applicant.status)]}}</td>
                             <td class="col-actions">
                                 <div class="cv">
                                     <a [href]="applicant.cvUrl" target="_blank">

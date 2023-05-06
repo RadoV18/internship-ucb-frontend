@@ -19,6 +19,10 @@ export class InstitutionInternshipCardComponent {
   }
 
   openDetails() {
-    this.router.navigate([`/institucion/convocatorias/${this.id}`])
+    this.router.navigateByUrl(`/institucion/convocatorias/${this.id}`, {
+      state: {
+        title: this.title,
+      }
+    });
   }
 }

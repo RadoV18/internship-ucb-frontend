@@ -3,14 +3,14 @@
     <div class="internship-card-content">
         <div class="internship-card-data">
             <div class="internship-card-pictures">
-                <img src="assets/images/ucb-background.png" alt="">
-                <img src="/assets/images/ucb-background.png" alt="">
-                <img src="/assets/images/ucb-background.png" alt="">
-                <img src="/assets/images/ucb-background.png" alt="">
+                <img [src]="pictures[3] || 'assets/images/user.svg'" alt="">
+                <img [src]="pictures[2] || 'assets/images/user.svg'" alt="">
+                <img [src]="pictures[1] || 'assets/images/user.svg'" alt="">
+                <img [src]="pictures[0] || 'assets/images/user.svg'" alt="">
                 <span class="card-user-count">{{this.count}}</span>
             </div>
             <div class="internship-card-details">
-                <div><img src="assets/images/calendar-icon.svg" alt=""/>{{this.dateFrom}} {{this.dateTo}}</div>
+                <div><img src="assets/images/calendar-icon.svg" alt=""/>{{this.dateFrom | date: 'dd/MM/YYYY'}} al {{this.dateTo | date: 'dd/MM/YYYY'}}</div>
                 <div><img src="assets/images/location-icon.svg" alt=""/>{{this.city}}</div>
             </div>
         </div>

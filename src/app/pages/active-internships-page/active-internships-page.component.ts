@@ -14,7 +14,6 @@ export class ActiveInternshipsPageComponent {
   show: boolean = false;
   activeInternships: Array<ActiveInternshipDto> = [];
 
-
   constructor(private internshipService: InternshipService) {
   }
 
