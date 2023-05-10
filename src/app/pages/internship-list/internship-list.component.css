@@ -1,0 +1,104 @@
+.container {
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px #ccc;  
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+} 
+.row{
+  display: flex;
+}
+.middle{
+    flex: 50%;
+    width: 100%;
+}
+.side{
+    flex: 25%;
+    width: 100%;
+}
+.page{
+    justify-content: center;
+}
+.page-selector{
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    background-color: transparent;
+    border-radius: 60px;
+    margin: 5px;
+    padding: 6px 10px;
+    cursor: pointer;
+    user-select: none;
+
+}
+.page-selector:hover{
+    color: var(--white);
+    border: 1px solid var(--secondary);
+    background-color: var(--secondary);
+}
+.selected{
+    background-color: var(--secondary);
+    color: var(--white);
+    border: 1px solid var(--secondary);
+}
+
+input[type="date"]:not(.has-value):before{
+    content:'' !important;
+}
+input{
+    height: auto;
+}  
+
+select{
+    padding: 8px;
+    line-height: 1;
+    color: var(--gray);
+    border: 1px solid var(--gray-light);
+    border-radius: 8px; 
+    padding-right: 50px;
+    width: 100%;
+}
+.form-group{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+.form-group > * {
+    font-size: 15px;
+}
+.form-group input{
+    padding: 8px;
+    width: 100%;
+    padding-left: 12px;
+}
+.form-group button{
+    width: fit-content;
+    margin-left: -70px  ;
+    background-color: transparent;
+    border: none;
+}
+.form-group button:hover{
+    background-color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    .page-selector{
+        padding: 5px 9px ;
+    }
+    input, select {
+        font-size: 12px;
+    }
+    span{
+        font-size: 10px;
+    }
+    h1{
+        font-size: 20px;
+    }
+}
+    
+
+

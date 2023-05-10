@@ -32,7 +32,9 @@ import { ActiveInternshipsPageComponent } from './pages/active-internships-page/
 import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
 import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
 import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
-
+import { CommonModule } from '@angular/common';
+import { InternshipListComponent } from './pages/internship-list/internship-list.component';
+import { InternshipCardComponent } from './components/internship-card/internship-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +78,9 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     HomeComponent,
     PdfFileInputComponent,
     InternshipFormComponent,
+    HomeAdminComponent,
+    InternshipListComponent,
+    InternshipCardComponent,
   ],
   imports: [
     
@@ -84,11 +89,11 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule
-  ,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
   ],
   providers: [
     {
