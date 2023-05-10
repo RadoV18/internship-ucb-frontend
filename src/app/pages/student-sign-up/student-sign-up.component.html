@@ -8,7 +8,8 @@
                 <div class="mr-3 image-input-container" #imageInput id="imageInput">
                     <app-image-input (imageChanged)="handleImageChange($event)"></app-image-input>
                     <span *ngIf="formSubmitted && this.profilePicture === null"
-                        class="text-error text-center span-center"><sup>&ast;</sup>La foto de perfil es requerida.</span>
+                        class="text-error text-center span-center"><sup>&ast;</sup>La foto de perfil es
+                        requerida.</span>
                 </div>
                 <div class="d-flex flex-column sign-up-data">
                     <!-- FIRST NAME INPUT -->
@@ -40,14 +41,26 @@
             <!-- PDF file input -->
             <app-pdf-file-input (fileChanged)="handleFileChange($event)"></app-pdf-file-input>
             <span *ngIf="formSubmitted && this.cvFile === null"
-                  class="text-error text-center span-center"><sup>&ast;</sup>El CV es requerido.</span>
+                class="text-error text-center span-center"><sup>&ast;</sup>El CV es requerido.</span>
 
 
 
             <h2 class="text-secondary">Datos Académicos</h2>
+            <!-- CAMPUS INPUT -->
+            <select name="campusId" id="campusId" [(ngModel)]="campusId" [ngModelOptions]="{standalone: true}"
+                (change)="selectedCampus()" class="my-2">
+                <option [ngValue]="undefined" selected>Sede</option>
+                <option *ngFor="let campus of campuses" [value]="campus.campusId">{{campus.name}}
+                </option>
+            </select>
+
             <!-- MAJOR INPUT -->
-            <input type="text" placeholder="Carrera" class="focus-primary my-2" formnovalidate id="campusMajorId"
-                formControlName="campusMajorId">
+            <select *ngIf="majors !== undefined" type="number" name="campusMajorId" id="campusMajorId"
+                formControlName="campusMajorId" class="my-2">
+                <option [ngValue]="undefined" selected>Carrera</option>
+                <option *ngFor="let major of majors" [value]="major.campusMajorId">
+                    {{major.name}}</option>
+            </select>
             <span
                 *ngIf="studentSignUpForm.get('campusMajorId')?.errors?.['required'] && studentSignUpForm.get('campusMajorId')?.touched"
                 class="text-error"><sup>&ast;</sup> La carrera es requerida.</span>
