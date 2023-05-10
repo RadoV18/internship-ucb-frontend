@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
+import { InternshipListComponent } from './pages/internship-list/internship-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'ingresar', component: LoginComponent },
   { path: 'internship', component: InternshipFormComponent },
   { path: 'home/institucion', component: HomeInstitutionComponent },
+  { path: 'internship/list', component: InternshipListComponent },
 ];
 
 @NgModule({

@@ -23,7 +23,9 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
 import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
-
+import { CommonModule } from '@angular/common';
+import { InternshipListComponent } from './pages/internship-list/internship-list.component';
+import { InternshipCardComponent } from './components/internship-card/internship-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,8 @@ import { InstitutionSidebarComponent } from './components/institution-sidebar/in
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
     HomeAdminComponent,
+    InternshipListComponent,
+    InternshipCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,7 @@ import { InstitutionSidebarComponent } from './components/institution-sidebar/in
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
