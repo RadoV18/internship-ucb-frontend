@@ -1075,3 +1075,13 @@ tbody tr:nth-child(even):hover {
 tbody tr:nth-child(odd):hover {
     background-color: #eeeeee;
 }
+
+select {
+    padding: 14px;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--gray);
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    outline: none;
+}
