@@ -48,7 +48,7 @@
     padding: 4px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .admin-sidebar {
         top: 0;
         left: -250px;

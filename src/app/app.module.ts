@@ -23,6 +23,10 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
 import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
+import { ActiveInternshipsPageComponent } from './pages/active-internships-page/active-internships-page.component';
+import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
+import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
+import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { InstitutionSidebarComponent } from './components/institution-sidebar/in
     HomeAdminComponent,
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
-    InstitutionSidebarComponent
+    InstitutionSidebarComponent,
+    ActiveInternshipsPageComponent,
+    InstitutionInternshipCardComponent,
+    InstitutionInternshipDetailsComponent,
+    InternshipApplicantsTableComponent
   ],
   imports: [
     BrowserModule,
