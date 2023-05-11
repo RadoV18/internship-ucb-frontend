@@ -59,7 +59,7 @@ a {
     text-decoration: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .hamburger-logo {
         height: 100%;
     }
