@@ -12,7 +12,7 @@ import { HomeInstitutionComponent } from "./pages/home-institution/home-institut
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'registro/estudiante', component: StudentSignUpComponent },
+  { path: 'registro-estudiante', component: StudentSignUpComponent },
   { path: 'registro/graduado', component: GraduateSignUpComponent },
   { path: 'registro/institucion', component: InstitutionSignUpComponent },
   { path: 'codigo-de-verificacion', component: VerificationCodePageComponent },

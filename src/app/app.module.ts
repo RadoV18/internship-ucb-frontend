@@ -23,6 +23,9 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
 import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
+import { NotificationsService } from './services/notifications.service';
+import { NotificationsServiceFactory } from './notifications-service-factory';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { InstitutionSidebarComponent } from './components/institution-sidebar/in
     HomeAdminComponent,
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
-    InstitutionSidebarComponent
+    InstitutionSidebarComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,12 @@ import { InstitutionSidebarComponent } from './components/institution-sidebar/in
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NotificationsService,
+      useFactory: NotificationsServiceFactory
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
