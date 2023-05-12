@@ -4,8 +4,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../dto/role';
 import { Requirement } from '../../dto/requirement';
 import { Benefit } from '../../dto/benefit';
-import { Major } from '../../dto/major';
-import { City } from '../../dto/city';
+import { MajorDto } from '../../dto/major.dto';
+import { CityDto } from '../../dto/city.dto';
+import { QuestionsDto } from "../../dto/questions.dto";
+import {MajorsService} from "../../services/majors.service";
+import {CitiesService} from "../../services/cities.service";
 
 @Component({
   selector: 'app-internship-form',
@@ -13,22 +16,24 @@ import { City } from '../../dto/city';
   styleUrls: ['./InternshipForm.component.css'],
 })
 export class InternshipFormComponent {
-  constructor(private internshipService: InternshipService) {}
+  // login and sidebar
+  show: boolean = false;
+
+  toggleSidebar() {
+    this.show = !this.show;
+  }
+
+  setShow(show: boolean) {
+    this.show = show;
+  }
+  constructor(private internshipService: InternshipService, private majorsService: MajorsService, private citiesService: CitiesService) {}
   roleList: Role[] = [];
   requirementList: Requirement[] = [];
   benefitList: Benefit[] = [];
-  majorList: Major[] = [];
-  majors: Major[] = [
-    new Major(1, 'Computer Science'),
-    new Major(2, 'Information Technology'),
-    new Major(3, 'Software Engineering'),
-  ];
-  cities: City[] = [
-    { cityId: 1, name: 'New York' },
-    { cityId: 2, name: 'Rome' },
-    { cityId: 3, name: 'London' },
-    { cityId: 4, name: 'Istanbul' },
-  ];
+  questionList: QuestionsDto[] = [];
+  majorList: MajorDto[] = [];
+  majors: MajorDto[] = [];
+  cities: CityDto[] = [];
   newRole = '';
   newRequirement = '';
   newBenefit = '';
@@ -45,12 +50,33 @@ export class InternshipFormComponent {
     ]),
     startDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', [Validators.required]),
-    major: new FormControl<Major | null>(null, []),
+    major: new FormControl<MajorDto | null>(null, []),
     role: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
     requirement: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
     benefit: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
-    city: new FormControl<City | null>(null, [Validators.required]),
+    city: new FormControl<CityDto | null>(null, [Validators.required]),
+    question: new FormControl('', [Validators.required])
   });
+
+  ngOnInit() {
+    this.citiesService.getCities().subscribe({
+      next: (response) => {
+        this.cities = response.data;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+    this.majorsService.getMajors("name").subscribe({
+      next: (response) => {
+        this.majors = response.data;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
   addMajor() {
     const major = this.internshipForm.get('major')?.value;
 
@@ -61,7 +87,7 @@ export class InternshipFormComponent {
         this.majorList = [...this.majorList, major];
         this.internshipForm.get('major')?.reset();
       } else {
-        alert('Major already added');
+        alert('MajorDto already added');
         this.internshipForm.get('major')?.reset();
       }
     } else {
@@ -105,6 +131,19 @@ export class InternshipFormComponent {
     }
   }
 
+  addQuestion() {
+    const question = this.internshipForm.get('question')?.value;
+    if (question) {
+      this.questionList = [
+        ...this.questionList,
+        { id: this.questionList.length + 1, description: question },
+      ];
+      this.internshipForm.get('question')?.reset();
+    } else {
+      alert('Please enter requirement');
+    }
+  }
+
   deleteRole(index: number) {
     this.roleList.splice(index, 1);
   }
@@ -116,6 +155,9 @@ export class InternshipFormComponent {
   }
   deleteMajor(index: number) {
     this.majorList.splice(index, 1);
+  }
+  deleteQuestion(index: number) {
+    this.questionList.splice(index, 1);
   }
 
   onSubmit() {
@@ -162,4 +204,6 @@ export class InternshipFormComponent {
       },
     });
   }
+
+  protected readonly Date = Date;
 }
