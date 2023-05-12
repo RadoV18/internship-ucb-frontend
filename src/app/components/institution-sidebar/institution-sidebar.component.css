@@ -32,6 +32,8 @@
 
 .sidebar-option {
     color: var(--white);
+    display: flex;
+    align-items: center;
 }
 
 .sidebar-option span {
@@ -48,7 +50,7 @@
     padding: 4px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .institution-sidebar {
         top: 0;
         left: -250px;

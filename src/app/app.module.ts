@@ -26,6 +26,10 @@ import { InstitutionSidebarComponent } from './components/institution-sidebar/in
 import { NotificationsService } from './services/notifications.service';
 import { NotificationsServiceFactory } from './notifications-service-factory';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ActiveInternshipsPageComponent } from './pages/active-internships-page/active-internships-page.component';
+import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
+import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
+import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,10 @@ import { NotificationsComponent } from './components/notifications/notifications
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
     NotificationsComponent
+    ActiveInternshipsPageComponent,
+    InstitutionInternshipCardComponent,
+    InstitutionInternshipDetailsComponent,
+    InternshipApplicantsTableComponent
   ],
   imports: [
     BrowserModule,

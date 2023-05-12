@@ -1,0 +1,16 @@
+<div class="institution-home-wrapper">
+    <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
+    <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
+    <div class="institution-content">
+        <div class="shadow border-rd-12 pb-4 content-card">
+            <h2 class="text-secondary text-center my-3">Convocatorias Activas</h2>
+            <div class="card-grid">
+                <app-institution-internship-card *ngFor="let internship of activeInternships"
+                    [id]="internship.id" [title]="internship.title" [dateFrom]="internship.dateFrom"
+                    [dateTo]="internship.dateTo" [city]="internship.city" [count]="internship.applicants.count"
+                    [pictures]="internship.applicants.pictures"
+                ></app-institution-internship-card>
+            </div>
+        </div>
+    </div>
+</div>
