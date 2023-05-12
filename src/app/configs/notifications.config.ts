@@ -7,9 +7,5 @@ function socketFactory() {
 }
 
 export const NotificationsConfig: RxStompConfig = {
-    
-    webSocketFactory: socketFactory,
-    debug: (msg: string): void => {
-        console.log(new Date(), msg);
-    }
+    webSocketFactory: socketFactory
 }
