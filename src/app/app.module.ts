@@ -23,6 +23,9 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
 import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
+import { NotificationsService } from './services/notifications.service';
+import { NotificationsServiceFactory } from './notifications-service-factory';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ActiveInternshipsPageComponent } from './pages/active-internships-page/active-internships-page.component';
 import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
 import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
@@ -54,6 +57,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
+    NotificationsComponent
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
@@ -75,7 +79,12 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     CommonModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NotificationsService,
+      useFactory: NotificationsServiceFactory
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
