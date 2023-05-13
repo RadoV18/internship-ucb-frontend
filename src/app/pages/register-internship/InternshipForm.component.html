@@ -1,12 +1,22 @@
+<app-modal [widthClass]="'w-25'" [displayModal]="this.displayModal" (onDispose)="disposeModal()">
+    <h3 title class="mb-2 text-center text-primary">Convocatoria para pasantía creada</h3>
+    <div body>
+        <p class="mb-1 text-justify">La convocatoria para pasantía ha sido creada exitosamente.</p>
+        <p class="mb-2 text-justify">Un administrador de la plataforma se encargará de revisar la convocatoria y publicarla.</p>
+    </div>
+    <div footer class="w-100 d-flex flex-center mt-3">
+        <button class="btn btn-primary btn-rounded" type="button" (click)="disposeModal()">Aceptar</button>
+    </div>
+</app-modal>
 <div class="institution-home-wrapper">
     <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
     <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
     <div class="institution-content">
         <div class="shadow border-rd-12 px-4 content-card">
             <h2 class="text-secondary text-center my-3">Convocatoria Nueva</h2>
-            <h3 class="text-secondary">Datos de la Convocatoria</h3>
+            <h3 class="text-secondary mt-3">Datos de la Convocatoria</h3>
             <form [formGroup]="internshipForm" (ngSubmit)="onSubmit()">
-                <div class="form-group my-2 d-flex flex-column">
+                <div class="form-group d-flex flex-column">
                     <input
                         name="title"
                         id="title"
@@ -86,8 +96,8 @@
                         Este campo es obligatorio
                     </span>
                 </div>
-                <h3 class="text-secondary">Funciones</h3>
-                <div class="my-2 d-flex flex-column">
+                <h3 class="text-secondary mt-2 mb-1">Funciones</h3>
+                <div class="d-flex flex-column">
                     <div class="d-flex flex-space-between align-center">
                         <input
                             placeholder="Función"
@@ -102,7 +112,7 @@
                             class="btn btn-primary list-btn"
                             type="button"
                             (click)="addRole()"
-                            [disabled]="this.internshipForm.get('role')?.invalid || this.internshipForm.get('role')?.value?.length === 0"
+                            [disabled]="this.internshipForm.get('role')?.invalid || !this.internshipForm.get('role')?.value || this.internshipForm.get('role')?.value?.length === 0"
                         >
                             +
                         </button>
@@ -130,8 +140,8 @@
                         </li>
                     </ul>
                 </div>
-                <h3 class="text-secondary">Requisitos</h3>
-                <div class="my-2 d-flex flex-column">
+                <h3 class="text-secondary mt-3">Requisitos</h3>
+                <div class="d-flex flex-column">
                     <div class="d-flex flex-space-between align-center">
                         <input
                             placeholder="Requisito"
@@ -146,7 +156,7 @@
                             class="btn btn-primary list-btn"
                             type="button"
                             (click)="addRequirement()"
-                            [disabled]=" this.internshipForm.get('requirement')?.invalid || this.internshipForm.get('requirement')?.value?.length === 0"
+                            [disabled]=" this.internshipForm.get('requirement')?.invalid || !this.internshipForm.get('requirement')?.value || this.internshipForm.get('requirement')?.value?.length === 0"
                         >
                             +
                         </button>
@@ -168,14 +178,14 @@
                             <div class="input list-input-description mr-2">
                                 {{ requirement.description }}
                             </div>
-                            <button type="button" class="delete-btn" (click)="deleteRole(i)">
+                            <button type="button" class="delete-btn" (click)="deleteRequirement(i)">
                                 x
                             </button>
                         </li>
                     </ul>
                 </div>
-                <h3 class="text-secondary">Beneficios</h3>
-                <div class="my-2 d-flex flex-column">
+                <h3 class="text-secondary mt-3">Beneficios</h3>
+                <div class="d-flex flex-column">
                     <div class="d-flex flex-space-between align-center">
                         <input
                             placeholder="Beneficio"
@@ -190,7 +200,8 @@
                             class="btn btn-primary list-btn"
                             type="button"
                             (click)="addBenefit()"
-                            [disabled]=" this.internshipForm.get('benefit')?.invalid || this.internshipForm.get('benefit')?.value?.length === 0"
+                            [disabled]=" this.internshipForm.get('benefit')?.invalid || !this.internshipForm.get('benefit')?.value || !this.internshipForm.get('benefit')?.value || this.internshipForm.get('benefit')?.value?.length === 0
+                                "
                         >
                             +
                         </button>
@@ -212,14 +223,14 @@
                             <div class="input list-input-description mr-2">
                                 {{ benefit.description }}
                             </div>
-                            <button type="button" class="delete-btn" (click)="deleteRole(i)">
+                            <button type="button" class="delete-btn" (click)="deleteBenefit(i)">
                                 x
                             </button>
                         </li>
                     </ul>
                 </div>
-                <h3 class="text-secondary">Carreras</h3>
-                <div class="my-2 d-flex flex-column">
+                <h3 class="text-secondary mt-3">Carreras</h3>
+                <div class="d-flex flex-column">
                     <select
                         class="internship-select-input"
                         name="major"
@@ -253,7 +264,7 @@
                     </li>
                 </ul>
                 <div>
-                    <h3 class="text-secondary">Ciudad</h3>
+                    <h3 class="text-secondary mt-3">Ciudad</h3>
                     <div class="d-flex flex-column">
                         <select
                             class="internship-select-input"
@@ -275,11 +286,11 @@
                     </span>
                 </div>
                 <div>
-                    <h3 class="text-secondary">Formulario para postulantes</h3>
+                    <h3 class="text-secondary mt-3">Formulario para postulantes</h3>
                     <div class="d-flex flex-column">
-                        <div class="d-flex flex-space-between align-center">
+                        <div class="d-flex flex-space-between align-center mb-2" *ngIf="questionList.length < 3">
                             <input
-                                    placeholder="Pregunta para el postulante"
+                                    placeholder="Pregunta para el postulante (máx. 3 preguntas)"
                                     class="list-input mr-2"
                                     name="questions"
                                     id="questions"
@@ -291,15 +302,15 @@
                                     class="btn btn-primary list-btn"
                                     type="button"
                                     (click)="addQuestion()"
-                                    [disabled]=" this.internshipForm.get('question')?.invalid || this.internshipForm.get('question')?.value?.length === 0"
+                                    [disabled]="this.questionList.length === 3 || this.internshipForm.get('question')?.invalid || this.internshipForm.get('question')?.value?.length === 0"
                             >
                                 +
                             </button>
                         </div>
                         <ul>
-                            <li class="d-flex flex-space-between align-center my-2" *ngFor="let question of questionList; let i = index">
+                            <li class="d-flex flex-space-between align-center mb-2" *ngFor="let question of questionList; let i = index">
                                 <div class="input list-input-description mr-2">
-                                    {{ question.description }}
+                                    {{ question.question }}
                                 </div>
                                 <button type="button" class="delete-btn" (click)="deleteQuestion(i)">
                                     x
@@ -310,7 +321,7 @@
                 </div>
                 <div class="d-flex flex-center my-4">
                     <button
-                        [disabled]="!internshipForm.valid || this.majorList.length === 0"
+                        [disabled]="validateForm()"
                         class="btn btn-primary btn-rounded w-25"
                         type="submit"
                         id="saveButton"

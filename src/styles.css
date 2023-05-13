@@ -142,6 +142,10 @@ span, .text {
   text-align: right;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 /* buttons */
 .btn {
   display: inline-block;
