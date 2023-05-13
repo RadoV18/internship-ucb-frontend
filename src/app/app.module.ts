@@ -57,7 +57,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
-    NotificationsComponent
+    NotificationsComponent,
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
@@ -82,8 +82,8 @@ import { FooterComponent } from './components/footer/footer.component';
   providers: [
     {
       provide: NotificationsService,
-      useFactory: NotificationsServiceFactory
-    }
+      useFactory: NotificationsServiceFactory,
+    },
   ],
   bootstrap: [AppComponent],
 })
