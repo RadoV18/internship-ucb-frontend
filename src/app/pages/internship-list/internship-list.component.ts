@@ -151,4 +151,12 @@ export class InternshipListComponent implements OnInit {
     this.filtersForm.get('endingDate')?.reset();
     this.endingDate = new Date('2023-5-12');
   }
+  cityReset() {
+    this.filtersForm.get('city')?.reset();
+    this.city = '';
+  }
+  majorReset() {
+    this.filtersForm.get('major')?.reset();
+    this.selectedMajorList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  }
 }

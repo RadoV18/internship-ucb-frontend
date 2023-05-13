@@ -99,6 +99,26 @@ select{
         font-size: 20px;
     }
 }
+@media screen and (max-width: 320px) {
+ 
+    .page-selector{
+        padding: 5px 9px ;
+    }
+    input, select {
+        font-size: 12px;
+    }
+    span{
+        font-size: 10px;
+    }
+    h1{
+        font-size: 20px;
+    }
+}
+.icon{
+    margin-top: 5px;
+    width: 20px;
+}    
+
     
 
 

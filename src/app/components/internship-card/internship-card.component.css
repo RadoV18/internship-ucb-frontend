@@ -33,3 +33,19 @@ span{
     width: 100%;
     margin-left: 15px;
 }
+
+@media screen and (max-width: 768px) {
+    .card{
+        margin: 3px;
+    }
+    .card-info {
+        width: 100%;
+        margin-left: 5px;
+    }
+    .btn{
+        font-size: 12px;
+        height: 1.5rem;
+    }
+}
+    
+

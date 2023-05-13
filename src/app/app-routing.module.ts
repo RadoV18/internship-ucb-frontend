@@ -14,6 +14,7 @@ import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-a
 import { ActiveInternshipsPageComponent } from "./pages/active-internships-page/active-internships-page.component";
 import { InstitutionInternshipDetailsComponent } from "./pages/institution-internship-details/institution-internship-details.component";
 import { InternshipListComponent } from './pages/internship-list/internship-list.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +35,11 @@ const routes: Routes = [
   { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
   { path: 'home/institucion', component: HomeInstitutionComponent },
   { path: 'internship/list', component: InternshipListComponent },
+  { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent, },
+  { path: 'internship/list', component: InternshipListComponent },
+  { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent,},
+  { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent,},
+  { path: 'footer', component: FooterComponent },
 ];
 
 @NgModule({

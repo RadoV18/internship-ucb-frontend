@@ -3,7 +3,7 @@ import { InternshipService } from '../../services/internship.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../dto/role';
 import { Requirement } from '../../dto/requirement';
-import { Benefit } from '../../dto/benefit';
+import { BenefitDto } from '../../dto/benefit.dto';
 import { MajorDto } from '../../dto/major.dto';
 import { CityDto } from '../../dto/city.dto';
 import { QuestionsDto } from '../../dto/questions.dto';
@@ -46,7 +46,7 @@ export class InternshipFormComponent {
   ) {}
   roleList: Role[] = [];
   requirementList: Requirement[] = [];
-  benefitList: Benefit[] = [];
+  benefitList: BenefitDto[] = [];
   questionList: QuestionsDto[] = [];
   majorList: MajorDto[] = [];
   majors: MajorDto[] = [];

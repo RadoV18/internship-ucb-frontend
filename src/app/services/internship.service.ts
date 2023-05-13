@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import {Observable} from "rxjs";
-import {ResponseDto} from "../dto/response.dto";
-import {ActiveInternshipDto} from "../dto/active.internship.dto";
-import {ApplicantDto} from "../dto/applicant.dto";
+import { Observable } from 'rxjs';
+import { ResponseDto } from '../dto/response.dto';
+import { ActiveInternshipDto } from '../dto/active.internship.dto';
+import { ApplicantDto } from '../dto/applicant.dto';
 import { Page } from '../dto/page.dto';
 import { InternshipListDto } from '../dto/internship.list.dto';
 
