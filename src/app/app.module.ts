@@ -57,7 +57,7 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
-    NotificationsComponent
+    NotificationsComponent,
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
