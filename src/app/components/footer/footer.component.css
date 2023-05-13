@@ -1,4 +1,7 @@
-footer{
+.footer{
+    width: 100%;
+    position: absolutes;
+    bottom: 0px;
     background-color: #00427a;
     padding: 30px 0px;
     justify-content: space-around;

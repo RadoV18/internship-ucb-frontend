@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { City } from 'src/app/dto/city';
+import { City } from 'src/app/dto/city.dto';
 import { InternshipListDto } from 'src/app/dto/internship.list.dto';
-import { Major } from 'src/app/dto/major';
+import { Major } from 'src/app/dto/major.dto';
 import { CityService } from 'src/app/services/city.service';
 import { InternshipService } from 'src/app/services/internship.service';
 import { MajorService } from 'src/app/services/major.service';
@@ -150,5 +150,13 @@ export class InternshipListComponent implements OnInit {
   endingDateReset() {
     this.filtersForm.get('endingDate')?.reset();
     this.endingDate = new Date('2023-5-12');
+  }
+  cityReset() {
+    this.filtersForm.get('city')?.reset();
+    this.city = '';
+  }
+  majorReset() {
+    this.filtersForm.get('major')?.reset();
+    this.selectedMajorList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   }
 }

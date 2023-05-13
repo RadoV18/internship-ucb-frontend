@@ -30,6 +30,7 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
 import { CommonModule } from '@angular/common';
 import { InternshipListComponent } from './pages/internship-list/internship-list.component';
 import { InternshipCardComponent } from './components/internship-card/internship-card.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { InternshipCardComponent } from './components/internship-card/internship
     HomeAdminComponent,
     InternshipListComponent,
     InternshipCardComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,9 @@ import { InternshipService } from '../../services/internship.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../dto/role';
 import { Requirement } from '../../dto/requirement';
-import { Benefit } from '../../dto/benefit';
-import { Major } from '../../dto/major';
-import { City } from '../../dto/city';
+import { Benefit } from '../../dto/benefit.dto';
+import { Major } from '../../dto/major.dto';
+import { City } from '../../dto/city.dto';
 import { CityService } from 'src/app/services/city.service';
 import { MajorService } from 'src/app/services/major.service';
 
@@ -28,6 +28,7 @@ export class InternshipFormComponent implements OnInit {
       this.majors = data;
     });
   }
+  show: boolean = false;
   roleList: Role[] = [];
   requirementList: Requirement[] = [];
   benefitList: Benefit[] = [];
@@ -56,6 +57,14 @@ export class InternshipFormComponent implements OnInit {
     benefit: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :ñ]*')]),
     city: new FormControl<City | null>(null, [Validators.required]),
   });
+
+  toggleSidebar() {
+    this.show = !this.show;
+  }
+
+  setShow(show: boolean) {
+    this.show = show;
+  }
   addMajor() {
     const major = this.internshipForm.get('major')?.value;
 

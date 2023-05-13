@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ResponseDto } from '../dto/response.dto';
 import { ActiveInternshipDto } from '../dto/active.internship.dto';
 import { ApplicantDto } from '../dto/applicant.dto';
-import { ResponseDto } from '../dto/response.dto';
 import { Page } from '../dto/page.dto';
 import { InternshipListDto } from '../dto/internship.list.dto';
 

@@ -12,6 +12,7 @@ import { HomeInstitutionComponent } from './pages/home-institution/home-institut
 import { InternshipListComponent } from './pages/internship-list/internship-list.component';
 import { ActiveInternshipsPageComponent } from './pages/active-internships-page/active-internships-page.component';
 import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,20 @@ const routes: Routes = [
   { path: 'administrador/inicio', component: HomeAdminComponent },
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
-  { path: 'internship', component: InternshipFormComponent },
+  {
+    path: 'institucion/convocatorias/nueva',
+    component: InternshipFormComponent,
+  },
+  { path: 'internship/list', component: InternshipListComponent },
+  {
+    path: 'institucion/convocatorias',
+    component: ActiveInternshipsPageComponent,
+  },
+  {
+    path: 'institucion/convocatorias/:id',
+    component: InstitutionInternshipDetailsComponent,
+  },
+  { path: 'footer', component: FooterComponent },
 ];
 
 @NgModule({
