@@ -85,7 +85,6 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent,
   ],
   imports: [
-    
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -100,8 +99,8 @@ import { FooterComponent } from './components/footer/footer.component';
   providers: [
     {
       provide: NotificationsService,
-      useFactory: NotificationsServiceFactory
-    }
+      useFactory: NotificationsServiceFactory,
+    },
   ],
   bootstrap: [AppComponent],
 })
