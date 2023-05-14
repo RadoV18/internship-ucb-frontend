@@ -37,7 +37,7 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     HomeComponent,
     PdfFileInputComponent,
     AdminNavbarComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
     StudentSignUpComponent,
     GraduateSignUpComponent,
     LoginComponent,
@@ -50,7 +50,7 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
