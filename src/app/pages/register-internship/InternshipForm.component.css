@@ -1,44 +1,20 @@
-/* Navbar and sidebar styles */
-
-.institution-home-wrapper {
+ul{
+    margin: 0;
+    padding-inline-start: 0;
+}
+li {
+    margin: 8px 0; 
+    list-style: none; 
+    padding: 5px  0px 5px 12px;
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+    flex-direction: row;
+    justify-content: space-between;
 }
-
-.institution-content {
-    margin-left: 250px;
-    background-color: #f2f2f2;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.content-card {
-    flex: 1 1 auto;
-    background-color: white;
-    display: inline-block;
-}
-
-@media (max-width: 600px) {
-    .institution-content {
-        margin-left: 0;
-        padding: 0;
-    }
-}
-
-/* end of navbar and sidebar styles */
-
 select{
     height: 46.5px;
     padding: 8px;
     font-size: 16px;
     line-height: 1;
-    color: var(--black);
     border: 1px solid var(--gray-light);
     border-radius: 8px;
 }
@@ -73,29 +49,20 @@ select{
     padding: 0 20px;
 } 
 .list-btn{
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-}
-.list-input-description {
-    height: 48px;
-    flex: 1;
+    margin-left: 5px;
 }
 .flex{
     justify-content: space-between;
 }
 .list-input{
-    flex: 1;
+    width: 95%;
 }   
 .delete-btn{
-    background-color: var(--error);
+    background-color: #fff;
     border: none;
-    color: white;
+    padding: 5px 10px;
     font-size: 16px;
     cursor: pointer;
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
 }
 .invalid-input{
     border: 2px #ff3232 solid;
@@ -106,6 +73,3 @@ select{
     margin: 0;
     padding: 0;
 }
-input[type="date"]{
-    content: attr('') !important;
-  }

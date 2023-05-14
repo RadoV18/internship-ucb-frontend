@@ -1,4 +1,4 @@
-export class MajorDto {
+export class Major {
   majorId: number;
   name: string;
   constructor(majorId: number, name: string) {

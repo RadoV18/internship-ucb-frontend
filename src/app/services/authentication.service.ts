@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {  }
 
   postLogin(email: string, password: string) {
-    return this.http.post(`${environment.API_URL}/login`, {email, password});
+    return this.http.post('http://localhost:8080/login', {email, password});
   }
 
   isUserAuthenticated() : boolean {

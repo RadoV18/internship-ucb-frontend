@@ -1,482 +1,341 @@
-<app-modal
-  [widthClass]="'w-25'"
-  [displayModal]="this.displayModal"
-  (onDispose)="disposeModal()"
->
-  <h3 title class="mb-2 text-center text-primary">
-    Convocatoria para pasantía creada
-  </h3>
-  <div body>
-    <p class="mb-1 text-justify">
-      La convocatoria para pasantía ha sido creada exitosamente.
-    </p>
-    <p class="mb-2 text-justify">
-      Un administrador de la plataforma se encargará de revisar la convocatoria
-      y publicarla.
-    </p>
-  </div>
-  <div footer class="w-100 d-flex flex-center mt-3">
-    <button
-      class="btn btn-primary btn-rounded"
-      type="button"
-      (click)="disposeModal()"
-    >
-      Aceptar
-    </button>
-  </div>
-</app-modal>
-<div class="institution-home-wrapper">
-  <app-institution-navbar
-    (toggleSidebarEvent)="toggleSidebar()"
-  ></app-institution-navbar>
-  <app-institution-sidebar
-    (toggleSidebarEvent)="setShow($event)"
-    [show]="show"
-  ></app-institution-sidebar>
-  <div class="institution-content">
-    <div class="shadow border-rd-12 px-4 content-card">
-      <h2 class="text-secondary text-center my-3">Convocatoria Nueva</h2>
-      <h3 class="text-secondary mt-3">Datos de la Convocatoria</h3>
-      <form [formGroup]="internshipForm" (ngSubmit)="onSubmit()">
-        <div class="form-group d-flex flex-column">
-          <input
-            name="title"
-            id="title"
-            placeholder="Titulo"
-            formControlName="title"
-            [ngClass]="{
-              'invalid-input':
-                this.internshipForm.get('title')?.invalid &&
-                this.internshipForm.get('title')?.dirty
-            }"
-          />
-          <span
-            class="text-error"
-            *ngIf="
-                        this.internshipForm.get('title')?.errors?.['required'] &&
-                        this.internshipForm.get('title')?.dirty"
-          >
-            Este campo es obligatorio
-          </span>
-          <span
-            class="text-error"
-            *ngIf="
-                        this.internshipForm.get('title')?.errors?.['pattern'] &&
-                        this.internshipForm.get('title')?.dirty"
-          >
-            Este campo solo acepta caracteres alfanumericos
-          </span>
-        </div>
-        <div class="form-group form-group my-2 d-flex flex-column">
-          <textarea
-            placeholder="Descripción"
-            name="description"
-            id="description"
-            formControlName="description"
-            [ngClass]="{
-              'invalid-input':
-                this.internshipForm.get('description')?.invalid &&
-                this.internshipForm.get('description')?.dirty
-            }"
-          ></textarea>
-          <span
-            class="text-error"
-            *ngIf=" this.internshipForm.get('description')?.errors?.['required'] &&
-                        this.internshipForm.get('description')?.dirty"
-          >
-            Este campo es obligatorio
-          </span>
-          <span
-            class="text-error"
-            *ngIf="this.internshipForm.get('description')?.errors?.['pattern'] &&
-                            this.internshipForm.get('description')?.dirty"
-          >
-            Este campo solo acepta caracteres alfanumericos
-          </span>
-        </div>
-        <div class="form-group form-group my-2 d-flex flex-column">
-          <input
-            placeholder="Fecha de inicio"
-            name="start-date"
-            id="start-date"
-            type="text"
-            onfocus="(this.type='date')"
-            formControlName="startDate"
-            [ngClass]="{
-              'invalid-input':
-                this.internshipForm.get('startDate')?.invalid &&
-                this.internshipForm.get('startDate')?.touched
-            }"
-          />
-          <span
-            class="text-error"
-            *ngIf="this.internshipForm.get('startDate')?.errors?.['required'] &&this.internshipForm.get('startDate')?.touched"
-          >
-            Este campo es obligatorio
-          </span>
-          <span
-            class="text-error"
-            *ngIf="
-              this.internshipForm.get('startDate')?.errors?.['invalidDate'] &&
+<div class="background">
+  <app-login-navbar></app-login-navbar>
+  <div class="container border-rd-12 border-primary">
+    <form [formGroup]="internshipForm" (ngSubmit)="onSubmit()">
+      <h1 class="text-primary">Datos de la convocatoria</h1>
+      <div class="form-group my-2 d-flex flex-column">
+        <input
+          name="title"
+          id="title"
+          placeholder="Titulo"
+          formControlName="title"
+          [ngClass]="{
+            'invalid-input':
+              this.internshipForm.get('title')?.invalid &&
+              this.internshipForm.get('title')?.dirty
+          }"
+        />
+        <span
+          class="text-error"
+          *ngIf="
+          this.internshipForm.get('title')?.errors?.['required'] &&
+          this.internshipForm.get('title')?.dirty
+        "
+        >
+          Este campo es obligatorio
+        </span>
+        <span
+          class="text-error"
+          *ngIf="
+          this.internshipForm.get('title')?.errors?.['pattern'] &&
+          this.internshipForm.get('title')?.dirty
+        "
+        >
+          Este campo solo acepta caracteres alfanumericos
+        </span>
+      </div>
+      <div class="form-group form-group my-2 d-flex flex-column">
+        <textarea
+          placeholder="Description"
+          name="description"
+          id="description"
+          formControlName="description"
+          [ngClass]="{
+            'invalid-input':
+              this.internshipForm.get('description')?.invalid &&
+              this.internshipForm.get('description')?.dirty
+          }"
+        ></textarea>
+        <span
+          class="text-error"
+          *ngIf="
+          this.internshipForm.get('description')?.errors?.['required'] &&
+          this.internshipForm.get('description')?.dirty
+        "
+        >
+          Este campo es obligatorio
+        </span>
+        <span
+          class="text-error"
+          *ngIf="
+          this.internshipForm.get('description')?.errors?.['pattern'] &&
+          this.internshipForm.get('description')?.dirty
+        "
+        >
+          Este campo solo acepta caracteres alfanumericos
+        </span>
+      </div>
+      <div class="form-group form-group my-2 d-flex flex-column">
+        <input
+          placeholder="Fecha de Inicio"
+          name="start-date"
+          id="start-date"
+          type="text"
+          onfocus="(this.type='date')"
+          formControlName="startDate"
+          [ngClass]="{
+            'invalid-input':
+              this.internshipForm.get('startDate')?.invalid &&
               this.internshipForm.get('startDate')?.touched
-            "
-          >
-            La fecha debe ser minimamente hoy
-          </span>
-        </div>
-        <div class="form-group form-group my-2 d-flex flex-column">
+          }"
+        />
+        <span
+          class="text-error"
+          *ngIf="
+        this.internshipForm.get('startDate')?.errors?.['required'] &&
+        this.internshipForm.get('startDate')?.touched
+      "
+        >
+          Este campo es obligatorio
+        </span>
+      </div>
+      <div class="form-group form-group my-2 d-flex flex-column">
+        <input
+          placeholder="Fecha de Finalizacion"
+          name="end-date"
+          id="end-date"
+          type="text"
+          onfocus="(this.type='datetime-local')"
+          formControlName="endDate"
+          [ngClass]="{
+            'invalid-input':
+              this.internshipForm.get('endDate')?.invalid &&
+              this.internshipForm.get('endDate')?.touched
+          }"
+        />
+        <span
+          class="text-error"
+          *ngIf="
+      this.internshipForm.get('endDate')?.errors?.['required'] &&
+      this.internshipForm.get('endDate')?.touched
+    "
+        >
+          Este campo es obligatorio
+        </span>
+      </div>
+      <h2 class="text-primary">Funciones</h2>
+      <div class="my-2 d-flex flex-column">
+        <div class="d-flex flex-row">
           <input
-            placeholder="Fecha de finalización"
-            name="end-date"
-            id="end-date"
+            placeholder="Funcion"
+            class="list-input"
+            name="roles"
+            id="roles"
             type="text"
-            onfocus="(this.type='date')"
-            formControlName="endDate"
+            formControlName="role"
             [ngClass]="{
               'invalid-input':
-                (this.internshipForm.get('endDate')?.invalid &&
-                  this.internshipForm.get('endDate')?.touched) ||
-                validateDate()
+                this.internshipForm.get('role')?.invalid &&
+                this.internshipForm.get('role')?.dirty
             }"
           />
-          <span
-            class="text-error"
-            *ngIf="this.internshipForm.get('endDate')?.errors?.['required'] &&this.internshipForm.get('endDate')?.touched"
-          >
-            Este campo es obligatorio
-          </span>
-          <span
-            class="text-error"
-            *ngIf="
-              this.internshipForm.get('endDate')?.errors?.['invalidDate'] &&
-              this.internshipForm.get('endDate')?.touched
+          <button
+            class="btn btn-primary list-btn"
+            type="button"
+            (click)="addRole()"
+            [disabled]="
+              this.internshipForm.get('role')?.invalid ||
+              this.internshipForm.get('role')?.value?.length === 0
             "
           >
-            La fecha debe ser mayor a hoy
-          </span>
-          <span
-            class="text-error"
-            *ngIf="
-              validateDate() && this.internshipForm.get('endDate')?.touched
-            "
-          >
-            La fecha debe ser mayor a la fecha de inicio
-          </span>
+            +
+          </button>
         </div>
-        <h3 class="text-secondary mt-2 mb-1">Funciones</h3>
-        <div class="d-flex flex-column">
-          <div class="d-flex flex-space-between align-center">
-            <input
-              placeholder="Función"
-              class="list-input mr-2"
-              name="roles"
-              id="roles"
-              type="text"
-              formControlName="role"
-              [ngClass]="{
-                'invalid-input':
-                  this.internshipForm.get('role')?.invalid &&
-                  this.internshipForm.get('role')?.dirty
-              }"
-            />
-            <button
-              class="btn btn-primary list-btn"
-              type="button"
-              (click)="addRole()"
-              [disabled]="
-                this.internshipForm.get('role')?.invalid ||
-                !this.internshipForm.get('role')?.value ||
-                this.internshipForm.get('role')?.value?.length === 0
-              "
-            >
-              +
-            </button>
-          </div>
-          <span
-            class="text-error"
-            *ngIf="this.internshipForm.get('role')?.errors?.['pattern'] &&this.internshipForm.get('role')?.dirty"
-          >
-            Este campo solo acepta caracteres alfanumericos
-          </span>
-          <span
-            class="text-error"
-            *ngIf="
-              this.roleList.length === 0 &&
-              this.internshipForm.get('role')?.touched
-            "
-          >
-            Agrega al menos una función.
-          </span>
-          <ul>
-            <li
-              class="d-flex flex-space-between align-center my-2"
-              *ngFor="let role of roleList; let i = index"
-            >
-              <div class="input list-input-description mr-2">
-                {{ role.description }}
-              </div>
-              <button type="button" class="delete-btn" (click)="deleteRole(i)">
-                x
-              </button>
-            </li>
-          </ul>
-        </div>
-        <h3 class="text-secondary mt-3">Requisitos</h3>
-        <div class="d-flex flex-column">
-          <div class="d-flex flex-space-between align-center">
-            <input
-              placeholder="Requisito"
-              class="list-input mr-2"
-              name="requirements"
-              id="requirements"
-              type="text"
-              formControlName="requirement"
-              [ngClass]="{
-                'invalid-input':
-                  this.internshipForm.get('requirement')?.invalid &&
-                  this.internshipForm.get('requirement')?.dirty
-              }"
-            />
-            <button
-              class="btn btn-primary list-btn"
-              type="button"
-              (click)="addRequirement()"
-              [disabled]="
-                this.internshipForm.get('requirement')?.invalid ||
-                !this.internshipForm.get('requirement')?.value ||
-                this.internshipForm.get('requirement')?.value?.length === 0
-              "
-            >
-              +
-            </button>
-          </div>
-          <span
-            class="text-error"
-            *ngIf="this.internshipForm.get('requirement')?.errors?.['pattern'] &&this.internshipForm.get('requirement')?.dirty"
-          >
-            Este campo solo acepta caracteres alfanumericos
-          </span>
-          <span
-            class="text-error"
-            *ngIf="
-              this.requirementList.length === 0 &&
-              this.internshipForm.get('requirement')?.touched
-            "
-          >
-            Agrega al menos un requisito
-          </span>
-          <ul>
-            <li
-              class="d-flex flex-space-between align-center my-2"
-              *ngFor="let requirement of requirementList; let i = index"
-            >
-              <div class="input list-input-description mr-2">
-                {{ requirement.description }}
-              </div>
-              <button
-                type="button"
-                class="delete-btn"
-                (click)="deleteRequirement(i)"
-              >
-                x
-              </button>
-            </li>
-          </ul>
-        </div>
-        <h3 class="text-secondary mt-3">Beneficios</h3>
-        <div class="d-flex flex-column">
-          <div class="d-flex flex-space-between align-center">
-            <input
-              placeholder="Beneficio"
-              class="list-input mr-2"
-              name="benefits"
-              id="benefits"
-              type="text"
-              formControlName="benefit"
-              [ngClass]="{
-                'invalid-input':
-                  this.internshipForm.get('benefit')?.invalid &&
-                  this.internshipForm.get('benefit')?.dirty
-              }"
-            />
-            <button
-              class="btn btn-primary list-btn"
-              type="button"
-              (click)="addBenefit()"
-              [disabled]="
-                this.internshipForm.get('benefit')?.invalid ||
-                !this.internshipForm.get('benefit')?.value ||
-                !this.internshipForm.get('benefit')?.value ||
-                this.internshipForm.get('benefit')?.value?.length === 0
-              "
-            >
-              +
-            </button>
-          </div>
-          <span
-            class="text-error"
-            *ngIf="this.internshipForm.get('benefit')?.errors?.['pattern'] && this.internshipForm.get('benefit')?.dirty"
-          >
-            Este campo solo acepta caracteres alfanumericos
-          </span>
-          <span
-            class="text-error"
-            *ngIf="
-              this.benefitList.length === 0 &&
-              this.internshipForm.get('benefit')?.touched
-            "
-          >
-            Agrega al menos un beneficio
-          </span>
-          <ul>
-            <li
-              class="d-flex flex-space-between align-center my-2"
-              *ngFor="let benefit of benefitList; let i = index"
-            >
-              <div class="input list-input-description mr-2">
-                {{ benefit.description }}
-              </div>
-              <button
-                type="button"
-                class="delete-btn"
-                (click)="deleteBenefit(i)"
-              >
-                x
-              </button>
-            </li>
-          </ul>
-        </div>
-        <h3 class="text-secondary mt-3">Carreras</h3>
-        <div class="d-flex flex-column">
-          <select
-            class="internship-select-input"
-            name="major"
-            id="major"
-            formControlName="major"
-            (change)="addMajor()"
-            [ngClass]="{
-              'invalid-input':
-                this.internshipForm.get('major')?.invalid &&
-                this.internshipForm.get('major')?.dirty
-            }"
-          >
-            <option selected disabled>Carrera</option>
-            <option [ngValue]="major" *ngFor="let major of majors">
-              {{ major.name }}
-            </option>
-          </select>
-          <span
-            class="text-error"
-            *ngIf="
-              this.majorList.length === 0 &&
-              this.internshipForm.get('major')?.touched
-            "
-          >
-            Agrega al menos una carrera
-          </span>
-        </div>
+        <span
+          class="text-error"
+          *ngIf="this.internshipForm.get('role')?.errors?.['pattern'] &&this.internshipForm.get('role')?.dirty"
+        >
+          Este campo solo acepta caracteres alfanumericos
+        </span>
+        <span
+          class="text-error"
+          *ngIf="
+            this.roleList.length === 0 &&
+            this.internshipForm.get('role')?.touched
+          "
+        >
+          Agrega al menos una Funcion
+        </span>
         <ul>
-          <li
-            class="d-flex flex-space-between align-center my-2"
-            *ngFor="let major of majorList; let i = index"
-          >
-            <div class="input list-input-description mr-2">
-              {{ major.name }}
-            </div>
-            <button type="button" class="delete-btn" (click)="deleteMajor(i)">
+          <li class="m-8 border" *ngFor="let role of roleList; let i = index">
+            <span> {{ role.description }}</span>
+            <button type="button" class="delete-btn" (click)="deleteRole(i)">
               x
             </button>
           </li>
         </ul>
-        <div>
-          <h3 class="text-secondary mt-3">Ciudad</h3>
-          <div class="d-flex flex-column">
-            <select
-              class="internship-select-input"
-              formControlName="city"
-              name="city"
-              id="city"
-              [ngClass]="{
-                'invalid-input':
-                  this.internshipForm.get('city')?.invalid &&
-                  this.internshipForm.get('city')?.dirty
-              }"
-            >
-              <option *ngFor="let city of cities" [ngValue]="city">
-                {{ city.name }}
-              </option>
-            </select>
-          </div>
-          <span
-            class="text-error"
-            *ngIf="this.internshipForm.get('city')?.errors?.['required'] &&this.internshipForm.get('city')?.touched"
-          >
-            Este campo es obligatorio
-          </span>
-        </div>
-        <div>
-          <h3 class="text-secondary mt-3">Formulario para postulantes</h3>
-          <div class="d-flex flex-column">
-            <div
-              class="d-flex flex-space-between align-center mb-2"
-              *ngIf="questionList.length < 3"
-            >
-              <input
-                placeholder="Pregunta para el postulante (máx. 3 preguntas)"
-                class="list-input mr-2"
-                name="questions"
-                id="questions"
-                type="text"
-                formControlName="question"
-                [ngClass]="{
-                  'invalid-input':
-                    this.internshipForm.get('question')?.invalid &&
-                    this.internshipForm.get('question')?.dirty
-                }"
-              />
-              <button
-                class="btn btn-primary list-btn"
-                type="button"
-                (click)="addQuestion()"
-                [disabled]="
-                  this.questionList.length === 3 ||
-                  this.internshipForm.get('question')?.invalid ||
-                  this.internshipForm.get('question')?.value?.length === 0
-                "
-              >
-                +
-              </button>
-            </div>
-            <ul>
-              <li
-                class="d-flex flex-space-between align-center mb-2"
-                *ngFor="let question of questionList; let i = index"
-              >
-                <div class="input list-input-description mr-2">
-                  {{ question.question }}
-                </div>
-                <button
-                  type="button"
-                  class="delete-btn"
-                  (click)="deleteQuestion(i)"
-                >
-                  x
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="d-flex flex-center my-4">
+      </div>
+      <h2 class="text-primary">Requisitos</h2>
+      <div class="my-2 d-flex flex-column">
+        <div class="d-flex flex-row">
+          <input
+            placeholder="Requisito"
+            class="list-input"
+            name="requirements"
+            id="requirements"
+            type="text"
+            formControlName="requirement"
+            [ngClass]="{
+              'invalid-input':
+                this.internshipForm.get('requirement')?.invalid &&
+                this.internshipForm.get('requirement')?.dirty
+            }"
+          />
           <button
-            [disabled]="validateForm()"
-            class="btn btn-primary btn-rounded w-25"
-            type="submit"
-            id="saveButton"
+            class="btn btn-primary list-btn"
+            type="button"
+            (click)="addRequirement()"
+            [disabled]="
+              this.internshipForm.get('requirement')?.invalid ||
+              this.internshipForm.get('requirement')?.value?.length === 0
+            "
           >
-            Guardar
+            +
           </button>
         </div>
-      </form>
-    </div>
+        <span
+          class="text-error"
+          *ngIf="this.internshipForm.get('requirement')?.errors?.['pattern'] &&this.internshipForm.get('requirement')?.dirty"
+        >
+          Este campo solo acepta caracteres alfanumericos
+        </span>
+        <span
+          class="text-error"
+          *ngIf="
+            this.requirementList.length === 0 &&
+            this.internshipForm.get('requirement')?.touched
+          "
+        >
+          Agrega al menos un requisito
+        </span>
+        <ul>
+          <li
+            class="m-8 border"
+            *ngFor="let requirement of requirementList; let i = index"
+          >
+            <span> {{ requirement.description }}</span>
+            <button type="button" class="btn" (click)="deleteRequirement(i)">
+              x
+            </button>
+          </li>
+        </ul>
+      </div>
+      <h2 class="text-primary">Beneficios</h2>
+      <div class="my-2 d-flex flex-column">
+        <div class="d-flex flex-row">
+          <input
+            placeholder="Beneficio"
+            class="list-input"
+            name="benefits"
+            id="benefits"
+            type="text"
+            formControlName="benefit"
+            [ngClass]="{
+              'invalid-input':
+                this.internshipForm.get('benefit')?.invalid &&
+                this.internshipForm.get('benefit')?.dirty
+            }"
+          />
+          <button
+            class="btn btn-primary list-btn"
+            type="button"
+            (click)="addBenefit()"
+            [disabled]="
+              this.internshipForm.get('benefit')?.invalid ||
+              this.internshipForm.get('benefit')?.value?.length === 0
+            "
+          >
+            +
+          </button>
+        </div>
+        <span
+          class="text-error"
+          *ngIf="this.internshipForm.get('benefit')?.errors?.['pattern'] && this.internshipForm.get('benefit')?.dirty"
+        >
+          Este campo solo acepta caracteres alfanumericos
+        </span>
+        <span
+          class="text-error"
+          *ngIf="
+            this.benefitList.length === 0 &&
+            this.internshipForm.get('benefit')?.touched
+          "
+        >
+          Agrega al menos un beneficio
+        </span>
+        <ul>
+          <li class="border" *ngFor="let benefit of benefitList; let i = index">
+            <span>{{ benefit.description }} </span>
+            <button type="button" class="btn" (click)="deleteBenefit(i)">
+              x
+            </button>
+          </li>
+        </ul>
+      </div>
+      <h2 class="text-primary">Carreras</h2>
+      <div class="my-2 d-flex flex-column">
+        <select
+          placeholder="carrera"
+          name="major"
+          id="major"
+          type="text"
+          formControlName="major"
+          (change)="addMajor()"
+        >
+          <option selected disabled>Carrera</option>
+          <option *ngFor="let major of majors" [ngValue]="major">
+            {{ major.name }}
+          </option>
+        </select>
+        <span
+          class="text-error"
+          *ngIf="
+            this.majorList.length === 0 &&
+            this.internshipForm.get('major')?.touched
+          "
+        >
+          Agrega al menos una carrera
+        </span>
+      </div>
+      <ul>
+        <li class="m-8 border" *ngFor="let major of majorList; let i = index">
+          <span> {{ major.name }}</span>
+          <button type="button" class="btn" (click)="deleteMajor(i)">x</button>
+        </li>
+      </ul>
+      <div>
+        <h2 class="text-primary">Ciudad</h2>
+        <div class="d-flex flex-column">
+          <select
+            formControlName="city"
+            [ngClass]="{
+              'invalid-input':
+                this.internshipForm.get('city')?.invalid &&
+                this.internshipForm.get('city')?.touched
+            }"
+          >
+            <option *ngFor="let city of cities" [ngValue]="city">
+              {{ city.name }}
+            </option>
+          </select>
+        </div>
+        <span
+          class="text-error"
+          *ngIf="this.internshipForm.get('city')?.errors?.['required'] &&this.internshipForm.get('city')?.touched"
+        >
+          Este campo es obligatorio
+        </span>
+      </div>
+      <div class="d-flex flex-column my-4">
+        <button
+          [disabled]="!internshipForm.valid || this.majorList.length === 0"
+          class="btn btn-primary"
+          type="submit"
+          id="saveButton"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
   </div>
 </div>
