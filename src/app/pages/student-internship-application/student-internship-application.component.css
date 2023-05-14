@@ -1,0 +1,61 @@
+.institution-home-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.internship-institution-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content-card {
+    flex: 1 1 auto;
+    background-color: white;
+    display: inline-block;
+    padding: 0 1rem;
+    flex-direction: column;
+}
+
+.internship-content {
+    margin-left: 250px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.institution-content {
+    margin-right: 250px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+@media(max-width: 960px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .institution-content {
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+.internship-card-pictures img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--tertiary);
+    border: 2px solid white;
+    box-sizing: border-box;
+}
+
+.internship-card-data {
+    display: flex;
+}

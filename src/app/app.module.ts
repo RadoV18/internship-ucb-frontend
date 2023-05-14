@@ -27,6 +27,7 @@ import { ActiveInternshipsPageComponent } from './pages/active-internships-page/
 import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
 import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
 import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
+import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
-    InternshipApplicantsTableComponent
+    InternshipApplicantsTableComponent,
+    StudentInternshipApplicationComponent
   ],
   imports: [
     BrowserModule,
@@ -70,4 +72,4 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

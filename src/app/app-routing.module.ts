@@ -9,10 +9,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 import { HomeAdminComponent } from "./pages/home-admin/home-admin.component";
 import { HomeInstitutionComponent } from "./pages/home-institution/home-institution.component";
-import {ActiveInternshipsPageComponent} from "./pages/active-internships-page/active-internships-page.component";
+import { ActiveInternshipsPageComponent } from "./pages/active-internships-page/active-internships-page.component";
 import {
   InstitutionInternshipDetailsComponent
 } from "./pages/institution-internship-details/institution-internship-details.component";
+import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,16 +21,17 @@ const routes: Routes = [
   { path: 'registro/graduado', component: GraduateSignUpComponent },
   { path: 'registro/institucion', component: InstitutionSignUpComponent },
   { path: 'codigo-de-verificacion', component: VerificationCodePageComponent },
-  { path: 'administrador/inicio', component: HomeAdminComponent},
+  { path: 'administrador/inicio', component: HomeAdminComponent },
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
   { path: 'internship', component: InternshipFormComponent },
   { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent },
   { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent },
+  { path: 'estudiante/convocatorias/:id', component: StudentInternshipApplicationComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
