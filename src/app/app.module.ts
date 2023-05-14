@@ -34,6 +34,7 @@ import { CommonModule } from '@angular/common';
 import { InternshipListComponent } from './pages/internship-list/internship-list.component';
 import { InternshipCardComponent } from './components/internship-card/internship-card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +67,7 @@ import { FooterComponent } from './components/footer/footer.component';
     InternshipListComponent,
     InternshipCardComponent,
     FooterComponent,
+    StudentNavbarComponent,
   ],
   imports: [
     BrowserModule,
