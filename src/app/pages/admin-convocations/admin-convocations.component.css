@@ -1,0 +1,72 @@
+.admin-content {
+    margin-left: 250px;
+}
+
+@media (max-width: 480px) {
+    .admin-content {
+        margin-left: 0;
+    }
+}
+
+.table{
+    /* overflow-y: auto; */
+    min-height: 10%;
+    
+}
+
+.tableGraduates{
+    /* min-height: 10%; */
+    height: 200px;
+    width: 80%;
+    margin-left: 10%;
+    /* margin-top: 2%; */
+    /* background-color: royalblue; */
+    overflow-y: auto;
+}
+
+.tittle{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.tableHead{
+    background-color: #0056a0;
+    color: white;
+}
+
+.title{
+    text-align: center;
+}
+
+.bodyData{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.dataList{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.child{
+    text-align: center;
+}
+
+.footerData{
+    text-align: end;
+}
+
+.btnFooter{
+    width: 30%;
+    margin-left: 10px;
+}
+li{
+    margin-bottom: 10px;
+}
+
+.linea {
+    border-top: 1px solid rgb(125, 122, 122);
+    height: 2px;
+    padding: 0;
+    margin: 20px auto 0 auto;
+  }

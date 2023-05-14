@@ -25,6 +25,7 @@ import { InstitutionNavbarComponent } from './components/institution-navbar/inst
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
 import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-admin-graduates.component';
 import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/home-admin-institution.component';
+import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/ho
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
     HomeAdminInstitutionComponent,
-    HomeAdminGraduatesComponent
+    HomeAdminGraduatesComponent,
+    AdminConvocationsComponent
   ],
   imports: [
     BrowserModule,

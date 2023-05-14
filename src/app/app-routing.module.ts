@@ -11,6 +11,7 @@ import { HomeAdminComponent } from "./pages/home-admin/home-admin.component";
 import { HomeInstitutionComponent } from "./pages/home-institution/home-institution.component";
 import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/home-admin-institution.component';
 import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-admin-graduates.component';
+import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'internship', component: InternshipFormComponent },
   { path: 'administrador/instituciones', component: HomeAdminInstitutionComponent },
   { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
+  { path: 'administrador/convocatorias', component: AdminConvocationsComponent },
 ];
 
 @NgModule({
