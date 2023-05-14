@@ -11,7 +11,10 @@ import { MajorsService } from '../../services/majors.service';
 import { CitiesService } from '../../services/cities.service';
 import { Router } from '@angular/router';
 import { ResponseDto } from '../../dto/response.dto';
-import { dateValidator } from 'src/app/validators/date-validator';
+import {
+  dateValidator,
+  minDateValidator,
+} from 'src/app/validators/date-validator';
 
 @Component({
   selector: 'app-internship-form',
@@ -49,6 +52,8 @@ export class InternshipFormComponent {
   newRole = '';
   newRequirement = '';
   newBenefit = '';
+  today = new Date();
+  tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
   internshipForm = new FormGroup(
     {
       title: new FormControl('', [
@@ -63,8 +68,14 @@ export class InternshipFormComponent {
         ),
         Validators.required,
       ]),
-      startDate: new FormControl('', [Validators.required]),
-      endDate: new FormControl('', [Validators.required]),
+      startDate: new FormControl('', [
+        Validators.required,
+        minDateValidator(this.today),
+      ]),
+      endDate: new FormControl('', [
+        Validators.required,
+        minDateValidator(this.tomorrow),
+      ]),
       major: new FormControl<MajorDto | null>(null, []),
       role: new FormControl('', [
         Validators.pattern(
@@ -87,7 +98,7 @@ export class InternshipFormComponent {
       ]),
     },
     {
-      validators: [dateValidator],
+      validators: dateValidator,
     }
   );
 
@@ -261,6 +272,17 @@ export class InternshipFormComponent {
       },
     });
   }
-
+  validateDate() {
+    const startDate = this.internshipForm.get('startDate')?.value;
+    const endDate = this.internshipForm.get('endDate')?.value;
+    let startingDate;
+    let endingDate;
+    if (startDate && endDate) {
+      startingDate = new Date(startDate);
+      endingDate = new Date(endDate);
+      return startingDate > endingDate;
+    }
+    return false;
+  }
   protected readonly Date = Date;
 }

@@ -114,6 +114,15 @@
           >
             Este campo es obligatorio
           </span>
+          <span
+            class="text-error"
+            *ngIf="
+              this.internshipForm.get('startDate')?.errors?.['invalidDate'] &&
+              this.internshipForm.get('startDate')?.touched
+            "
+          >
+            La fecha debe ser minimamente hoy
+          </span>
         </div>
         <div class="form-group form-group my-2 d-flex flex-column">
           <input
@@ -125,8 +134,9 @@
             formControlName="endDate"
             [ngClass]="{
               'invalid-input':
-                this.internshipForm.get('endDate')?.invalid &&
-                this.internshipForm.get('endDate')?.touched
+                (this.internshipForm.get('endDate')?.invalid &&
+                  this.internshipForm.get('endDate')?.touched) ||
+                validateDate()
             }"
           />
           <span
@@ -137,7 +147,18 @@
           </span>
           <span
             class="text-error"
-            *ngIf="this.internshipForm.getError('validDate')"
+            *ngIf="
+              this.internshipForm.get('endDate')?.errors?.['invalidDate'] &&
+              this.internshipForm.get('endDate')?.touched
+            "
+          >
+            La fecha debe ser mayor a hoy
+          </span>
+          <span
+            class="text-error"
+            *ngIf="
+              validateDate() && this.internshipForm.get('endDate')?.touched
+            "
           >
             La fecha debe ser mayor a la fecha de inicio
           </span>
