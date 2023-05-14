@@ -42,7 +42,7 @@
           <input
             name="title"
             id="title"
-            placeholder="Titulo"
+            placeholder="Título"
             formControlName="title"
             [ngClass]="{
               'invalid-input':
@@ -64,7 +64,7 @@
                         this.internshipForm.get('title')?.errors?.['pattern'] &&
                         this.internshipForm.get('title')?.dirty"
           >
-            Este campo solo acepta caracteres alfanumericos
+            Este campo solo acepta caracteres alfanuméricos
           </span>
         </div>
         <div class="form-group form-group my-2 d-flex flex-column">
@@ -91,7 +91,7 @@
             *ngIf="this.internshipForm.get('description')?.errors?.['pattern'] &&
                             this.internshipForm.get('description')?.dirty"
           >
-            Este campo solo acepta caracteres alfanumericos
+            Ingrese caracteres válidos.
           </span>
         </div>
         <div class="form-group form-group my-2 d-flex flex-column">
@@ -121,7 +121,7 @@
               this.internshipForm.get('startDate')?.touched
             "
           >
-            La fecha debe ser minimamente hoy
+            La fecha debe ser mayor a hoy.
           </span>
         </div>
         <div class="form-group form-group my-2 d-flex flex-column">
@@ -152,7 +152,7 @@
               this.internshipForm.get('endDate')?.touched
             "
           >
-            La fecha debe ser mayor a hoy
+            La fecha debe ser mayor a hoy.
           </span>
           <span
             class="text-error"
@@ -160,7 +160,7 @@
               validateDate() && this.internshipForm.get('endDate')?.touched
             "
           >
-            La fecha debe ser mayor a la fecha de inicio
+            La fecha debe ser mayor a la fecha de inicio.
           </span>
         </div>
         <h3 class="text-secondary mt-2 mb-1">Funciones</h3>
@@ -196,7 +196,7 @@
             class="text-error"
             *ngIf="this.internshipForm.get('role')?.errors?.['pattern'] &&this.internshipForm.get('role')?.dirty"
           >
-            Este campo solo acepta caracteres alfanumericos
+            Ingrese caracteres válidos.
           </span>
           <span
             class="text-error"
@@ -254,7 +254,7 @@
             class="text-error"
             *ngIf="this.internshipForm.get('requirement')?.errors?.['pattern'] &&this.internshipForm.get('requirement')?.dirty"
           >
-            Este campo solo acepta caracteres alfanumericos
+            Ingrese caracteres válidos.
           </span>
           <span
             class="text-error"
@@ -317,7 +317,7 @@
             class="text-error"
             *ngIf="this.internshipForm.get('benefit')?.errors?.['pattern'] && this.internshipForm.get('benefit')?.dirty"
           >
-            Este campo solo acepta caracteres alfanumericos
+            Ingrese caracteres válidos.
           </span>
           <span
             class="text-error"
