@@ -18,7 +18,7 @@ export class InstitutionNavbarComponent {
     this.renderer.listen('window', 'click', (e: Event) => {
       if(this.toggleButton.nativeElement.contains(e.target)) {
         this.showOptions = !this.showOptions;
-      } else if (e.target !== this.dropdownMenu.nativeElement) {
+      } else if (!this.dropdownMenu.nativeElement.contains(e.target)) {
         this.showOptions = false;
       }
     });
