@@ -14,7 +14,7 @@ import { MajorService } from 'src/app/services/major.service';
 })
 export class InternshipListComponent implements OnInit {
   internshipList: InternshipListDto[] = [];
-  selectedMajorList: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  major: string = '';
   majorList: Major[] = [];
   cityList: City[] = [];
   city: string = '';
@@ -32,7 +32,7 @@ export class InternshipListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInternshipList(
-      this.selectedMajorList,
+      this.major,
       this.city,
       this.startingDate,
       this.endingDate,
@@ -59,7 +59,7 @@ export class InternshipListComponent implements OnInit {
     });
   }
   getInternshipList(
-    majors: number[],
+    majors: string,
     city: string,
     startingDate: Date,
     endingDate: Date,
@@ -76,11 +76,10 @@ export class InternshipListComponent implements OnInit {
   }
   onSubmitFilters() {
     this.page = 0;
-    this.selectedMajorList = [
-      this.filtersForm.get('major')?.value?.majorId
-        ? this.filtersForm.get('major')?.value?.majorId
-        : this.selectedMajorList,
-    ];
+
+    this.major = this.filtersForm.get('major')?.value?.name
+      ? this.filtersForm.get('major')?.value?.name
+      : this.major;
     this.city = this.filtersForm.get('city')?.value?.name
       ? this.filtersForm.get('city')?.value?.name
       : this.city;
@@ -91,14 +90,14 @@ export class InternshipListComponent implements OnInit {
       ? this.filtersForm.get('endingDate')?.value
       : this.endingDate;
     const filters = {
-      majors: this.selectedMajorList,
+      majors: this.major,
       city: this.city,
       startingDate: this.startingDate,
       endingDate: this.endingDate,
     };
     console.table(filters);
     this.getInternshipList(
-      this.selectedMajorList,
+      this.major,
       this.city,
       new Date(this.startingDate),
       new Date(this.endingDate),
@@ -109,7 +108,7 @@ export class InternshipListComponent implements OnInit {
     this.page = page;
     console.log(page);
     this.getInternshipList(
-      this.selectedMajorList,
+      this.major,
       this.city,
       new Date(this.startingDate),
       new Date(this.endingDate),
@@ -119,7 +118,7 @@ export class InternshipListComponent implements OnInit {
   nextPage() {
     this.page++;
     this.getInternshipList(
-      this.selectedMajorList,
+      this.major,
       this.city,
       new Date(this.startingDate),
       new Date(this.endingDate),
@@ -129,7 +128,7 @@ export class InternshipListComponent implements OnInit {
   prevPage() {
     this.page--;
     this.getInternshipList(
-      this.selectedMajorList,
+      this.major,
       this.city,
       new Date(this.startingDate),
       new Date(this.endingDate),
@@ -149,7 +148,7 @@ export class InternshipListComponent implements OnInit {
   }
   endingDateReset() {
     this.filtersForm.get('endingDate')?.reset();
-    this.endingDate = new Date('2023-5-12');
+    this.endingDate = new Date('2025-5-12');
   }
   cityReset() {
     this.filtersForm.get('city')?.reset();
@@ -157,6 +156,6 @@ export class InternshipListComponent implements OnInit {
   }
   majorReset() {
     this.filtersForm.get('major')?.reset();
-    this.selectedMajorList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    this.major = '';
   }
 }

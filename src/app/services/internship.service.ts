@@ -25,19 +25,24 @@ export class InternshipService {
     );
   }
   getFilteredInternships(
-    majorList: number[] | null,
+    major: string | null,
     city: string | null,
     startingDate: Date | null,
     endingDate: Date | null,
     page: number
   ) {
-    const sDate = startingDate
-      ?.toISOString()
-      .replace('T', ' ')
-      .replace('Z', ' ');
-    const eDate = endingDate?.toISOString().replace('T', ' ').replace('Z', ' ');
+    let sDate = null;
+    let eDate = null;
+    if (startingDate && endingDate) {
+      sDate = `${startingDate?.getFullYear()}-${
+        startingDate?.getMonth() + 1
+      }-${startingDate?.getDate()}`;
+      eDate = `${endingDate?.getFullYear()}-${
+        endingDate?.getMonth() + 1
+      }-${endingDate?.getDate()}`;
+    }
     return this.http.get<ResponseDto<Page<InternshipListDto[]>>>(
-      `${environment.API_URL}/internship?major=${majorList}&city=${city}&startingDate=${sDate}&endingDate=${eDate}&page=${page}`
+      `${environment.API_URL}/internship?major=${major}&city=${city}&startingDate=${sDate}&endingDate=${eDate}&page=${page}`
     );
   }
 
