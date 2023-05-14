@@ -30,6 +30,10 @@
     cursor: pointer;
 }
 
+.profile-list {
+    display: flex;
+    align-items: center;
+}
 
 .dropdown-menu {
     display: none;
