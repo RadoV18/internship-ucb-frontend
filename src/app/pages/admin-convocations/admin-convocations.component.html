@@ -1,0 +1,93 @@
+<app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
+<app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
+<app-modal [displayModal]="showModal" [disposable]="true">
+  <h1 class="title" title>{{title}}</h1>
+  <div body *ngIf="internshipNew != null">
+    <div>
+        <div>
+          <div class="bodyData">
+            <div class="child">
+              <h4>Nombre de la institucion:</h4>
+              <p>{{internshipNew.institutionId}}</p>
+            </div>
+            <div class="child">
+              <h4>Ciudad</h4>
+              <p>{{internshipNew.city}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="linea"></div>
+        <h4 class="title">Descripcion</h4>
+        <p>{{internshipNew.description}}</p>
+        <div class="linea"></div>
+        <div class="bodyData">
+          <div class="child">
+            <h4>Fecha de inicio</h4>
+            <p>{{internshipNew.startingDate}}</p>
+          </div>
+          <div class="child">
+            <h4>Fecha de Finalizacion:</h4>
+            <p>{{internshipNew.endingDate}}</p>
+          </div>
+        </div>
+        <div class="linea"></div>
+        <div class="dataList">
+          <div class="child">
+            <h4>Beneficios:</h4>
+            <ul *ngFor="let item of listBenefits">
+               <li>{{item}}</li>
+            </ul>
+          </div>
+          <div class="child">
+            <h4>Requerimientos:</h4>
+            <ul *ngFor="let item of listRequeriments">
+               <li>{{item}}</li>
+            </ul>
+          </div>
+          <div class="child">
+            <h4>Carreras:</h4>
+            <ul *ngFor="let item of listRoles">
+               <li>{{item}}</li>
+            </ul>
+          </div>
+          <div class="child">
+            <h4>Roles:</h4>
+            <ul *ngFor="let item of majorlist">
+               <li>{{item}}</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div footer>
+      <div class="footerData">
+          <button class="btnFooter btn btn-primary" (click)="aprobar(internshipNew)"> Aprobar</button>
+          <button class="btnFooter btn btn-danger" (click)="rechazar(internshipNew)"> Rechazar</button>
+      </div>
+    </div>
+  </div>
+</app-modal>
+    <div class="admin-content">
+        <h1 class="tittle">Convocatorias</h1>
+      <div class="tableGraduates">
+        <table class="table">
+          <thead class="tableHead">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre de la institucion</th>
+              <th scope="col">Titulo de la convocatoria</th>
+              <th scope="col">Ciudad</th>
+              <th scope="col">Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listInternship">
+              <th scope="row">{{item.internshipId}}</th>
+              <th scope="row">{{item.institutionId}}</th>
+              <th scope="row">{{item.title}}</th>
+              <th scope="row">{{item.city}}</th>
+              <td><button type="button" class="btn btn-primary" (click)="ConvocatoriaModal(item)">Detalle</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>

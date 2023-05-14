@@ -7,6 +7,7 @@ import { ActiveInternshipDto } from '../dto/active.internship.dto';
 import { ApplicantDto } from '../dto/applicant.dto';
 import { Page } from '../dto/page.dto';
 import { InternshipListDto } from '../dto/internship.list.dto';
+import { Internship } from '../dto/internship';
 
 @Injectable({
   providedIn: 'root',
@@ -54,5 +55,13 @@ export class InternshipService {
     return this.http.get<ResponseDto<Page<InternshipListDto[]>>>(
       `${environment.API_URL}/api/internships?major=${major}&city=${city}&startingDate=${sDate}&endingDate=${eDate}&page=${page}`
     );
+  }
+
+  getInternship(){
+    return this.http.get<Array<Internship>>(`${environment.API_URL}/internship`);
+  }
+
+  putInternshipState(state:number,id:number){
+    return this.http.put(`${environment.API_URL}/internship/${state}/${id}`,null);
   }
 }
