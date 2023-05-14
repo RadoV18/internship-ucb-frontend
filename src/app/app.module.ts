@@ -38,6 +38,7 @@ import { InternshipCardComponent } from './components/internship-card/internship
 import { FooterComponent } from './components/footer/footer.component';
 import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
 import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
+import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { AdminConvocationsComponent } from './pages/admin-convocations/admin-con
     InternshipCardComponent,
     FooterComponent,
     StudentNavbarComponent,
-    AdminConvocationsComponent
+    AdminConvocationsComponent,
+    StudentInternshipApplicationComponent
   ],
   imports: [
     BrowserModule,
@@ -90,4 +92,4 @@ import { AdminConvocationsComponent } from './pages/admin-convocations/admin-con
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
