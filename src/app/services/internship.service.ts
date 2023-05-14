@@ -12,8 +12,8 @@ import {ApplicantDto} from "../dto/applicant.dto";
 export class InternshipService {
   constructor(private http: HttpClient) {}
 
-  saveInternship(internship: any) {
-    return this.http.post(`${environment.API_URL}/api/internships`, internship);
+  saveInternship(internship: any): Observable<ResponseDto<any>> {
+    return this.http.post<ResponseDto<any>>(`${environment.API_URL}/api/internships`, internship);
   }
 
   getActiveInternshipsByInstitutionId(id: number): Observable<ResponseDto<Array<ActiveInternshipDto>>> {

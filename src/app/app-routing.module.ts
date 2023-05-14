@@ -9,7 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
 import { HomeAdminComponent } from "./pages/home-admin/home-admin.component";
 import { HomeInstitutionComponent } from "./pages/home-institution/home-institution.component";
-import {ActiveInternshipsPageComponent} from "./pages/active-internships-page/active-internships-page.component";
+import { ActiveInternshipsPageComponent } from "./pages/active-internships-page/active-internships-page.component";
 import {
   InstitutionInternshipDetailsComponent
 } from "./pages/institution-internship-details/institution-internship-details.component";
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'administrador/inicio', component: HomeAdminComponent},
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
-  { path: 'internship', component: InternshipFormComponent },
+  { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent },
   { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent },
   { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent },
 ];
