@@ -280,7 +280,7 @@ export class InternshipFormComponent {
     if (startDate && endDate) {
       startingDate = new Date(startDate);
       endingDate = new Date(endDate);
-      return startingDate > endingDate;
+      return startingDate >= endingDate;
     }
     return false;
   }
