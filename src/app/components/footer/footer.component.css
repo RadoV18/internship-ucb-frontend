@@ -1,26 +1,27 @@
 .footer{
     width: 100%;
-    position: absolutes;
-    bottom: 0px;
     background-color: #00427a;
     padding: 30px 0px;
     justify-content: space-around;
     align-items: center;
 }
+
 ul{
     color: #fff; ;
 }
+
 li{
     list-style: none;
     margin: 10px 0;
 }
-@media screen and (max-width: 768px){
-    footer{
+
+@media screen and (max-width: 768px) {
+    .footer {
         flex-direction: column-reverse;
         padding: 10px 30px;
+        box-sizing: border-box;
     }
     img{
         width: 100%;
     }
-
 }

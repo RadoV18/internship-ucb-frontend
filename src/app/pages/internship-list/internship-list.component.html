@@ -1,112 +1,114 @@
-<div class="d-flex flex-column">
-  <h1 class="text-white">Pasantias</h1>
-  <div class="row">
-    <div class="side">
-      <div class="container">
-        <h1 class="text-primary">FIltrar por</h1>
-        <form
-          class="d-flex flex-column"
-          [formGroup]="filtersForm"
-          (ngSubmit)="onSubmitFilters()"
-        >
-          <div class="form-group">
-            <select formControlName="major">
-              <option [ngValue]="null" [disabled]="true" [selected]="true">
-                Carrera
-              </option>
-              <option *ngFor="let major of majorList" [ngValue]="major">
-                {{ major.name }}
-              </option>
-            </select>
-            <button (click)="majorReset()">
-              <img src="../../../assets/images/restart-icon.svg" class="icon" />
-            </button>
-          </div>
-          <div class="form-group">
-            <select formControlName="city">
-              <option [ngValue]="null" [disabled]="true" [selected]="true">
-                Ciudad
-              </option>
-              <option *ngFor="let city of cityList" [ngValue]="city">
-                {{ city.name }}
-              </option>
-            </select>
-            <button (click)="cityReset()">
-              <img src="../../../assets/images/restart-icon.svg" class="icon" />
-            </button>
-          </div>
-          <div class="form-group">
-            <input
-              formControlName="startingDate"
-              type="text"
-              onfocus="(this.type='date')"
-              onblur="(this.value === '' ? this.type='text': this.type='date')"
-              placeholder="Fecha de inicio"
-            />
-            <button (click)="startingDateReset()">
-              <img src="../../../assets/images/restart-icon.svg" class="icon" />
-            </button>
-          </div>
-          <div class="form-group">
-            <input
-              formControlName="endingDate"
-              type="text"
-              onfocus="(this.type='date')"
-              onblur="(this.value === '' ? this.type='text': this.type='date')"
-              placeholder="Fecha de fin"
-            />
-            <button (click)="endingDateReset()">
-              <img src="../../../assets/images/restart-icon.svg" class="icon" />
-            </button>
-          </div>
-          <button type="submit" class="btn btn-primary">Aplicar</button>
-        </form>
-      </div>
+<div class="wrapper">
+    <app-student-navbar></app-student-navbar>
+    <div class="image-ellipse-container">
+        <div class="image-ellipse">
+            <img src="assets/images/ucb-circle-background.png" alt="UCB">
+        </div>
     </div>
-    <div class="middle">
-      <div class="container">
-        <ul>
-          <li *ngIf="this.internshipList.length === 0">
-            <div class="container">
-              <span>No se encontron pasantias con los filtros aplicados</span>
+    <div class="content-wrapper mb-3">
+        <h1 class="text-white text-center title">Pasantías</h1>
+        <div class="row">
+            <div class="side">
+                <div class="card border-rd-12 border shadow">
+                    <h2 class="text-primary">Filtrar por</h2>
+                    <form
+                            class="d-flex flex-column"
+                            [formGroup]="filtersForm"
+                            (ngSubmit)="onSubmitFilters()"
+                    >
+                        <div class="form-group">
+                            <select formControlName="major">
+                                <option [ngValue]="null" [disabled]="true" [selected]="true">
+                                    Carrera
+                                </option>
+                                <option *ngFor="let major of majorList" [ngValue]="major">
+                                    {{ major.name }}
+                                </option>
+                            </select>
+                            <button (click)="majorReset()">
+                                <img src="../../../assets/images/restart-icon.svg" class="icon"/>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <select formControlName="city">
+                                <option [ngValue]="null" [disabled]="true" [selected]="true">
+                                    Ciudad
+                                </option>
+                                <option *ngFor="let city of cityList" [ngValue]="city">
+                                    {{ city.name }}
+                                </option>
+                            </select>
+                            <button (click)="cityReset()">
+                                <img src="../../../assets/images/restart-icon.svg" class="icon"/>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <input
+                                    formControlName="startingDate"
+                                    type="date"
+                                    [placeholder]="filtersForm.get('startingDate')?.value ? '' : 'Fecha de inicio'"
+                                    [style]="{ 'color': filtersForm.get('startingDate')?.value ? 'var(--gray)' : 'transparent' }"
+                            />
+                            <button (click)="startingDateReset()">
+                                <img src="../../../assets/images/restart-icon.svg" class="icon"/>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <input
+                                    formControlName="endingDate"
+                                    type="date"
+                                    [placeholder]="filtersForm.get('endingDate')?.value ? '' : 'Fecha de fin'"
+                                    [style]="{ 'color': filtersForm.get('endingDate')?.value ? 'var(--gray)' : 'transparent' }"
+                            />
+                            <button (click)="endingDateReset()">
+                                <img src="../../../assets/images/restart-icon.svg" class="icon"/>
+                            </button>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-rounded">Aplicar</button>
+                    </form>
+                </div>
             </div>
-          </li>
-          <li *ngFor="let internship of internshipList; let i = index">
-            <app-internship-card
-              [internship]="internship"
-            ></app-internship-card>
-          </li>
-        </ul>
-        <ul class="d-flex flex-row align-center page">
-          <li>
-            <button
-              class="page-selector"
-              (click)="prevPage()"
-              *ngIf="this.page !== 0"
-            >
-              <
-            </button>
-            <button
-              class="page-selector"
-              *ngFor="let pageNumber of pageList"
-              [ngClass]="{ selected: pageNumber === this.page + 1 }"
-              (click)="selectPage(pageNumber - 1)"
-            >
-              {{ pageNumber }}
-            </button>
-            <button
-              class="page-selector"
-              (click)="nextPage()"
-              *ngIf="this.page < this.totalPages - 1"
-            >
-              >
-            </button>
-          </li>
-        </ul>
-      </div>
+            <div class="card border-rd-12 border shadow middle">
+                <div>
+                    <ul>
+                        <li *ngIf="this.internshipList.length === 0">
+                            <span class="text text-center">No se encontraron pasantías con los filtros aplicados.</span>
+                        </li>
+                        <li *ngFor="let internship of internshipList; let i = index">
+                            <app-internship-card
+                                    [internship]="internship"
+                            ></app-internship-card>
+                        </li>
+                    </ul>
+                    <ul class="d-flex flex-row align-center page">
+                        <li>
+                            <button
+                                    class="page-selector"
+                                    (click)="prevPage()"
+                                    *ngIf="this.page !== 0"
+                            >
+                                <
+                            </button>
+                            <button
+                                    class="page-selector"
+                                    *ngFor="let pageNumber of pageList"
+                                    [ngClass]="{ selected: pageNumber === this.page + 1 }"
+                                    (click)="selectPage(pageNumber - 1)"
+                            >
+                                {{ pageNumber }}
+                            </button>
+                            <button
+                                    class="page-selector"
+                                    (click)="nextPage()"
+                                    *ngIf="this.page < this.totalPages - 1"
+                            >
+                                >
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="side"></div>
-  </div>
-
-  <app-footer></app-footer>
+    <app-footer></app-footer>
 </div>
