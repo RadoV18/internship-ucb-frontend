@@ -1,0 +1,41 @@
+<div class="institution-home-wrapper">
+    <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
+
+    <div class="internship-content">
+        <div class="shadow border-rd-12 pb-4 content-card">
+
+            <h3 class="text-primary">Habilidades</h3>
+
+            <div>
+                <div *ngFor="let personSkill of personSkills" class="skill-card-list">
+                    <div class="skill-card">
+                        {{personSkill.skill.name}}
+                        <button (click)="deleteSkill(personSkill.personSkillId!)">x</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group pb-3">
+                <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+                    [(ngModel)]="productSearchText" placeholder="Buscar Habilidad" autofocus>
+            </div>
+
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Habilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let skill of skills | skillFilter: productSearchText;" (click)="rowSelected(skill)">
+                            <td>{{skill.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>

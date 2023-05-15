@@ -48,8 +48,8 @@
 }
 
 .internship-card-pictures img {
-    width: 48px;
-    height: 48px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: var(--tertiary);
     border: 2px solid white;
@@ -57,5 +57,10 @@
 }
 
 .internship-card-data {
+    display: flex;
+    align-items: center;
+}
+
+.internship-details {
     display: flex;
 }

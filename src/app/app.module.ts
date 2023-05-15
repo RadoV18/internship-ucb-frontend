@@ -39,6 +39,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
 import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
 import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
+import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
+import { SkillFilterPipe } from './pipes/skill-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { StudentInternshipApplicationComponent } from './pages/student-internshi
     FooterComponent,
     StudentNavbarComponent,
     AdminConvocationsComponent,
-    StudentInternshipApplicationComponent
+    StudentInternshipApplicationComponent,
+    PersonSkillComponent,
+    SkillFilterPipe
   ],
   imports: [
     BrowserModule,
