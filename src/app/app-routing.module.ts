@@ -14,6 +14,7 @@ import {
   InstitutionInternshipDetailsComponent
 } from "./pages/institution-internship-details/institution-internship-details.component";
 import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
+import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'internship', component: InternshipFormComponent },
   { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent },
   { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent },
-  { path: 'estudiante/convocatorias/:id', component: StudentInternshipApplicationComponent }
+  { path: 'estudiante/convocatorias/:id', component: StudentInternshipApplicationComponent },
+  { path: 'person/skill', component: PersonSkillComponent }
 ];
 
 @NgModule({

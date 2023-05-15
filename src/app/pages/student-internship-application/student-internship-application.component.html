@@ -11,15 +11,20 @@
                         <img src="" alt="">
                     </div>
                     <div class="internship-card-details">
-                        <div><img src="assets/images/calendar-icon.svg" alt="" />{{this.internship!.endingDate | date:
-                            'dd/MM/YYYY'}} al
-                            {{this.internship!.startingDate | date: 'dd/MM/YYYY'}}</div>
-                        <div><img src="assets/images/location-icon.svg" alt="" />{{this.internship!.cityId}}</div>
+                        <div>
+                            <h3>{{this.internship!.title}}</h3>
+                        </div>
+                        <div class="internship-details">
+                            <div><img src="assets/images/location-icon.svg" alt="" />{{this.internship!.cityId}}</div>
+                            <div><img src="assets/images/calendar-icon.svg" alt="" />{{this.internship!.endingDate |
+                                date:
+                                'dd/MM/YYYY'}} al
+                                {{this.internship!.startingDate | date: 'dd/MM/YYYY'}}</div>
+                        </div>
                     </div>
                 </div>
 
                 <h3 class="text-primary">Descripcion de la pasantia</h3>
-
                 <div>
                     <p>{{internship!.description}}</p>
                 </div>
@@ -44,7 +49,9 @@
                     <li>{{major.major.name}}</li>
                 </ul>
 
-                <button class="btn btn-primary btn-rounded" (click)="displayApplicantOptions()">Aplicar</button>
+                <div footer class="d-flex flex-center align-center mt-3">
+                    <button class="btn btn-primary btn-rounded" (click)="displayApplicantOptions()">Postular</button>
+                </div>
 
             </div>
         </div>
@@ -52,8 +59,9 @@
         <div class="institution-content">
             <div class="shadow border-rd-12 pb-4 content-card">
                 <h3 class="text-primary">Datos de contacto</h3>
-
-
+                <p>{{institution!.contactFirstName}} {{institution!.contactLastName}}</p>
+                <p>{{institution!.contactPhone}}</p>
+                <p>{{institution!.contactEmail}}</p>
             </div>
         </div>
     </div>

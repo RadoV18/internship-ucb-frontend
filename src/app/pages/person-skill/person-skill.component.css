@@ -1,0 +1,22 @@
+.skill-card-list {
+    display: inline-block;
+    justify-content: space-between;
+}
+
+.skill-card {
+    display: inline-block;
+    background-color: green;
+    color: white;
+    border-radius: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+}
+
+.internship-content {
+    margin-right: 350px;
+    margin-left: 350px;
+    padding: 20px;
+}

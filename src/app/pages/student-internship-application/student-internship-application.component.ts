@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { InstitutionDto } from 'src/app/dto/institution.dto';
 import { InternshipAplicationDto, InternshipAplicationQuestionDto } from 'src/app/dto/internship.application.dto';
 import { InternshipDto } from 'src/app/dto/internship.dto';
+import { InstitutionService } from 'src/app/services/institution.service';
 import { InternshipApplicationService } from 'src/app/services/internship-application.service';
 import { InternshipService } from 'src/app/services/internship.service';
 
@@ -14,6 +16,7 @@ import { InternshipService } from 'src/app/services/internship.service';
 export class StudentInternshipApplicationComponent {
   show: boolean = false;
   internship: InternshipDto | undefined;
+  institution: InstitutionDto | undefined;
   internshipId: number = -1;
 
   displayModal: boolean = false;
@@ -24,7 +27,7 @@ export class StudentInternshipApplicationComponent {
 
   internshipAplicationDto = { internshipApplicationQuestionDtos: [] as InternshipAplicationQuestionDto[] } as InternshipAplicationDto;
 
-  constructor(private internshipService: InternshipService, private activatedRoute: ActivatedRoute, private internshipApplicationService: InternshipApplicationService) {
+  constructor(private internshipService: InternshipService, private activatedRoute: ActivatedRoute, private internshipApplicationService: InternshipApplicationService, private institutionService: InstitutionService) {
   }
 
   toggleSidebar() {
@@ -42,7 +45,9 @@ export class StudentInternshipApplicationComponent {
       this.internship.internshipQuestions.forEach(() => {
         this.addAlias();
       });
-      console.log(this.internship);
+      this.institutionService.getInstitutionById(this.internship.institutionId).subscribe((data: InstitutionDto) => {
+        this.institution = data;
+      });
     });
   }
 

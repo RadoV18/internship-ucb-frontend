@@ -28,6 +28,8 @@ import { InstitutionInternshipCardComponent } from './components/institution-int
 import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
 import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
 import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
+import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
+import { SkillFilterPipe } from './pipes/skill-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { StudentInternshipApplicationComponent } from './pages/student-internshi
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
     InternshipApplicantsTableComponent,
-    StudentInternshipApplicationComponent
+    StudentInternshipApplicationComponent,
+    PersonSkillComponent,
+    SkillFilterPipe
   ],
   imports: [
     BrowserModule,
