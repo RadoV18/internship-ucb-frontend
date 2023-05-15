@@ -35,6 +35,7 @@ import { InternshipListComponent } from './pages/internship-list/internship-list
 import { InternshipCardComponent } from './components/internship-card/internship-card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
+import { StudentEditProfileComponent } from './pages/student-edit-profile/student-edit-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { StudentNavbarComponent } from './components/student-navbar/student-navb
     InternshipCardComponent,
     FooterComponent,
     StudentNavbarComponent,
+    StudentEditProfileComponent,
   ],
   imports: [
     BrowserModule,
