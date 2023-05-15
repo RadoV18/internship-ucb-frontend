@@ -6,10 +6,6 @@ import { SkillDto } from '../dto/SkillDto';
 })
 export class SkillFilterPipe implements PipeTransform {
 
-  // transform(value: unknown, ...args: unknown[]): unknown {
-  //   return null;
-  // }
-
   transform(value: SkillDto[] | undefined, args: string): SkillDto[] | undefined {
     if (!value) return undefined;
     if (!args) return value;
