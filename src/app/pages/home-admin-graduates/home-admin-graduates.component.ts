@@ -39,10 +39,12 @@ export class HomeAdminGraduatesComponent implements OnInit{
   approveRequest(graduate: Graduate){
     this.userService.setApprovalState(graduate.person.user.userId, 1).subscribe();
     this.showModalGraduate = false;
+    this.listGraduates = this.listGraduates.filter(item => item.graduateId !== graduate.graduateId);
   }
 
   rejectRequest(graduate: Graduate){
     this.userService.setApprovalState(graduate.person.user.userId, 2).subscribe();
     this.showModalGraduate = false;
+    this.listGraduates = this.listGraduates.filter(item => item.graduateId !== graduate.graduateId);
   }
 }

@@ -42,10 +42,12 @@ export class HomeAdminInstitutionComponent implements OnInit{
   approveRequest(institution: InstitutionDto){
     this.userService.setApprovalState(institution.user.userId, 1).subscribe();
     this.showModal = false;
+    this.listInstitutions = this.listInstitutions.filter(item => item !== institution);
   }
 
   rejectRequest(institution: InstitutionDto){
     this.userService.setApprovalState(institution.user.userId, 2).subscribe();
     this.showModal = false;
+    this.listInstitutions = this.listInstitutions.filter(item => item.institutionId !== institution.institutionId);
   }
 }
