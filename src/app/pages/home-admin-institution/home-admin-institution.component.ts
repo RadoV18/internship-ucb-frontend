@@ -21,6 +21,7 @@ export class HomeAdminInstitutionComponent implements OnInit{
   ngOnInit(): void {
     this.institutionService.getInstitutions().subscribe(response =>{
       this.listInstitutions = response
+      console.log(this.listInstitutions);
     })
   }
 
@@ -39,12 +40,12 @@ export class HomeAdminInstitutionComponent implements OnInit{
   }
 
   approveRequest(institution: InstitutionDto){
-    this.userService.setApprovalState(institution.userUcb.userId, 1).subscribe();
+    this.userService.setApprovalState(institution.user.userId, 1).subscribe();
     this.showModal = false;
   }
 
   rejectRequest(institution: InstitutionDto){
-    this.userService.setApprovalState(institution.userUcb.userId, 2).subscribe();
+    this.userService.setApprovalState(institution.user.userId, 2).subscribe();
     this.showModal = false;
   }
 }

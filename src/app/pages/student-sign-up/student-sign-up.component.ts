@@ -39,7 +39,7 @@ export class StudentSignUpComponent {
       phoneNumber: ['', [Validators.required]],
       campusMajorId: [0, [Validators.required]],
       semester: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@(ucb\\.edu\\.bo|acad\\.ucb\\.edu\\.bo)$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
     }, {
@@ -76,23 +76,21 @@ export class StudentSignUpComponent {
       return;
     }
     const studentSignUpDto: StudentSignUpDto = {
-      personDto: {
-        signupRequestDto: {
+      person: {
+        user: {
           email: this.studentSignUpForm.value.email,
           password: this.studentSignUpForm.value.password,
-          s3_profile_picture: this.profilePicture!!
         },
         firstName: this.studentSignUpForm.value.firstName,
         lastName: this.studentSignUpForm.value.lastName,
         ci: this.studentSignUpForm.value.ci,
         phoneNumber: this.studentSignUpForm.value.phoneNumber,
-        s3_cv: this.cvFile!!
       },
       campusMajorId: this.studentSignUpForm.value.campusMajorId,
       semester: this.studentSignUpForm.value.semester
     }
 
-    this.signUpService.studentSignUp(studentSignUpDto).subscribe({
+    this.signUpService.studentSignUp(studentSignUpDto, this.profilePicture, this.cvFile).subscribe({
       next: (response: ResponseDto<VerificationCodeDto>) => {
         if (response.success) {
           localStorage.setItem('uuid', response.data.uuid);

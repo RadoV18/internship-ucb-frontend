@@ -16,7 +16,7 @@ import { InstitutionInternshipDetailsComponent } from "./pages/institution-inter
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'registro-estudiante', component: StudentSignUpComponent },
+  { path: 'registro/estudiante', component: StudentSignUpComponent },
   { path: 'registro/graduado', component: GraduateSignUpComponent },
   { path: 'registro/institucion', component: InstitutionSignUpComponent },
   { path: 'codigo-de-verificacion', component: VerificationCodePageComponent },

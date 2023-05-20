@@ -75,6 +75,9 @@ export class GraduateSignUpComponent {
     if (this.graduateSignUpForm.invalid) {
       return;
     }
+    // date from year
+    const date = new Date();
+    date.setFullYear(Number(this.graduateSignUpForm.value.graduationDate));
     const graduateSignUpDto: GraduateSignUpDto = {
       person: {
         user: {
@@ -87,7 +90,7 @@ export class GraduateSignUpComponent {
         phoneNumber: this.graduateSignUpForm.value.phoneNumber,
       },
       campusMajorId: this.graduateSignUpForm.value.campusMajorId,
-      graduationDate: this.graduateSignUpForm.value.graduationDate
+      graduationDate: date
     }
 
     this.signUpService.graduateSignUp(graduateSignUpDto, this.profilePicture, this.cvFile).subscribe({

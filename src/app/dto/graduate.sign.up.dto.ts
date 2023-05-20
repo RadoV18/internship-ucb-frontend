@@ -10,5 +10,5 @@ export interface GraduateSignUpDto {
         phoneNumber: string;
     }
     campusMajorId: number;
-    graduationDate: string;
+    graduationDate: Date;
 }

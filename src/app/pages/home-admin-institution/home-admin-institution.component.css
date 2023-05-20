@@ -1,9 +1,79 @@
-.admin-content {
-    margin-left: 250px;
+/* Navbar and sidebar styles */
+
+.admin-home-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
 }
 
-@media (max-width: 480px) {
+.admin-content {
+    margin-left: 250px;
+    background-color: #f2f2f2;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.content-card {
+    flex: 1 1 auto;
+    background-color: white;
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
     .admin-content {
         margin-left: 0;
+        padding: 0;
     }
 }
+
+/* end of navbar and sidebar styles */
+
+/* table styles */
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid var(--gray-light);
+}
+
+.graduates-table {
+    min-width: 1000px;
+}
+
+/* end of table styles */
+
+/* modal styles */
+
+.picture {
+    display: flex;
+}
+
+.picture .profile-picture-container {
+    height: 92px;
+    width: 92px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+}
+
+.picture .profile-picture-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.institution-modal-body {
+    max-width: 50vw;
+}
+
+@media (max-width: 600px) {
+    .institution-modal-body {
+        max-width: 90vw;
+    }
+}
+
+/* end of modal styles */

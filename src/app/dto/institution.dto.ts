@@ -9,5 +9,6 @@ export interface InstitutionDto {
   contactLastName: string;
   contactEmail: string;
   contactPhone: string;
-  userUcb : UserUcbDto;
+  contactPosition: string;
+  user : UserUcbDto;
 }
