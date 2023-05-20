@@ -1,6 +1,6 @@
 <app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
 <app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
-<app-modal [displayModal]="showModalGraduate" [disposable]="true">
+<app-modal [displayModal]="showModalGraduate" [disposable]="true" (onDispose)="showModalGraduate = false">
     <h1 class="title" title>{{titleGraduate}}</h1>
     <div body *ngIf="graduateView != null">
       <div>
