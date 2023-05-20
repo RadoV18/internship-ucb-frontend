@@ -6,5 +6,5 @@ export interface Person{
     lastName: String;
     ci: String;
     phoneNumber: String;
-    userUcb: UserUcbDto;
+    user: UserUcbDto;
 }

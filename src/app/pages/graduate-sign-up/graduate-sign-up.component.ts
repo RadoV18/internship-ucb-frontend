@@ -76,23 +76,21 @@ export class GraduateSignUpComponent {
       return;
     }
     const graduateSignUpDto: GraduateSignUpDto = {
-      personDto: {
-        signupRequestDto: {
+      person: {
+        user: {
           email: this.graduateSignUpForm.value.email,
           password: this.graduateSignUpForm.value.password,
-          s3_profile_picture: this.profilePicture!!
         },
         firstName: this.graduateSignUpForm.value.firstName,
         lastName: this.graduateSignUpForm.value.lastName,
         ci: this.graduateSignUpForm.value.ci,
         phoneNumber: this.graduateSignUpForm.value.phoneNumber,
-        s3_cv: this.cvFile!!
       },
       campusMajorId: this.graduateSignUpForm.value.campusMajorId,
       graduationDate: this.graduateSignUpForm.value.graduationDate
     }
 
-    this.signUpService.graduateSignUp(graduateSignUpDto).subscribe({
+    this.signUpService.graduateSignUp(graduateSignUpDto, this.profilePicture, this.cvFile).subscribe({
       next: (response: ResponseDto<VerificationCodeDto>) => {
         if (response.success) {
           localStorage.setItem('uuid', response.data.uuid);
