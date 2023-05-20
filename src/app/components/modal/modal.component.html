@@ -1,5 +1,5 @@
-<div class="modal" *ngIf="displayModal">
-  <div class="modal-content">
+<div *ngIf="displayModal" class="modal">
+  <div [class]="'modal-content ' + widthClass">
     <div class="modal-header">
       <div *ngIf="disposable">
         <button class="close" (click)="onDispose.emit()">

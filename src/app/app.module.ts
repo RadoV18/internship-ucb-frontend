@@ -25,6 +25,13 @@ import { InstitutionNavbarComponent } from './components/institution-navbar/inst
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
 import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-admin-graduates.component';
 import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/home-admin-institution.component';
+import { NotificationsService } from './services/notifications.service';
+import { NotificationsServiceFactory } from './notifications-service-factory';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ActiveInternshipsPageComponent } from './pages/active-internships-page/active-internships-page.component';
+import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
+import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
+import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +60,12 @@ import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/ho
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
     HomeAdminInstitutionComponent,
-    HomeAdminGraduatesComponent
+    HomeAdminGraduatesComponent,
+    NotificationsComponent,
+    ActiveInternshipsPageComponent,
+    InstitutionInternshipCardComponent,
+    InstitutionInternshipDetailsComponent,
+    InternshipApplicantsTableComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +75,12 @@ import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/ho
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NotificationsService,
+      useFactory: NotificationsServiceFactory
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

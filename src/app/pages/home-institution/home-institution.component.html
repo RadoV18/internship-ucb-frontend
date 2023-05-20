@@ -1,5 +1,9 @@
-<app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
-<app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
-<div class="institution-conent">
-    content
+<div class="institution-home-wrapper">
+    <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
+    <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
+    <div class="institution-content">
+        <div class="shadow border-rd-12 pb-4 content-card">
+            <h2 class="text-secondary text-center my-3">Titulo</h2>
+        </div>
+    </div>
 </div>

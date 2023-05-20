@@ -1,4 +1,4 @@
-export class City {
+export class CityDto {
   cityId: number;
   name: string;
   constructor(cityId: number, name: string) {

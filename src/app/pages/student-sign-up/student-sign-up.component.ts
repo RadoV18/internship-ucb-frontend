@@ -6,6 +6,8 @@ import { StudentSignUpDto } from "../../dto/student.sign.up.dto";
 import { Router } from "@angular/router";
 import { ResponseDto } from "../../dto/response.dto";
 import { VerificationCodeDto } from "../../dto/verification.code.dto";
+import { CampusDto, MajorCustomDto } from 'src/app/dto/campus.dto';
+import { CampusService } from 'src/app/services/campus.service';
 
 @Component({
   selector: 'app-student-sign-up',
@@ -20,17 +22,22 @@ export class StudentSignUpComponent {
   formSubmitted: boolean = false;
   @ViewChild('imageInput') imageInput: ElementRef;
 
+  campuses: CampusDto[] | undefined;
+  majors: MajorCustomDto[] | undefined;
+  campusId: number | undefined;
+
   constructor(
     private formBuilder: FormBuilder,
     private signUpService: SignUpService,
-    private router: Router
+    private router: Router,
+    private campusService: CampusService
   ) {
     this.studentSignUpForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       ci: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      campusMajorId: ['', [Validators.required]],
+      campusMajorId: [0, [Validators.required]],
       semester: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -38,6 +45,14 @@ export class StudentSignUpComponent {
     }, {
       validator: matchingPasswordValidator
     });
+
+    this.campusService.getCampusMajors().subscribe((data: CampusDto[]) => {
+      this.campuses = data;
+    });
+  }
+
+  selectedCampus() {
+    this.majors = this.campuses?.find(campus => campus.campusId == this.campusId)?.majors;
   }
 
   handleImageChange(event: File) {

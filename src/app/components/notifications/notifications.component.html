@@ -1,0 +1,11 @@
+<!-- TODO: Component to have UI Updated -->
+<div id="messages">
+    <button class="btn btn-primary" (click)="markRead()">Marcar leidos</button>
+    <button class="btn btn-primary" (click)="clearNotifications()">Borrar notificaciones</button>
+    <h2>Mensajes recibidos - {{newNotifications ? 'Hay nuevos' : 'No hay nuevos'}}</h2>
+    <ol>
+      <li *ngIf="notifications.length == 0">No tienes notificaciones</li>
+      <li *ngFor="let notification of notifications" class="message">{{notification}}</li>
+    </ol>
+</div>
+  
