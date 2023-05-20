@@ -1,6 +1,6 @@
 <app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="setDisplayModal(false)" >
   <h2 title class="text-secondary text-center account-type-title">Elige un tipo de cuenta</h2>
-  <div body class="d-flex my-4 account-type-container">
+  <div body class="d-flex flex-space-around my-4 account-type-container">
     <div class="card shadow border-rd-12 ml-4 mr-5 account-type-card" (click)="redirectTo('estudiante')">
       <img src="./assets/images/student-lg.svg" alt="Estudiante">
       <h4 class="text-secondary text-center">Estudiante</h4>
