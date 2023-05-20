@@ -1,58 +1,91 @@
-<app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
-<app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
 <app-modal [displayModal]="showModalGraduate" [disposable]="true" (onDispose)="showModalGraduate = false">
-    <h1 class="title" title>{{titleGraduate}}</h1>
+    <h2 class="text-center text-secondary" title>{{titleGraduate}}</h2>
     <div body *ngIf="graduateView != null">
       <div>
-          <div>
-            <div class="bodyData">
-              <div class="child">
-                <h4>Nombres:</h4>
-                <p>{{graduateView.person.firstName}}</p>
-              </div>
-              <div class="child">
-                <h4>Apellidos</h4>
-                <p>{{graduateView.person.lastName}}</p>
-              </div>
-              <div class="child">
-                <h4>Telefono</h4>
-                <p>{{graduateView.person.phoneNumber}}</p>
-              </div>
-              <div class="child">
-                <h4>Email</h4>
-                <p>{{graduateView.person.user.email}}</p>
-              </div>
-            </div>
-            <div footer>
-                <div class="footerData">
-                    <button class="btnFooter btn btn-primary" (click)="aprobar(graduateView)"> Aprobar</button>
-                    <button class="btnFooter btn btn-danger" (click)="rechazar()"> Rechazar</button>
-                </div>
-            </div>
+        <div class="picture-cv my-2">
+          <div class="profile-picture-container">
+            <img class="profile-picture" [src]="graduateView.person.user.s3ProfilePicture" [alt]="graduateView.person.firstName">
           </div>
+        </div>
+        <h4 class="text-left text-secondary">Datos personales</h4>
+        <div class="section-container pl-3 my-2">
+          <div class="d-flex">
+            <h5 class="text mr-2">Nombre:</h5>
+            <span>{{graduateView.person.firstName + " " + graduateView.person.lastName}}</span>
+          </div>
+          <div class="d-flex">
+            <h5 class="text mr-2">C.I.:</h5>
+            <span>{{graduateView.person.ci}}</span>
+          </div>
+          <div class="d-flex">
+            <h5 class="text mr-2">Celular:</h5>
+            <span>{{graduateView.person.phoneNumber}}</span>
+          </div>
+          <div class="d-flex">
+            <h5 class="text mr-2">Correo electrónico:</h5>
+            <span>{{graduateView.person.user.email}}</span>
+          </div>
+          <div class="cv-container d-flex flex-center">
+            <a [href]="graduateView.person.s3Cv" target="_blank" class="btn btn-rounded border-primary d-flex align-center">
+              <img src="assets/images/cv-icon.svg" alt="cv" class="mr-2">
+              Ver Currículum Vitae
+            </a>
+          </div>
+        </div>
+        <h4 class="text-left text-secondary">Datos académicos</h4>
+        <div class="section-container pl-3 my-2">
+          <div class="d-flex">
+            <h5 class="text mr-2">Carrera:</h5>
+            <span>{{graduateView.major.name}}</span>
+          </div>
+          <div class="d-flex">
+            <h5 class="text mr-2">Sede:</h5>
+            <span>{{graduateView.campus.name}}</span>
+          </div>
+          <div class="d-flex">
+            <h5 class="text mr-2">Año de graduación:</h5>
+            <span>{{graduateView.graduationDate | date: 'yyyy'}}</span>
+          </div>
+        </div>
       </div>
   </div>
+    <div footer>
+      <div class="d-flex flex-end">
+        <button class="btn btn-danger btn-rounded mr-3" (click)="rejectRequest(graduateView)"> Rechazar</button>
+        <button class="btn btn-primary btn-rounded" (click)="approveRequest(graduateView)"> Aprobar</button>
+      </div>
+    </div>
 </app-modal>
-<div class="admin-content">
-    <h1 class="tittle">Graduados</h1>
-      <div class="tableGraduates">
-        <table class="table">
-          <thead class="tableHead">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Tipo de cuenta</th>
-              <th scope="col">Detalle</th>
-            </tr>
+<div class="admin-home-wrapper">
+  <app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
+  <app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
+  <div class="admin-content">
+    <div class="shadow border-rd-12 px-4 content-card">
+      <h2 class="text-secondary text-center my-3">Graduados</h2>
+      <div class="table-container border-rd-8 w-100">
+        <table class="graduates-table">
+          <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Carrera</th>
+            <th scope="col">Sede</th>
+            <th scope="col">Correo electrónico</th>
+            <th scope="col">Detalle</th>
+          </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let graduate of listGraduates">
-              <th scope="row">{{graduate.graduateId}}</th>
-              <td>{{graduate.person.firstName}}</td>
-              <td>{{graduate.person.user.email}}</td>
-              <td><button type="button" class="btn btn-primary" (click)="viewModalGraduate(graduate)">Detalle</button></td>
-            </tr>
+          <tr *ngFor="let graduate of listGraduates">
+            <td>{{graduate.person.firstName + " " + graduate.person.lastName}}</td>
+            <td>{{graduate.major.name}}</td>
+            <td>{{graduate.campus.name}}</td>
+            <td>{{graduate.person.user.email}}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="viewModalGraduate(graduate)">Detalle</button>
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
 </div>

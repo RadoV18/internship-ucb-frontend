@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Graduate } from 'src/app/dto/graduate';
-import { AdminService } from 'src/app/services/admin.service';
+import { GraduateService } from "../../services/graduate.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-home-admin-graduates',
@@ -11,22 +12,19 @@ export class HomeAdminGraduatesComponent implements OnInit{
   show: boolean = false;
   listGraduates: Array<Graduate>
   @Input() showModalGraduate: boolean = false;
-  @Input() titleGraduate: String = "Detalle Graduado";
+  @Input() titleGraduate: String = "Detalles del Estudiante";
   @Input() graduateView: Graduate;
 
-  constructor(private serviceAdmin:AdminService){}
+  constructor(private graduateService: GraduateService, private userService: UserService){}
 
   ngOnInit(): void {
-    this.serviceAdmin.getGraduates().subscribe(graduate =>{
-      // console.log(graduate);
+    this.graduateService.getGraduates().subscribe(graduate =>{
       this.listGraduates = graduate;
     })
-    
   }
 
   viewModalGraduate(graduate:Graduate){
     this.showModalGraduate = true;
-    console.log(graduate);
     this.graduateView = graduate;
   }
   
@@ -38,14 +36,13 @@ export class HomeAdminGraduatesComponent implements OnInit{
     this.show = show;
   }
 
-  aprobar(graduates: Graduate){
-    console.log(graduates);
-    this.serviceAdmin.setEstadoSolicitud(graduates.person.user.userId).subscribe();
-    console.log(graduates.person.user.userId);
+  approveRequest(graduate: Graduate){
+    this.userService.setApprovalState(graduate.person.user.userId, 1).subscribe();
     this.showModalGraduate = false;
   }
 
-  rechazar(){
+  rejectRequest(graduate: Graduate){
+    this.userService.setApprovalState(graduate.person.user.userId, 2).subscribe();
     this.showModalGraduate = false;
   }
 }

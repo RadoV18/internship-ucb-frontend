@@ -11,20 +11,4 @@ import { Graduate } from '../dto/graduate';
 export class AdminService {
   constructor(private http: HttpClient) { }
 
-  getNewInstitutions() : Observable<Array<InstitutionDto>> {
-    return this.http.get<Array<InstitutionDto>>(`${environment.API_URL}/api/admin/new-institutions`);
-  }
-
-  getInstitutions() : Observable<Array<InstitutionDto>> {
-    return this.http.get<Array<InstitutionDto>>(`${environment.API_URL}/admin/institutions`);
-  }
-
-  getGraduates() : Observable<Array<Graduate>> {
-    return this.http.get<Array<Graduate>>(`${environment.API_URL}/admin/graduates/new`);
-  }
-
-  setEstadoSolicitud(id:number){
-    return this.http.put(`${environment.API_URL}/users/solicitud/${id}`,null);
-  }
-
 }

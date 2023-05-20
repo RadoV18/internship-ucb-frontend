@@ -7,4 +7,5 @@ export interface Person{
     ci: String;
     phoneNumber: String;
     user: UserUcbDto;
+    s3Cv: String;
 }

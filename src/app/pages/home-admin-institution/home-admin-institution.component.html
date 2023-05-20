@@ -2,39 +2,39 @@
 <app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
 <app-modal [displayModal]="showModal" [disposable]="true">
     <h1 class="title" title>{{title}}</h1>
-    <div body *ngIf="intitutionView != null">
+    <div body *ngIf="institutionView != null">
       <div>
           <div>
             <div class="bodyData">
               <div class="child">
                 <h4>Nombre de la institucion:</h4>
-                <p>{{intitutionView.name}}</p>
+                <p>{{institutionView.name}}</p>
               </div>
               <div class="child">
                 <h4>Area</h4>
-                <p>{{intitutionView.area}}</p>
+                <p>{{institutionView.area}}</p>
               </div>
             </div>
           </div>
           <h4 class="title">Descripcion</h4>
-          <p>{{intitutionView.description}}</p>
+          <p>{{institutionView.description}}</p>
           <h4 class="title">Datos del contacto</h4>
-          <p class="child">{{intitutionView.contactFirstName}} {{intitutionView.contactLastName}}</p>
+          <p class="child">{{institutionView.contactFirstName}} {{institutionView.contactLastName}}</p>
           <div class="bodyData">
             <div class="child">
               <h4>Correo:</h4>
-              <p>{{intitutionView.contactEmail}}</p>
+              <p>{{institutionView.contactEmail}}</p>
             </div>
             <div class="child">
               <h4>Telefono:</h4>
-              <p>{{intitutionView.contactPhone}}</p>
+              <p>{{institutionView.contactPhone}}</p>
             </div>
           </div>
       </div>
       <div footer>
         <div class="footerData">
-            <button class="btnFooter btn btn-primary" (click)="aprobar(intitutionView)"> Aprobar</button>
-            <button class="btnFooter btn btn-danger" (click)="rechazar()"> Rechazar</button>
+            <button class="btnFooter btn btn-primary" (click)="approveRequest(institutionView)"> Aprobar</button>
+            <button class="btnFooter btn btn-danger" (click)="rejectRequest(institutionView)"> Rechazar</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { Graduate } from 'src/app/dto/graduate';
 import { InstitutionDto } from 'src/app/dto/institution.dto';
-import { AdminService } from 'src/app/services/admin.service';
+import { InstitutionService } from "../../services/institution.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-home-admin-institution',
@@ -11,23 +12,22 @@ import { AdminService } from 'src/app/services/admin.service';
 export class HomeAdminInstitutionComponent implements OnInit{
   show: boolean = false;
   listInstitutions: Array<InstitutionDto>;
-  listGraduates: Array<Graduate>
   @Input() title: String = "Detalle Institucion";
   @Input() showModal:boolean = false;
-  @Input() intitutionView: InstitutionDto;
+  @Input() institutionView: InstitutionDto;
 
-  constructor(private serviceAdmin:AdminService){}
+  constructor(private institutionService: InstitutionService, private userService: UserService){}
 
   ngOnInit(): void {
-    this.serviceAdmin.getInstitutions().subscribe(response =>{
+    this.institutionService.getInstitutions().subscribe(response =>{
       this.listInstitutions = response
     })
   }
 
   viewModal(institution:InstitutionDto){
     this.showModal = true;
-    this.intitutionView = institution;
-    console.log(this.intitutionView);
+    this.institutionView = institution;
+    console.log(this.institutionView);
   }
 
   toggleSidebar() {
@@ -38,14 +38,13 @@ export class HomeAdminInstitutionComponent implements OnInit{
     this.show = show;
   }
 
-  aprobar(institucion: InstitutionDto){
-    console.log(institucion);
-    this.serviceAdmin.setEstadoSolicitud(institucion.userUcb.userId).subscribe();
-    console.log(institucion.userUcb.userId);
+  approveRequest(institution: InstitutionDto){
+    this.userService.setApprovalState(institution.userUcb.userId, 1).subscribe();
     this.showModal = false;
   }
 
-  rechazar(){
+  rejectRequest(institution: InstitutionDto){
+    this.userService.setApprovalState(institution.userUcb.userId, 2).subscribe();
     this.showModal = false;
   }
 }
