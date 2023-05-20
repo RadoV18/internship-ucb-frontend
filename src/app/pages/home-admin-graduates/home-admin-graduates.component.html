@@ -20,7 +20,7 @@
               </div>
               <div class="child">
                 <h4>Email</h4>
-                <p>{{graduateView.person.userUcb.email}}</p>
+                <p>{{graduateView.person.user.email}}</p>
               </div>
             </div>
             <div footer>
@@ -49,7 +49,7 @@
             <tr *ngFor="let graduate of listGraduates">
               <th scope="row">{{graduate.graduateId}}</th>
               <td>{{graduate.person.firstName}}</td>
-              <td>{{graduate.person.userUcb.email}}</td>
+              <td>{{graduate.person.user.email}}</td>
               <td><button type="button" class="btn btn-primary" (click)="viewModalGraduate(graduate)">Detalle</button></td>
             </tr>
           </tbody>

@@ -20,7 +20,7 @@ export class AdminService {
   }
 
   getGraduates() : Observable<Array<Graduate>> {
-    return this.http.get<Array<Graduate>>(`${environment.API_URL}/admin/graduates`);
+    return this.http.get<Array<Graduate>>(`${environment.API_URL}/admin/graduates/new`);
   }
 
   setEstadoSolicitud(id:number){

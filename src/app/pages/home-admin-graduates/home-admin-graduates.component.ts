@@ -40,8 +40,8 @@ export class HomeAdminGraduatesComponent implements OnInit{
 
   aprobar(graduates: Graduate){
     console.log(graduates);
-    this.serviceAdmin.setEstadoSolicitud(graduates.person.userUcb.userId).subscribe();
-    console.log(graduates.person.userUcb.userId);
+    this.serviceAdmin.setEstadoSolicitud(graduates.person.user.userId).subscribe();
+    console.log(graduates.person.user.userId);
     this.showModalGraduate = false;
   }
 
