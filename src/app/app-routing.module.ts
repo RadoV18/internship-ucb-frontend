@@ -18,14 +18,14 @@ import { PersonSkillComponent } from './pages/person-skill/person-skill.componen
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'registro/estudiante', component: StudentSignUpComponent },
+  { path: 'registro-estudiante', component: StudentSignUpComponent },
   { path: 'registro/graduado', component: GraduateSignUpComponent },
   { path: 'registro/institucion', component: InstitutionSignUpComponent },
   { path: 'codigo-de-verificacion', component: VerificationCodePageComponent },
   { path: 'administrador/inicio', component: HomeAdminComponent },
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
-  { path: 'internship', component: InternshipFormComponent },
+  { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent },
   { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent },
   { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent },
   { path: 'estudiante/convocatorias/:id', component: StudentInternshipApplicationComponent },
