@@ -1,50 +1,85 @@
 .institution-home-wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
 }
 
 .internship-institution-content {
     display: flex;
     flex-direction: row;
+    margin: 50px 0;
+}
+
+.image-ellipse-container {
+    position: absolute;
+    width: 100%;
+    overflow: hidden !important;
+    height: 500px;
+    z-index: -1;
+}
+
+.image-ellipse {
+    position: absolute;
+    width: 3500px;
+    top: -500px;
+}
+
+.image-ellipse img {
+    width: 100vw;
+    margin: 0 auto;
 }
 
 .content-card {
-    flex: 1 1 auto;
     background-color: white;
     display: inline-block;
-    padding: 0 1rem;
     flex-direction: column;
 }
 
-.internship-content {
-    margin-left: 250px;
-    flex: 1 1 auto;
+.switch-container {
+    height: 24px;
+}
+
+.switch-details {
+    line-height: 24px;
+}
+
+/* internship card styles */
+
+.internship-card {
+    width: 50%;
+    margin-right: 20px;
+}
+
+.internship-header {
     display: flex;
-    flex-direction: column;
-    padding: 20px;
+    align-items: center;
 }
 
-.institution-content {
-    margin-right: 250px;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+.profile-picture-container {
+    height: 92px;
+    width: 92px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
 }
 
-@media(max-width: 960px) {
-    .card-grid {
-        grid-template-columns: 1fr;
-    }
+.profile-picture-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
 }
 
-@media (max-width: 600px) {
-    .institution-content {
-        margin-left: 0;
-        padding: 0;
-    }
+.institution-data {
+    flex: 1;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+/* end of internship card styles */
+
+.institution-card {
+    width: 15%;
 }
 
 .internship-card-pictures img {
@@ -63,4 +98,48 @@
 
 .internship-details {
     display: flex;
+}
+
+@media (max-width: 1700px) {
+    .image-ellipse img {
+        width: 150vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .image-ellipse img {
+        width: 200vw;
+    }
+}
+
+@media(max-width: 960px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-ellipse img {
+        width: 250vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-ellipse img {
+        position: relative;
+        top: 200px;
+        left: -100px;
+        width: 300vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .institution-content {
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+@media (max-width: 320px) {
+    .image-ellipse img {
+        width: 400vw;
+    }
 }

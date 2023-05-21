@@ -37,7 +37,8 @@ const routes: Routes = [
   { path: 'pasantias', component: InternshipListComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'administrador/convocatorias', component: AdminConvocationsComponent },
-  { path: 'estudiante/convocatorias/:id', component: StudentInternshipApplicationComponent },
+  { path: 'pasantias/:id', component: StudentInternshipApplicationComponent },
+  // TODO: put this route into the profile update component
   { path: 'person/skill', component: PersonSkillComponent }
 ];
 

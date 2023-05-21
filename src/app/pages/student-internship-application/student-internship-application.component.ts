@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { InstitutionDto } from 'src/app/dto/institution.dto';
@@ -14,11 +14,11 @@ import {ResponseDto} from "../../dto/response.dto";
   templateUrl: './student-internship-application.component.html',
   styleUrls: ['./student-internship-application.component.css']
 })
-export class StudentInternshipApplicationComponent {
+export class StudentInternshipApplicationComponent implements OnInit {
   show: boolean = false;
-  internship: InternshipDto | undefined;
-  institution: InstitutionDto | undefined;
+  internship: InternshipDto | null;
   internshipId: number = -1;
+  displayInternship: boolean = true;
 
   displayModal: boolean = false;
 
@@ -29,6 +29,10 @@ export class StudentInternshipApplicationComponent {
   internshipAplicationDto = { internshipApplicationQuestionDtos: [] as InternshipAplicationQuestionDto[] } as InternshipAplicationDto;
 
   constructor(private internshipService: InternshipService, private activatedRoute: ActivatedRoute, private internshipApplicationService: InternshipApplicationService, private institutionService: InstitutionService) {
+  }
+
+  toggleView(e: boolean) {
+    this.displayInternship = !e;
   }
 
   toggleSidebar() {

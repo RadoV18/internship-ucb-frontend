@@ -41,6 +41,9 @@ import { AdminConvocationsComponent } from './pages/admin-convocations/admin-con
 import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
 import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
 import { SkillFilterPipe } from './pipes/skill-filter.pipe';
+import { InternshipDescriptionComponent } from './components/internship-description/internship-description.component';
+import { InstitutionDescriptionComponent } from './components/institution-description/institution-description.component';
+import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,10 @@ import { SkillFilterPipe } from './pipes/skill-filter.pipe';
     AdminConvocationsComponent,
     StudentInternshipApplicationComponent,
     PersonSkillComponent,
-    SkillFilterPipe
+    SkillFilterPipe,
+    InternshipDescriptionComponent,
+    InstitutionDescriptionComponent,
+    ToggleSwitchComponent
   ],
   imports: [
     BrowserModule,
