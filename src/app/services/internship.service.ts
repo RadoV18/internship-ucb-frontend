@@ -61,7 +61,7 @@ export class InternshipService {
     return this.http.get<ResponseDto<Array<Internship>>>(`${environment.API_URL}/api/internships/pending`);
   }
 
-  putInternshipState(state:number,id:number){
-    return this.http.put(`${environment.API_URL}/internship/${state}/${id}`,null);
+  putInternshipState(id: number, state: number){
+    return this.http.put(`${environment.API_URL}/api/internships/${id}/status/${state}`,null);
   }
 }

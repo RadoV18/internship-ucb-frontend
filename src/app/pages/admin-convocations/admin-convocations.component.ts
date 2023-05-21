@@ -12,7 +12,7 @@ export class AdminConvocationsComponent implements OnInit{
   @Input() showModal:boolean = false;
   @Input() title: String;
   listInternship: Array<Internship>
-  internshipNew: Internship;
+  internshipView: Internship;
   listBenefits:Array<String>;
   listRequeriments: Array<String>;
   listRoles: Array<String>;
@@ -34,9 +34,9 @@ export class AdminConvocationsComponent implements OnInit{
     this.show = show;
   }
 
-  ConvocatoriaModal(internship:Internship){
+  setInternshipView(internship: Internship){
     this.title = internship.title;
-    this.internshipNew = internship;
+    this.internshipView = internship;
     this.listRequeriments = internship.internshipRequirements;
     this.listRoles = internship.internshipRoles;
     this.majorlist = internship.majorList;
@@ -44,17 +44,15 @@ export class AdminConvocationsComponent implements OnInit{
     console.log(internship)
     this.showModal = true;
   }
-  aprobar(internship:Internship){
-    console.log("aprueba");
-    this.serviceAdmin.putInternshipState(1,internship.internshipId).subscribe()
+  approveRequest(internship:Internship){
+    this.serviceAdmin.putInternshipState(internship.internshipId, 1).subscribe()
     this.showModal = false;
-    window.location.reload();
+    this.listInternship = this.listInternship.filter(item => item.internshipId !== internship.internshipId);
   }
 
-  rechazar(internship:Internship){
-    console.log("rechaza")
-    this.serviceAdmin.putInternshipState(2,internship.internshipId).subscribe()
+  rejectRequest(internship:Internship){
+    this.serviceAdmin.putInternshipState(internship.internshipId, 2).subscribe()
     this.showModal = false;
-    window.location.reload();
+    this.listInternship = this.listInternship.filter(item => item.internshipId !== internship.internshipId);
   }
 }

@@ -1,4 +1,4 @@
-<app-modal [widthClass]="'w-25'" [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
+<app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
     <h3 title class="mb-2">Opciones para {{selectedApplicant.firstName + " " + selectedApplicant.lastName}}</h3>
     <div body>
         <form [formGroup]="applicantOptions">
