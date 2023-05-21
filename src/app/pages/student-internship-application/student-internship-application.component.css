@@ -46,7 +46,6 @@
 
 .internship-card {
     width: 50%;
-    margin-right: 20px;
 }
 
 .internship-header {
@@ -100,6 +99,11 @@ ul {
     display: flex;
 }
 
+.questions-info {
+    line-height: 1.25;
+    color: var(--gray-dark);
+}
+
 @media (max-width: 1700px) {
     .image-ellipse img {
         width: 150vw;
@@ -120,6 +124,10 @@ ul {
     .image-ellipse img {
         width: 250vw;
     }
+
+    .internship-card {
+        width: 70%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -129,12 +137,15 @@ ul {
         left: -100px;
         width: 300vw;
     }
+
+    .internship-card {
+        width: 80%;
+    }
 }
 
 @media (max-width: 600px) {
-    .institution-content {
-        margin-left: 0;
-        padding: 0;
+    .internship-card {
+        width: 90%;
     }
 }
 

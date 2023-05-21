@@ -1,18 +1,21 @@
-<app-modal [widthClass]="'w-25'" [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
-  <div body>
+<app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
+  <div title *ngIf="internship">
+    <h3 class="text-secondary text-center">Preguntas</h3>
+  </div>
+  <div body class="questions-modal">
+    <span class="questions-info">Para postular, responde a las siguientes preguntas solicitadas por la institución:</span>
     <form [formGroup]="answerForm" *ngIf="internship">
       <div formArrayName="answer">
-        <div *ngFor="let internshipQuestion of internship!.internshipQuestions; let i=index">
-          <label for="answer-{{ i }}">{{internshipQuestion.description}}</label>
-          <textarea id="answer-{{ i }}" type="text" [formControlName]="i" name="message" class="w-100"
+        <div class="my-3" *ngFor="let internshipQuestion of internship!.internshipQuestions; let i=index">
+          <label class="mb-2" for="answer-{{ i }}">{{internshipQuestion.description}}</label>
+          <textarea id="answer-{{ i }}" type="text" [formControlName]="i" name="message" class="mt-1 w-100"
                     rows="1" formControlName="message"></textarea>
         </div>
       </div>
     </form>
   </div>
-  <div footer class="d-flex flex-center align-center mt-3">
-    <button (click)="disposeModal()" class="btn btn-rounded btn-primary mx-3">Cancelar</button>
-    <button class="btn btn-rounded btn-primary mx-3 " (click)="submitForm()">Confirmar</button>
+  <div footer class="d-flex flex-center flex-center mt-3">
+    <button class="btn btn-rounded btn-primary px-6" (click)="submitForm()">Enviar</button>
   </div>
 </app-modal>
 <div class="institution-home-wrapper">
@@ -40,7 +43,7 @@
       <div *ngIf="displayInternship">
         <app-internship-description [internship]="internship"></app-internship-description>
         <div class="d-flex flex-center align-center mt-3">
-          <button class="btn btn-primary btn-rounded" (click)="displayApplicantOptions()">Postular</button>
+          <button class="btn btn-primary btn-rounded px-6" (click)="displayApplicantOptions()">Postular</button>
         </div>
       </div>
       <div *ngIf="!displayInternship">
