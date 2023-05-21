@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Internship } from '../dto/internship';
+import {ResponseDto} from "../dto/response.dto";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +15,8 @@ export class InternshipService {
     return this.http.post(`${environment.API_URL}/internship`, internship);
   }
 
-  getInternship(){
-    return this.http.get<Array<Internship>>(`${environment.API_URL}/internship`);
+  getPendingInternships(): Observable<ResponseDto<Array<Internship>>>{
+    return this.http.get<ResponseDto<Array<Internship>>>(`${environment.API_URL}/api/internships/pending`);
   }
 
   putInternshipState(state:number,id:number){
