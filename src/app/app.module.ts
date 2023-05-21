@@ -37,6 +37,8 @@ import { InternshipListComponent } from './pages/internship-list/internship-list
 import { InternshipCardComponent } from './components/internship-card/internship-card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
+import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,8 +49,6 @@ import { StudentNavbarComponent } from './components/student-navbar/student-navb
     VerificationCodePageComponent,
     VerificationCodeComponent,
     ModalComponent,
-    LoginComponent,
-    LoginFormComponent,
     HomeComponent,
     PdfFileInputComponent,
     AdminNavbarComponent,
@@ -63,32 +63,16 @@ import { StudentNavbarComponent } from './components/student-navbar/student-navb
     HomeAdminInstitutionComponent,
     HomeAdminGraduatesComponent,
     LoginFormComponent,
-    HomeInstitutionComponent,
-    InstitutionNavbarComponent,
-    InstitutionSidebarComponent,
     NotificationsComponent,
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
     InternshipApplicantsTableComponent,
-    HomeAdminInstitutionComponent,
-    HomeAdminGraduatesComponent,
-    InstitutionSignUpComponent,
-    LoginNavbarComponent,
-    ImageInputComponent,
-    VerificationCodePageComponent,
-    VerificationCodeComponent,
-    ModalComponent,
-    LoginComponent,
-    LoginFormComponent,
-    HomeComponent,
-    PdfFileInputComponent,
-    InternshipFormComponent,
-    HomeAdminComponent,
     InternshipListComponent,
     InternshipCardComponent,
     FooterComponent,
     StudentNavbarComponent,
+    AdminConvocationsComponent
   ],
   imports: [
     BrowserModule,
@@ -96,10 +80,6 @@ import { StudentNavbarComponent } from './components/student-navbar/student-navb
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
     CommonModule,
   ],
   providers: [

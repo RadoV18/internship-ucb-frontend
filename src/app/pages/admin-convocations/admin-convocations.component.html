@@ -1,0 +1,87 @@
+<app-modal [displayModal]="showModal" [disposable]="true" (onDispose)="showModal = false">
+  <div body class="internship-modal" *ngIf="internshipView != null">
+    <div class="internship-header">
+      <div class="profile-picture-container mr-3">
+        <img class="profile-picture" [src]="internshipView.profilePicture" alt="profile picture">
+      </div>
+      <div class="institution-data">
+        <h2 class="text-secondary">{{internshipView.institution}}</h2>
+        <h3 class="text-secondary text-regular">{{internshipView.title}}</h3>
+        <div class="d-flex">
+          <div class="mr-3">
+            <img src="/assets/images/city-icon.svg" alt="Ciudad">
+            <span class="text-regular ml-2\1">{{internshipView.city}}</span>
+          </div>
+          <div>
+            <img src="/assets/images/date-calendar-icon.svg" alt="Fecha">
+            <span class=" ml-1 text-regular">{{internshipView.startingDate | date: 'dd/MM/yyyy'}}
+            al {{internshipView.endingDate | date: 'dd/MM/yyyy'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-container">
+      <h2 class="text-primary">Descripción de la pasantía</h2>
+      <p class="text-regular pl-3">{{internshipView.description}}</p>
+    </div>
+    <div class="section-container">
+      <h2 class="text-primary">Requisitos</h2>
+      <ul class="ml-5">
+        <li *ngFor="let requirement of internshipView.internshipRequirements" class="text-regular my-1">{{requirement}}</li>
+      </ul>
+    </div>
+    <div class="section-container">
+      <h2 class="text-primary">Beneficios</h2>
+      <ul class="ml-5">
+        <li *ngFor="let benefit of internshipView.internshipBenefits" class="text-regular my-1">{{benefit}}</li>
+      </ul>
+    </div>
+    <div class="section-container">
+      <h2 class="text-primary">Funciones</h2>
+      <ul class="ml-5">
+        <li *ngFor="let role of internshipView.internshipRoles" class="text-regular my-1">{{role}}</li>
+      </ul>
+    </div>
+    <div class="section-container">
+      <h2 class="text-primary">Preguntas para los postulantes</h2>
+      <ul class="ml-5">
+        <li *ngFor="let question of internshipView.internshipQuestions" class="text-regular my-1">{{question}}</li>
+      </ul>
+    </div>
+  </div>
+  <div footer>
+    <div class="mt-2 d-flex flex-end">
+      <button class="btn btn-rounded btn-danger mr-3" (click)="rejectRequest(internshipView)"> Rechazar</button>
+      <button class="btn btn-rounded btn-primary" (click)="approveRequest(internshipView)"> Aprobar</button>
+    </div>
+  </div>
+</app-modal>
+<div class="admin-home-wrapper">
+  <app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
+  <app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
+  <div class="admin-content">
+    <div class="shadow border-rd-12 px-4 content-card">
+      <h2 class="text-secondary text-center my-3">Convocatorias Solicitadas</h2>
+      <div class="table-container border-rd-8 w-100 mb-4">
+        <table class="internships-table">
+          <thead>
+            <tr>
+              <th>Institución</th>
+              <th>Título de la convocatoria</th>
+              <th>Ciudad</th>
+              <th>Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listInternship">
+              <td>{{item.institution}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.city}}</td>
+              <td><button type="button" class="btn btn-primary" (click)="setInternshipView(item)">Detalle</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
