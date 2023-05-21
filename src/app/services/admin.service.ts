@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment} from "../../environments/environment";
 import {InstitutionDto} from "../dto/institution.dto";
 import {Observable} from "rxjs";
+import { Graduate } from '../dto/graduate';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,4 @@ import {Observable} from "rxjs";
 export class AdminService {
   constructor(private http: HttpClient) { }
 
-  getNewInstitutions() : Observable<Array<InstitutionDto>> {
-    return this.http.get<Array<InstitutionDto>>(`${environment.API_URL}/api/admin/new-institutions`);
-  }
 }

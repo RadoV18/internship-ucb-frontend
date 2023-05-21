@@ -23,6 +23,8 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
 import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
+import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-admin-graduates.component';
+import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/home-admin-institution.component';
 import { NotificationsService } from './services/notifications.service';
 import { NotificationsServiceFactory } from './notifications-service-factory';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -50,18 +52,19 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     StudentSignUpComponent,
     GraduateSignUpComponent,
     LoginComponent,
-    LoginFormComponent,
-    HomeComponent,
-    PdfFileInputComponent,
     HomeAdminComponent,
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
-    NotificationsComponent
+    HomeAdminInstitutionComponent,
+    HomeAdminGraduatesComponent,
+    NotificationsComponent,
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
-    InternshipApplicantsTableComponent
+    InternshipApplicantsTableComponent,
+    HomeAdminInstitutionComponent,
+    HomeAdminGraduatesComponent
   ],
   imports: [
     BrowserModule,

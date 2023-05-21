@@ -180,10 +180,22 @@ span, .text {
   border-color: var(--primary);
 }
 
+.btn-danger {
+  color: #fff;
+  background-color: var(--error);
+  border-color: var(--error);
+}
+
+.btn-danger:hover {
+  background-color: #e54848;
+  border-color: #e54848;
+}
+
 .btn-primary:hover {
   background-color: #00989b;
   border-color: #00989b;
 }
+
 
 .btn-primary:hover:disabled {
   background-color: var(--primary);
@@ -994,6 +1006,31 @@ textarea:focus {
 
 .w-25 {
   width: 25%;
+}
+
+/* max width */
+.max-w-100 {
+  max-width: 100%;
+}
+
+.max-w-90 {
+  max-width: 90%;
+}
+
+.max-w-80 {
+  max-width: 80%;
+}
+
+.max-w-75 {
+  max-width: 75%;
+}
+
+.max-w-50 {
+  max-width: 50%;
+}
+
+.max-w-25 {
+  max-width: 25%;
 }
 
 /* height */

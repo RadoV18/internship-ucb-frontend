@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+import {Observable} from "rxjs";
+import {InstitutionDto} from "../dto/institution.dto";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class InstitutionService {
+
+  constructor(private http: HttpClient) { }
+
+  getInstitutions() : Observable<Array<InstitutionDto>> {
+    return this.http.get<Array<InstitutionDto>>(`${environment.API_URL}/api/institutions/new`);
+  }
+}

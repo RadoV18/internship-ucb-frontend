@@ -1,0 +1,94 @@
+<app-modal [displayModal]="showModal" [disposable]="true" (onDispose)="showModal = false">
+  <h2 class="text-center text-secondary" title>Detalles de la Institución</h2>
+  <div body class="institution-modal-body" *ngIf="institutionView != null">
+    <div>
+      <div class="picture my-2">
+        <div class="profile-picture-container">
+          <img class="profile-picture" [src]="institutionView.user.s3ProfilePicture" [alt]="institutionView.name">
+        </div>
+        <div class="ml-3">
+          <h4 class="text-left text-secondary">Datos de la institución</h4>
+          <div class="section-container pl-3 my-2">
+            <div class="d-flex">
+              <h5 class="text mr-2">Nombre:</h5>
+              <span>{{institutionView.name}}</span>
+            </div>
+            <div class="d-flex">
+              <h5 class="text mr-2">Sector:</h5>
+              <span>{{institutionView.area}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <h5 class="text mr-2">Descripción</h5>
+        <span>{{institutionView.description}}</span>
+      </div>
+      <h4 class="text-left text-secondary">Datos de contacto</h4>
+      <div class="section-container pl-3 my-2">
+        <div class="d-flex">
+          <h5 class="text mr-2">Nombre:</h5>
+          <span>{{institutionView.contactFirstName + " " + institutionView.contactLastName}}</span>
+        </div>
+        <div class="d-flex">
+          <h5 class="text mr-2">Cargo:</h5>
+          <span>{{institutionView.contactPosition}}</span>
+        </div>
+        <div class="d-flex">
+          <h5 class="text mr-2">Correo electrónico:</h5>
+          <span>{{institutionView.contactEmail}}</span>
+        </div>
+        <div class="d-flex">
+          <h5 class="text mr-2">Teléfono:</h5>
+          <span>{{institutionView.contactPhone}}</span>
+        </div>
+      </div>
+      <h4 class="text-left text-secondary">Datos de acceso</h4>
+      <div class="section-container pl-3 my-2">
+        <div class="d-flex">
+          <h5 class="text mr-2">Correo electrónico:</h5>
+          <span>{{institutionView.user.email}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div footer>
+    <div class="d-flex flex-end">
+      <button class="btn btn-danger btn-rounded mr-3" (click)="rejectRequest(institutionView)"> Rechazar</button>
+      <button class="btn btn-primary btn-rounded" (click)="approveRequest(institutionView)"> Aprobar</button>
+    </div>
+  </div>
+</app-modal>
+<div class="admin-home-wrapper">
+  <app-admin-navbar (toggleSidebarEvent)="toggleSidebar()"></app-admin-navbar>
+  <app-admin-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-admin-sidebar>
+  <div class="admin-content">
+    <div class="shadow border-rd-12 px-4 content-card">
+      <h2 class="text-secondary text-center my-3">Instituciones</h2>
+      <div class="table-container border-rd-8 w-100">
+        <table class="institutions-table">
+          <thead class="tableHead">
+            <tr>
+              <th>Nombre</th>
+              <th>Sector</th>
+              <th>Contacto</th>
+              <th>Correo electrónico</th>
+              <th>Detalles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listInstitutions">
+              <td>{{item.name}}</td>
+              <td>{{item.area}}</td>
+              <td>{{item.contactFirstName + " " + item.contactLastName}}</td>
+              <td>{{item.user.email}}</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="viewModal(item)">Detalle</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
