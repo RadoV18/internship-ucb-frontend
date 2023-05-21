@@ -21,9 +21,8 @@ export class AdminConvocationsComponent implements OnInit{
   constructor(private serviceAdmin:InternshipService){}
 
   ngOnInit(): void {
-    this.serviceAdmin.getInternship().subscribe(response =>{
-      // console.log(response)
-      this.listInternship = response;
+    this.serviceAdmin.getPendingInternships().subscribe(response =>{
+      this.listInternship = response.data;
     })
   }
 

@@ -8,6 +8,8 @@ import { ApplicantDto } from '../dto/applicant.dto';
 import { Page } from '../dto/page.dto';
 import { InternshipListDto } from '../dto/internship.list.dto';
 import { Internship } from '../dto/internship';
+import {ResponseDto} from "../dto/response.dto";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -57,8 +59,8 @@ export class InternshipService {
     );
   }
 
-  getInternship(){
-    return this.http.get<Array<Internship>>(`${environment.API_URL}/internship`);
+  getPendingInternships(): Observable<ResponseDto<Array<Internship>>>{
+    return this.http.get<ResponseDto<Array<Internship>>>(`${environment.API_URL}/api/internships/pending`);
   }
 
   putInternshipState(state:number,id:number){
