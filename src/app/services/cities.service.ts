@@ -13,7 +13,7 @@ export class CitiesService {
 
   getCities(): Observable<ResponseDto<Array<CityDto>>> {
     return this.http.get<ResponseDto<Array<CityDto>>>(
-      `${environment.API_URL}/city`
+      `${environment.API_URL}/api/cities`
     );
   }
 }
