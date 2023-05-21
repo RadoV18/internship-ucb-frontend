@@ -1,86 +1,74 @@
-<div class="institution-home-wrapper">
-    <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
-
-    <div class="internship-institution-content">
-
-        <div class="internship-content">
-            <div class="shadow border-rd-12 pb-4 content-card">
-
-                <div class="internship-card-data">
-                    <div class="internship-card-pictures">
-                        <img src="" alt="">
-                    </div>
-                    <div class="internship-card-details">
-                        <div>
-                            <h3>{{this.internship!.title}}</h3>
-                        </div>
-                        <div class="internship-details">
-                            <div><img src="assets/images/location-icon.svg" alt="" />{{this.internship!.cityId}}</div>
-                            <div><img src="assets/images/calendar-icon.svg" alt="" />{{this.internship!.endingDate |
-                                date:
-                                'dd/MM/YYYY'}} al
-                                {{this.internship!.startingDate | date: 'dd/MM/YYYY'}}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="text-primary">Descripcion de la pasantia</h3>
-                <div>
-                    <p>{{internship!.description}}</p>
-                </div>
-
-                <h3 class="text-primary">Requerimientos</h3>
-                <ul *ngFor="let internshipRequirement of internship!.internshipRequirements">
-                    <li>{{internshipRequirement.description}}</li>
-                </ul>
-
-                <h3 class="text-primary">Beneficios</h3>
-                <ul *ngFor="let internshipBenefit of internship!.internshipBenefits">
-                    <li>{{internshipBenefit.description}}</li>
-                </ul>
-
-                <h3 class="text-primary">Funciones</h3>
-                <ul *ngFor="let internshipRole of internship!.internshipRoles">
-                    <li>{{internshipRole.description}}</li>
-                </ul>
-
-                <h3 class="text-primary">Carreras</h3>
-                <ul *ngFor="let major of internship!.majorList">
-                    <li>{{major.major.name}}</li>
-                </ul>
-
-                <div footer class="d-flex flex-center align-center mt-3">
-                    <button class="btn btn-primary btn-rounded" (click)="displayApplicantOptions()">Postular</button>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="institution-content">
-            <div class="shadow border-rd-12 pb-4 content-card">
-                <h3 class="text-primary">Datos de contacto</h3>
-                <p>{{institution!.contactFirstName}} {{institution!.contactLastName}}</p>
-                <p>{{institution!.contactPhone}}</p>
-                <p>{{institution!.contactEmail}}</p>
-            </div>
-        </div>
-    </div>
-</div>
-
 <app-modal [widthClass]="'w-25'" [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
-    <div body>
-        <form [formGroup]="answerForm">
-            <div formArrayName="answer">
-                <div *ngFor="let internshipQuestion of internship!.internshipQuestions; let i=index">
-                    <label for="answer-{{ i }}">{{internshipQuestion.question}}</label>
-                    <textarea id="answer-{{ i }}" type="text" [formControlName]="i" name="message" class="w-100"
-                        rows="1" id="message" formControlName="message"></textarea>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div footer class="d-flex flex-center align-center mt-3">
-        <button (click)="disposeModal()" class="btn btn-rounded btn-primary mx-3">Cancelar</button>
-        <button class="btn btn-rounded btn-primary mx-3 " (click)="submitForm()">Confirmar</button>
-    </div>
+  <div body>
+    <form [formGroup]="answerForm">
+      <div formArrayName="answer">
+        <div *ngFor="let internshipQuestion of internship!.internshipQuestions; let i=index">
+          <label for="answer-{{ i }}">{{internshipQuestion.description}}</label>
+          <textarea id="answer-{{ i }}" type="text" [formControlName]="i" name="message" class="w-100"
+                    rows="1" id="message" formControlName="message"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div footer class="d-flex flex-center align-center mt-3">
+    <button (click)="disposeModal()" class="btn btn-rounded btn-primary mx-3">Cancelar</button>
+    <button class="btn btn-rounded btn-primary mx-3 " (click)="submitForm()">Confirmar</button>
+  </div>
 </app-modal>
+<div class="institution-home-wrapper">
+  <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
+  <div class="internship-institution-content">
+    <div class="internship-content">
+      <div class="shadow border-rd-12 pb-4 content-card">
+        <div class="internship-card-data">
+          <div class="internship-card-pictures">
+            <img [src]="internship!.institution.user.profilePicture" [alt]="internship!.institution.name">
+          </div>
+          <div class="internship-card-details">
+            <div>
+              <h3>{{this.internship!.title}}</h3>
+            </div>
+            <div class="internship-details">
+              <div><img src="assets/images/location-icon.svg" alt=""/>{{this.internship!.city.name}}</div>
+              <div><img src="assets/images/calendar-icon.svg" alt=""/>{{this.internship!.endingDate |
+                date:
+                'dd/MM/YYYY'}} al
+                {{this.internship!.startingDate | date: 'dd/MM/YYYY'}}</div>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-primary">Descripcion de la pasantia</h3>
+        <div>
+          <p>{{internship!.description}}</p>
+        </div>
+        <h3 class="text-primary">Requerimientos</h3>
+        <ul *ngFor="let internshipRequirement of internship!.internshipRequirements">
+          <li>{{internshipRequirement.description}}</li>
+        </ul>
+        <h3 class="text-primary">Beneficios</h3>
+        <ul *ngFor="let internshipBenefit of internship!.internshipBenefits">
+          <li>{{internshipBenefit.description}}</li>
+        </ul>
+        <h3 class="text-primary">Funciones</h3>
+        <ul *ngFor="let internshipRole of internship!.internshipRoles">
+          <li>{{internshipRole.description}}</li>
+        </ul>
+        <h3 class="text-primary">Carreras</h3>
+        <ul *ngFor="let major of internship!.majorList">
+          <li>{{major.name}}</li>
+        </ul>
+        <div footer class="d-flex flex-center align-center mt-3">
+          <button class="btn btn-primary btn-rounded" (click)="displayApplicantOptions()">Postular</button>
+        </div>
+      </div>
+    </div>
+    <div class="institution-content">
+      <div class="shadow border-rd-12 pb-4 content-card">
+        <h3 class="text-primary">Datos de contacto</h3>
+        <p>{{internship!.institution.contactFirstName}} {{internship!.institution.contactLastName}}</p>
+        <p>{{internship!.institution.contactPhone}}</p>
+        <p>{{internship!.institution.contactEmail}}</p>
+      </div>
+    </div>
+  </div>
+</div>

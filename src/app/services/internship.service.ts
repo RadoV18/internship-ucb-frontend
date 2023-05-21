@@ -70,7 +70,7 @@ export class InternshipService {
     return this.http.get<InternshipDto[]>(`${environment.API_URL}/api/internships`);
   }
 
-  getInternship(id: number) {
-    return this.http.get<InternshipDto[]>(`${environment.API_URL}/api/internships` + `/` + id);
+  getInternshipDetails(id: number) {
+    return this.http.get<ResponseDto<InternshipDto>>(`${environment.API_URL}/api/internships/${id}/details`);
   }
 }

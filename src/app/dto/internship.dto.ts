@@ -1,40 +1,47 @@
 export interface InternshipDto {
-    internshipId: number,
+  internshipId: number,
+  title: string,
+  description: string,
+  startingDate: Date,
+  endingDate: Date,
+  institution: {
     institutionId: number,
-    cityId: number,
-    title: string,
+    name: string,
     description: string,
-    isApproved: string,
-    startingDate: Date,
-    endingDate: Date,
-    status: true,
-    internshipBenefits: [{
-        description: string;
-        status: number;
-        benefitId: number;
-    }];
-    internshipRequirements: [{
-        requirementId: number;
-        description: string;
-        status: number;
-    }];
-    internshipRoles: [{
-        internshipRoleId: number;
-        description: string;
-        status: number;
-    }];
-    majorList: [{
-        internshipMajorId: number;
-        major: {
-            majorId: number;
-            name: string;
-            status: number;
-        },
-        status: number;
-    }];
-    internshipQuestions: [{
-        internshipQuestionId: number;
-        question: string;
-        status: boolean;
-    }];
+    area: string,
+    contactFirstName: string,
+    contactLastName: string,
+    contactEmail: string,
+    contactPhone: string,
+    contactPosition: string,
+    user: {
+      userId: number,
+      email: string,
+      profilePicture: string,
+    }
+  },
+  city: {
+    cityId: number,
+    name: string,
+  },
+  internshipBenefits: [{
+      id: number;
+      description: string;
+  }];
+  internshipRequirements: [{
+    id: number;
+    description: string;
+  }];
+  internshipRoles: [{
+    id: number;
+    description: string;
+  }];
+  internshipQuestions: [{
+    id: number;
+    description: string;
+  }];
+  majorList: [{
+      majorId: number;
+      name: string;
+  }];
 }
