@@ -24,7 +24,12 @@ html {
 
 body {
   margin: 0;
-  min-height: 100%;
+  min-height: 100vh;
+  display: block;
+}
+
+app-root {
+  min-height: 100vh;
   display: block;
 }
 
@@ -388,7 +393,12 @@ input, .input {
   font-size: 16px;
   line-height: 1;
   border: 1px solid var(--gray-light);
+  background-color: white;
   border-radius: 8px;
+  color: var(--gray);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input::-moz-placeholder,
@@ -414,6 +424,9 @@ textarea {
   border: 1px solid var(--gray-light);
   border-radius: 8px;
   resize: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 textarea::-moz-placeholder,
@@ -1126,8 +1139,12 @@ select {
     padding: 14px;
     font-size: 16px;
     line-height: 1;
+    background-color: white;
     color: var(--gray);
     border: 1px solid var(--gray-light);
     border-radius: 8px;
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }

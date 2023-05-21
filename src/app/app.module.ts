@@ -32,7 +32,11 @@ import { ActiveInternshipsPageComponent } from './pages/active-internships-page/
 import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
 import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
 import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
-
+import { CommonModule } from '@angular/common';
+import { InternshipListComponent } from './pages/internship-list/internship-list.component';
+import { InternshipCardComponent } from './components/internship-card/internship-card.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,13 +62,33 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     InstitutionSidebarComponent,
     HomeAdminInstitutionComponent,
     HomeAdminGraduatesComponent,
+    LoginFormComponent,
+    HomeInstitutionComponent,
+    InstitutionNavbarComponent,
+    InstitutionSidebarComponent,
     NotificationsComponent,
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
     InternshipApplicantsTableComponent,
     HomeAdminInstitutionComponent,
-    HomeAdminGraduatesComponent
+    HomeAdminGraduatesComponent,
+    InstitutionSignUpComponent,
+    LoginNavbarComponent,
+    ImageInputComponent,
+    VerificationCodePageComponent,
+    VerificationCodeComponent,
+    ModalComponent,
+    LoginComponent,
+    LoginFormComponent,
+    HomeComponent,
+    PdfFileInputComponent,
+    InternshipFormComponent,
+    HomeAdminComponent,
+    InternshipListComponent,
+    InternshipCardComponent,
+    FooterComponent,
+    StudentNavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,13 +96,17 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
   ],
   providers: [
     {
       provide: NotificationsService,
-      useFactory: NotificationsServiceFactory
-    }
+      useFactory: NotificationsServiceFactory,
+    },
   ],
   bootstrap: [AppComponent],
 })

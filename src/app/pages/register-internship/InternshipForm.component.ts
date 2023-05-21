@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InternshipService } from '../../services/internship.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../dto/role';
 import { Requirement } from '../../dto/requirement';
-import { Benefit } from '../../dto/benefit';
+import { BenefitDto } from '../../dto/benefit.dto';
 import { MajorDto } from '../../dto/major.dto';
 import { CityDto } from '../../dto/city.dto';
 import { QuestionsDto } from '../../dto/questions.dto';
@@ -11,10 +11,7 @@ import { MajorsService } from '../../services/majors.service';
 import { CitiesService } from '../../services/cities.service';
 import { Router } from '@angular/router';
 import { ResponseDto } from '../../dto/response.dto';
-import {
-  dateValidator,
-  minDateValidator,
-} from 'src/app/validators/date-validator';
+import { dateValidator, minDateValidator } from 'src/app/validators/date-validator';
 
 @Component({
   selector: 'app-internship-form',
@@ -44,7 +41,7 @@ export class InternshipFormComponent {
   ) {}
   roleList: Role[] = [];
   requirementList: Requirement[] = [];
-  benefitList: Benefit[] = [];
+  benefitList: BenefitDto[] = [];
   questionList: QuestionsDto[] = [];
   majorList: MajorDto[] = [];
   majors: MajorDto[] = [];
@@ -260,15 +257,14 @@ export class InternshipFormComponent {
       institutionId: 1,
       cityId: this.internshipForm.get('city')?.value!.cityId,
     };
-    console.table(internship);
     this.internshipService.saveInternship(internship).subscribe({
       next: (res: ResponseDto<any>) => {
         if (res.success) {
           this.displayModal = true;
         }
       },
-      error: (err) => {
-        console.log(err);
+      error: (error) => {
+        console.error('There was an error!', error);
       },
     });
   }
