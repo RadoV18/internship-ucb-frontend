@@ -8,8 +8,6 @@ import { ApplicantDto } from '../dto/applicant.dto';
 import { Page } from '../dto/page.dto';
 import { InternshipListDto } from '../dto/internship.list.dto';
 import { Internship } from '../dto/internship';
-import {ResponseDto} from "../dto/response.dto";
-import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
