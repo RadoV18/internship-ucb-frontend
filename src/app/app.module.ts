@@ -60,7 +60,7 @@ import { SkillFilterPipe } from './pipes/skill-filter.pipe';
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
-    NotificationsComponent
+    NotificationsComponent,
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,

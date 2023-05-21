@@ -7,6 +7,7 @@ import { InternshipDto } from 'src/app/dto/internship.dto';
 import { InstitutionService } from 'src/app/services/institution.service';
 import { InternshipApplicationService } from 'src/app/services/internship-application.service';
 import { InternshipService } from 'src/app/services/internship.service';
+import {ResponseDto} from "../../dto/response.dto";
 
 @Component({
   selector: 'app-student-internship-application',
@@ -40,13 +41,10 @@ export class StudentInternshipApplicationComponent {
 
   ngOnInit() {
     this.internshipId = this.activatedRoute.snapshot.params['id'];
-    this.internshipService.getInternship(this.internshipId).subscribe((data: InternshipDto[]) => {
-      this.internship = data[0];
+    this.internshipService.getInternshipDetails(this.internshipId).subscribe((response: ResponseDto<InternshipDto>) => {
+      this.internship = response.data;
       this.internship.internshipQuestions.forEach(() => {
         this.addAlias();
-      });
-      this.institutionService.getInstitutionById(this.internship.institutionId).subscribe((data: InstitutionDto) => {
-        this.institution = data;
       });
     });
   }
@@ -66,7 +64,7 @@ export class StudentInternshipApplicationComponent {
     this.internshipAplicationDto.internshipId = this.internshipId;
     this.internshipAplicationDto.personId = 1;
     this.answerForm.controls.answer.controls.forEach((control: FormControl, i) => {
-      this.internshipAplicationDto.internshipApplicationQuestionDtos.push({ internshipId: this.internshipId, internshipQuestionId: this.internship!.internshipQuestions[i].internshipQuestionId, response: control.value });
+      this.internshipAplicationDto.internshipApplicationQuestionDtos.push({ internshipId: this.internshipId, internshipQuestionId: this.internship!.internshipQuestions[i].id, response: control.value });
     });
     console.log(this.internshipAplicationDto);
     this.internshipApplicationService.saveInternshipAplication(this.internshipAplicationDto).subscribe((data: any) => {
