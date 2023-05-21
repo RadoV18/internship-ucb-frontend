@@ -15,7 +15,7 @@ export class MajorsService {
     sort: string = 'majorId'
   ): Observable<ResponseDto<Array<MajorDto>>> {
     return this.http.get<ResponseDto<Array<MajorDto>>>(
-      `${environment.API_URL}/major`
+      `${environment.API_URL}/api/majors`
     );
   }
 }
