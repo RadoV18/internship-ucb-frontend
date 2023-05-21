@@ -49,13 +49,13 @@ export class InternshipListComponent implements OnInit {
     endingDate: new FormControl<Date | null>(null, []),
   });
   getMajors() {
-    this.majorService.getMajors().subscribe((data) => {
-      this.majorList = data;
+    this.majorService.getMajors().subscribe((response) => {
+      this.majorList = response.data;
     });
   }
   getCities() {
-    this.cityServices.getCities().subscribe((data) => {
-      this.cityList = data;
+    this.cityServices.getCities().subscribe((response) => {
+      this.cityList = response.data;
     });
   }
   getInternshipList(
@@ -71,7 +71,6 @@ export class InternshipListComponent implements OnInit {
         this.internshipList = data.data.content;
         this.totalPages = data.data.totalPages;
         this.pageList = this.numberToArray(this.totalPages);
-        console.log(data);
       });
   }
   onSubmitFilters() {
@@ -95,7 +94,6 @@ export class InternshipListComponent implements OnInit {
       startingDate: this.startingDate,
       endingDate: this.endingDate,
     };
-    console.table(filters);
     this.getInternshipList(
       this.major,
       this.city,
@@ -106,7 +104,6 @@ export class InternshipListComponent implements OnInit {
   }
   selectPage(page: number) {
     this.page = page;
-    console.log(page);
     this.getInternshipList(
       this.major,
       this.city,

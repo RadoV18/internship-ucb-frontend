@@ -11,12 +11,7 @@ import { MajorsService } from '../../services/majors.service';
 import { CitiesService } from '../../services/cities.service';
 import { Router } from '@angular/router';
 import { ResponseDto } from '../../dto/response.dto';
-import {
-  dateValidator,
-  minDateValidator,
-} from 'src/app/validators/date-validator';
-import { CityService } from 'src/app/services/city.service';
-import { MajorService } from 'src/app/services/major.service';
+import { dateValidator, minDateValidator } from 'src/app/validators/date-validator';
 
 @Component({
   selector: 'app-internship-form',
@@ -262,7 +257,6 @@ export class InternshipFormComponent {
       institutionId: 1,
       cityId: this.internshipForm.get('city')?.value!.cityId,
     };
-    console.table(internship);
     this.internshipService.saveInternship(internship).subscribe({
       next: (res: ResponseDto<any>) => {
         if (res.success) {

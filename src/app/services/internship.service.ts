@@ -44,7 +44,7 @@ export class InternshipService {
       }-${endingDate?.getDate()}`;
     }
     return this.http.get<ResponseDto<Page<InternshipListDto[]>>>(
-      `${environment.API_URL}/internship?major=${major}&city=${city}&startingDate=${sDate}&endingDate=${eDate}&page=${page}`
+      `${environment.API_URL}/api/internships?major=${major}&city=${city}&startingDate=${sDate}&endingDate=${eDate}&page=${page}`
     );
   }
 }
