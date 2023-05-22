@@ -23,6 +23,7 @@ export class InstitutionInternshipDetailsComponent {
   applicants: Array<ApplicantDto> = [];
   selectedApplicant: ApplicantDto = {
     id: -1,
+    applicationId: -1,
     firstName: "",
     lastName: "",
     major: "",
@@ -30,7 +31,8 @@ export class InstitutionInternshipDetailsComponent {
     submittedOn: new Date(),
     status: "",
     cvUrl: "",
-    profilePictureUrl: ""
+    profilePictureUrl: "",
+    questionResponses: []
   }
   submissionStatus: Array<string> = ["Pendiente", "Aceptado", "Rechazado"];
 
