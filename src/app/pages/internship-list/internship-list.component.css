@@ -187,7 +187,6 @@ input {
     }
 }
 @media screen and (max-width: 320px) {
-
     .image-ellipse img {
         width: 400vw;
     }

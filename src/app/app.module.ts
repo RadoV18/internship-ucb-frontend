@@ -38,6 +38,12 @@ import { InternshipCardComponent } from './components/internship-card/internship
 import { FooterComponent } from './components/footer/footer.component';
 import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
 import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
+import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
+import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
+import { SkillFilterPipe } from './pipes/skill-filter.pipe';
+import { InternshipDescriptionComponent } from './components/internship-description/internship-description.component';
+import { InstitutionDescriptionComponent } from './components/institution-description/institution-description.component';
+import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +78,13 @@ import { AdminConvocationsComponent } from './pages/admin-convocations/admin-con
     InternshipCardComponent,
     FooterComponent,
     StudentNavbarComponent,
-    AdminConvocationsComponent
+    AdminConvocationsComponent,
+    StudentInternshipApplicationComponent,
+    PersonSkillComponent,
+    SkillFilterPipe,
+    InternshipDescriptionComponent,
+    InstitutionDescriptionComponent,
+    ToggleSwitchComponent
   ],
   imports: [
     BrowserModule,
@@ -90,4 +102,4 @@ import { AdminConvocationsComponent } from './pages/admin-convocations/admin-con
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

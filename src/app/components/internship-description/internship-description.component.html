@@ -1,0 +1,43 @@
+<div class="section-container w-100 flex-center align-center">
+  <h2 class="text-secondary text-center">{{internship!.title}}</h2>
+  <div class="d-flex flex-center">
+    <div class="mr-3">
+      <img src="/assets/images/city-icon.svg" alt="Ciudad">
+      <span class="text-regular ml-2">{{internship!.city.name}}</span>
+    </div>
+    <div>
+      <img src="/assets/images/date-calendar-icon.svg" alt="Fecha">
+      <span class=" ml-1 text-regular">{{internship!.startingDate | date: 'dd/MM/yyyy'}}
+        al {{internship!.endingDate | date: 'dd/MM/yyyy'}}</span>
+    </div>
+  </div>
+</div>
+<div class="section-container">
+  <h3 class="text-primary">Descripción de la pasantía</h3>
+  <span class="text-regular pl-3">{{internship!.description}}</span>
+</div>
+<div class="section-container">
+  <h3 class="text-primary">Requisitos</h3>
+  <ul class="ml-5">
+    <li *ngFor="let requirement of internship!.internshipRequirements" class="text-regular my-1">{{requirement.description}}</li>
+  </ul>
+</div>
+
+<div class="section-container">
+  <h3 class="text-primary">Beneficios</h3>
+  <ul class="ml-5">
+    <li *ngFor="let benefit of internship!.internshipBenefits" class="text-regular my-1">{{benefit.description}}</li>
+  </ul>
+</div>
+<div class="section-container">
+  <h3 class="text-primary">Funciones</h3>
+  <ul class="ml-5">
+    <li *ngFor="let role of internship!.internshipRoles" class="text-regular my-1">{{role.description}}</li>
+  </ul>
+</div>
+<div class="section-container">
+  <h3 class="text-primary">Carreras</h3>
+  <ul class="ml-5">
+    <li *ngFor="let major of internship!.majorList" class="text-regular my-1">{{major.name}}</li>
+  </ul>
+</div>

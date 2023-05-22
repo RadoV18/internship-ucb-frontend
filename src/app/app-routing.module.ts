@@ -16,6 +16,8 @@ import { InstitutionInternshipDetailsComponent } from "./pages/institution-inter
 import { InternshipListComponent } from './pages/internship-list/internship-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
+import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
+import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,15 +33,17 @@ const routes: Routes = [
   { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent },
   { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent },
   { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent },
-  { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
   { path: 'home/institucion', component: HomeInstitutionComponent },
   { path: 'pasantias', component: InternshipListComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'administrador/convocatorias', component: AdminConvocationsComponent },
+  { path: 'pasantias/:id', component: StudentInternshipApplicationComponent },
+  // TODO: put this route into the profile update component
+  { path: 'person/skill', component: PersonSkillComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

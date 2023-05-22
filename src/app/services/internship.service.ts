@@ -8,12 +8,13 @@ import { ApplicantDto } from '../dto/applicant.dto';
 import { Page } from '../dto/page.dto';
 import { InternshipListDto } from '../dto/internship.list.dto';
 import { Internship } from '../dto/internship';
+import { InternshipDto } from '../dto/internship.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InternshipService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   saveInternship(internship: any): Observable<ResponseDto<any>> {
     return this.http.post<ResponseDto<any>>(`${environment.API_URL}/api/internships`, internship);
@@ -63,5 +64,13 @@ export class InternshipService {
 
   putInternshipState(id: number, state: number){
     return this.http.put(`${environment.API_URL}/api/internships/${id}/status/${state}`,null);
+  }
+
+  getInternships() {
+    return this.http.get<InternshipDto[]>(`${environment.API_URL}/api/internships`);
+  }
+
+  getInternshipDetails(id: number) {
+    return this.http.get<ResponseDto<InternshipDto>>(`${environment.API_URL}/api/internships/${id}/details`);
   }
 }
