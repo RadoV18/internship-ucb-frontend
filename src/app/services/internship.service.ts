@@ -73,4 +73,8 @@ export class InternshipService {
   getInternshipDetails(id: number) {
     return this.http.get<ResponseDto<InternshipDto>>(`${environment.API_URL}/api/internships/${id}/details`);
   }
+
+  updateApplicationStatus(id: number, applicationId: number, status: number, message: string): Observable<ResponseDto<any>> {
+    return this.http.put<ResponseDto<any>>(`${environment.API_URL}/api/internships/${id}/applications/${applicationId}/status/${status}`,message);
+  }
 }

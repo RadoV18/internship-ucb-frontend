@@ -87,9 +87,22 @@
   cursor: pointer;
 }
 
+.internship-details-modal {
+    width: 30vw;
+}
+
+#message {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 @media(max-width: 960px) {
     .card-grid {
         grid-template-columns: 1fr;
+    }
+
+    .internship-details-modal {
+        width: 80vw;
     }
 }
 
@@ -97,6 +110,10 @@
     .institution-content {
         margin-left: 0;
         padding: 0;
+    }
+
+    .internship-details-modal {
+        width: 95vw;
     }
 }
 

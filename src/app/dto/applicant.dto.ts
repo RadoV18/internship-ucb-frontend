@@ -1,5 +1,8 @@
+import {QuestionResponseDto} from "./question.response.dto";
+
 export interface ApplicantDto {
   id: number;
+  applicationId: number;
   firstName: string;
   lastName: string;
   major: string;
@@ -8,4 +11,5 @@ export interface ApplicantDto {
   status: string;
   cvUrl: string;
   profilePictureUrl: string;
+  questionResponses: Array<QuestionResponseDto>;
 }
