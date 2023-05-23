@@ -16,6 +16,11 @@
     height: 56px;
 }
 
+.profile-list {
+    display: flex;
+    align-items: center;
+}
+
 .profile-options-container {
     position: relative;
 }
@@ -41,7 +46,7 @@
     position: absolute;
     top: 32px;
     right: 0;
-    min-width: 150px;
+    min-width: 200px;
     padding: 8px 0;
 }
 
