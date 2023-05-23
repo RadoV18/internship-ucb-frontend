@@ -17,58 +17,27 @@ export class SignUpService {
 
   constructor(private http: HttpClient) { }
 
-  public studentSignUp(student: StudentSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
+  public studentSignUp(student: StudentSignUpDto, profilePicture: File, cvFile: File): Observable<ResponseDto<VerificationCodeDto>> {
     // multipart/form-data request
     const formData = new FormData();
-    // append to the data the institution object without the logo
-    formData.append('data', JSON.stringify(
-      {
-        personDto: {
-          userDto: {
-            email: student.personDto.signupRequestDto.email,
-            password: student.personDto.signupRequestDto.password,
-          },
-          firstName: student.personDto.firstName,
-          lastName: student.personDto.lastName,
-          ci: student.personDto.ci,
-          phoneNumber: student.personDto.phoneNumber
-        },
-        campusMajorId: student.campusMajorId,
-        semester: student.semester
-      }
-    ));
+    formData.append('data', JSON.stringify(student));
     // append the logo
-    formData.append('profilePicture', student.personDto.s3_cv);
-    formData.append('cvFile', student.personDto.s3_cv);
+    formData.append('profilePicture', profilePicture);
+    formData.append('cvFile', cvFile);
     return this.http.post<ResponseDto<VerificationCodeDto>>(
       `${environment.API_URL}/api/sign-up/student`,
       formData
     );
   }
 
-  public graduateSignUp(graduate: GraduateSignUpDto): Observable<ResponseDto<VerificationCodeDto>> {
+  public graduateSignUp(graduate: GraduateSignUpDto, profilePicture: File, cvFile: File): Observable<ResponseDto<VerificationCodeDto>> {
     // multipart/form-data request
     const formData = new FormData();
     // append to the data the institution object without the logo
-    formData.append('data', JSON.stringify(
-      {
-        personDto: {
-          userDto: {
-            email: graduate.personDto.signupRequestDto.email,
-            password: graduate.personDto.signupRequestDto.password,
-          },
-          firstName: graduate.personDto.firstName,
-          lastName: graduate.personDto.lastName,
-          ci: graduate.personDto.ci,
-          phoneNumber: graduate.personDto.phoneNumber
-        },
-        graduationDate: graduate.graduationDate,
-        campusMajorId: graduate.campusMajorId
-      }
-    ));
+    formData.append('data', JSON.stringify(graduate));
     // append the logo
-    formData.append('profilePicture', graduate.personDto.s3_cv);
-    formData.append('cvFile', graduate.personDto.s3_cv);
+    formData.append('profilePicture', profilePicture);
+    formData.append('cvFile', cvFile);
     return this.http.post<ResponseDto<VerificationCodeDto>>(
       `${environment.API_URL}/api/sign-up/graduate`,
       formData

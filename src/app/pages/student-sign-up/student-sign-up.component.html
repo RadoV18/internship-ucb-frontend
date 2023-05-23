@@ -80,8 +80,8 @@
             <span
                 *ngIf="studentSignUpForm.get('email')?.errors?.['required'] && studentSignUpForm.get('email')?.touched"
                 class="text-error"><sup>&ast;</sup> El correo electrónico es requerido.</span>
-            <span *ngIf="studentSignUpForm.get('email')?.errors?.['email'] && studentSignUpForm.get('email')?.touched"
-                class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej:
+            <span *ngIf="studentSignUpForm.get('email')?.errors?.['pattern'] && studentSignUpForm.get('email')?.touched"
+                class="text-error"><sup>&ast;</sup> Ingrese un correo electrónico institucional válido. Ej:
                 admin@ucb.edu.bo</span>
 
             <!-- PASSWORD INPUT -->

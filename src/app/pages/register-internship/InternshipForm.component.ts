@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InternshipService } from '../../services/internship.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../dto/role';
 import { Requirement } from '../../dto/requirement';
-import { Benefit } from '../../dto/benefit';
-import { Major } from '../../dto/major';
-import { City } from '../../dto/city';
+import { BenefitDto } from '../../dto/benefit.dto';
+import { MajorDto } from '../../dto/major.dto';
+import { CityDto } from '../../dto/city.dto';
+import { QuestionsDto } from '../../dto/questions.dto';
+import { MajorsService } from '../../services/majors.service';
+import { CitiesService } from '../../services/cities.service';
+import { Router } from '@angular/router';
+import { ResponseDto } from '../../dto/response.dto';
+import { dateValidator, minDateValidator } from 'src/app/validators/date-validator';
 
 @Component({
   selector: 'app-internship-form',
@@ -13,44 +19,109 @@ import { City } from '../../dto/city';
   styleUrls: ['./InternshipForm.component.css'],
 })
 export class InternshipFormComponent {
-  constructor(private internshipService: InternshipService) {}
+  // login and sidebar
+  show: boolean = false;
+
+  toggleSidebar() {
+    this.show = !this.show;
+  }
+
+  setShow(show: boolean) {
+    this.show = show;
+  }
+
+  //modal
+  displayModal: boolean = false;
+
+  constructor(
+    private internshipService: InternshipService,
+    private majorsService: MajorsService,
+    private citiesService: CitiesService,
+    private router: Router
+  ) {}
   roleList: Role[] = [];
   requirementList: Requirement[] = [];
-  benefitList: Benefit[] = [];
-  majorList: Major[] = [];
-  majors: Major[] = [
-    new Major(1, 'Computer Science'),
-    new Major(2, 'Information Technology'),
-    new Major(3, 'Software Engineering'),
-  ];
-  cities: City[] = [
-    { cityId: 1, name: 'New York' },
-    { cityId: 2, name: 'Rome' },
-    { cityId: 3, name: 'London' },
-    { cityId: 4, name: 'Istanbul' },
-  ];
+  benefitList: BenefitDto[] = [];
+  questionList: QuestionsDto[] = [];
+  majorList: MajorDto[] = [];
+  majors: MajorDto[] = [];
+  cities: CityDto[] = [];
   newRole = '';
   newRequirement = '';
   newBenefit = '';
-  internshipForm = new FormGroup({
-    title: new FormControl('', [
-      Validators.maxLength(50),
-      Validators.pattern('[a-zA-Z1-9 ]*'),
-      Validators.required,
-    ]),
-    description: new FormControl('', [
-      Validators.maxLength(500),
-      Validators.pattern('[a-zA-Z1-9 ]*'),
-      Validators.required,
-    ]),
-    startDate: new FormControl('', [Validators.required]),
-    endDate: new FormControl('', [Validators.required]),
-    major: new FormControl<Major | null>(null, []),
-    role: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
-    requirement: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
-    benefit: new FormControl('', [Validators.pattern('[a-zA-Z1-9 :]*')]),
-    city: new FormControl<City | null>(null, [Validators.required]),
-  });
+  today = new Date();
+  tomorrow = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
+  internshipForm = new FormGroup(
+    {
+      title: new FormControl('', [
+        Validators.maxLength(50),
+        Validators.pattern('[a-zA-ZáéíñóúüÁÉÍÑÓÚÜ0-9 :]*'),
+        Validators.required,
+      ]),
+      description: new FormControl('', [
+        Validators.maxLength(500),
+        Validators.pattern(
+          '[a-zA-ZáéíñóúüÁÉÍÑÓÚÜ0-9 :,.!?@#$%^&*()_+-={}<>;\'"\\[\\]\\|\\n]*'
+        ),
+        Validators.required,
+      ]),
+      startDate: new FormControl('', [
+        Validators.required,
+        minDateValidator(this.today),
+      ]),
+      endDate: new FormControl('', [
+        Validators.required,
+        minDateValidator(this.tomorrow),
+      ]),
+      major: new FormControl<MajorDto | null>(null, []),
+      role: new FormControl('', [
+        Validators.pattern(
+          '[a-zA-ZáéíñóúüÁÉÍÑÓÚÜ0-9 :,.!?@#$%^&*()_+-={}<>;\'"\\[\\]\\|\\n]*'
+        ),
+      ]),
+      requirement: new FormControl('', [
+        Validators.pattern(
+          '[a-zA-ZáéíñóúüÁÉÍÑÓÚÜ0-9 :,.!?@#$%^&*()_+-={}<>;\'"\\[\\]\\|\\n]*'
+        ),
+      ]),
+      benefit: new FormControl('', [
+        Validators.pattern(
+          '[a-zA-ZáéíñóúüÁÉÍÑÓÚÜ0-9 :,.!?@#$%^&*()_+-={}<>;\'"\\[\\]\\|\\n]*'
+        ),
+      ]),
+      city: new FormControl<CityDto | null>(null, [Validators.required]),
+      question: new FormControl({ value: '', disabled: false }, [
+        Validators.required,
+      ]),
+    },
+    {
+      validators: dateValidator,
+    }
+  );
+
+  ngOnInit() {
+    this.citiesService.getCities().subscribe({
+      next: (response) => {
+        this.cities = response.data;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+    this.majorsService.getMajors('name').subscribe({
+      next: (response) => {
+        this.majors = response.data;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  disposeModal() {
+    this.router.navigate(['/institucion/convocatorias/solicitadas']);
+  }
+
   addMajor() {
     const major = this.internshipForm.get('major')?.value;
 
@@ -61,7 +132,7 @@ export class InternshipFormComponent {
         this.majorList = [...this.majorList, major];
         this.internshipForm.get('major')?.reset();
       } else {
-        alert('Major already added');
+        alert('MajorDto already added');
         this.internshipForm.get('major')?.reset();
       }
     } else {
@@ -76,8 +147,9 @@ export class InternshipFormComponent {
         { id: this.roleList.length + 1, description: role },
       ];
       this.internshipForm.get('role')?.reset();
+      this.internshipForm.get('role')?.setValue(null);
     } else {
-      alert('Please enter role');
+      alert('Por favor, ingrese una función.');
     }
   }
   addBenefit() {
@@ -88,8 +160,9 @@ export class InternshipFormComponent {
         { id: this.benefitList.length + 1, description: benefit },
       ];
       this.internshipForm.get('benefit')?.reset();
+      this.internshipForm.get('benefit')?.setValue(null);
     } else {
-      alert('Please enter benefit');
+      alert('Por favor, ingrese un beneficio.');
     }
   }
   addRequirement() {
@@ -100,6 +173,23 @@ export class InternshipFormComponent {
         { id: this.requirementList.length + 1, description: requirement },
       ];
       this.internshipForm.get('requirement')?.reset();
+      this.internshipForm.get('requirement')?.setValue(null);
+    } else {
+      alert('Por favor, ingrese un requisito.');
+    }
+  }
+
+  addQuestion() {
+    const question = this.internshipForm.get('question')?.value;
+    if (question) {
+      this.questionList = [
+        ...this.questionList,
+        { id: this.questionList.length + 1, question: question },
+      ];
+      this.internshipForm.get('question')?.reset();
+      if (this.questionList.length === 3) {
+        this.internshipForm.get('question')?.disable();
+      }
     } else {
       alert('Please enter requirement');
     }
@@ -117,49 +207,78 @@ export class InternshipFormComponent {
   deleteMajor(index: number) {
     this.majorList.splice(index, 1);
   }
+  deleteQuestion(index: number) {
+    this.questionList.splice(index, 1);
+    this.internshipForm.get('question')?.enable();
+  }
 
-  onSubmit() {
+  validateForm(): boolean {
+    if (this.internshipForm.get('title')?.invalid) {
+      return true;
+    }
+    if (this.internshipForm.get('description')?.invalid) {
+      return true;
+    }
+    if (this.internshipForm.get('startDate')?.invalid) {
+      return true;
+    }
+    if (this.internshipForm.get('endDate')?.invalid) {
+      return true;
+    }
     if (this.roleList.length === 0) {
-      alert('Please add at least one role');
-      return;
+      return true;
     }
     if (this.requirementList.length === 0) {
-      alert('Please add at least one requirement');
-      return;
+      return true;
     }
     if (this.benefitList.length === 0) {
-      alert('Please add at least one benefit');
-      return;
+      return true;
     }
     if (this.majorList.length === 0) {
-      alert('Please add at least one major');
-      return;
+      return true;
     }
-    const city = this.internshipForm.get('city')?.value;
-    if (!city) {
-      alert('Please select a city');
-      return;
+    if (this.internshipForm.get('city')?.invalid) {
+      return true;
     }
+    return false;
+  }
+
+  onSubmit() {
     const internship = {
       title: this.internshipForm.get('title')?.value,
       description: this.internshipForm.get('description')?.value,
       startingDate: this.internshipForm.get('startDate')?.value,
       endingDate: this.internshipForm.get('endDate')?.value,
       majorList: this.majorList,
+      internshipQuestions: this.questionList,
       internshipRoles: this.roleList,
       internshipRequirements: this.requirementList,
       internshipBenefits: this.benefitList,
       institutionId: 1,
-      cityId: city.cityId,
+      cityId: this.internshipForm.get('city')?.value!.cityId,
     };
-    console.table(internship);
     this.internshipService.saveInternship(internship).subscribe({
-      next: (res) => {
-        alert('Internship created successfully');
+      next: (res: ResponseDto<any>) => {
+        if (res.success) {
+          this.displayModal = true;
+        }
       },
-      error: (err) => {
-        console.log(err);
+      error: (error) => {
+        console.error('There was an error!', error);
       },
     });
   }
+  validateDate() {
+    const startDate = this.internshipForm.get('startDate')?.value;
+    const endDate = this.internshipForm.get('endDate')?.value;
+    let startingDate;
+    let endingDate;
+    if (startDate && endDate) {
+      startingDate = new Date(startDate);
+      endingDate = new Date(endDate);
+      return startingDate >= endingDate;
+    }
+    return false;
+  }
+  protected readonly Date = Date;
 }

@@ -1,4 +1,4 @@
-export class Benefit {
+export class BenefitDto {
   id: number;
   description: string;
 

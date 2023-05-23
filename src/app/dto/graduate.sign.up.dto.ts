@@ -1,16 +1,14 @@
 export interface GraduateSignUpDto {
-    personDto: {
-        signupRequestDto: {
+    person: {
+        user: {
             email: string;
             password: string;
-            s3_profile_picture: File;
         }
         firstName: string;
         lastName: string;
         ci: string;
         phoneNumber: string;
-        s3_cv: File
     }
     campusMajorId: number;
-    graduationDate: string;
+    graduationDate: Date;
 }

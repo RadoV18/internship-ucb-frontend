@@ -45,6 +45,6 @@ export class VerificationCodePageComponent {
   }
 
   close() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/ingresar']);
   }
 }

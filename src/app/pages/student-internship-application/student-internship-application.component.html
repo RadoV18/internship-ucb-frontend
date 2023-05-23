@@ -1,0 +1,68 @@
+<app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
+  <div title *ngIf="internship">
+    <h3 class="text-secondary text-center">Preguntas</h3>
+  </div>
+  <div body class="questions-modal">
+    <span class="questions-info">Para postular, responde a las siguientes preguntas solicitadas por la institución:</span>
+    <form [formGroup]="answerForm" *ngIf="internship">
+      <div formArrayName="answer">
+        <div class="my-3" *ngFor="let internshipQuestion of internship!.internshipQuestions; let i=index">
+          <label class="mb-2" for="answer-{{ i }}">{{internshipQuestion.description}}</label>
+          <textarea id="answer-{{ i }}" type="text" [formControlName]="i" name="message" class="mt-1 w-100"
+                    rows="1" formControlName="message"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div footer class="d-flex flex-center flex-center mt-3">
+    <button class="btn btn-rounded btn-primary px-6" (click)="submitForm()">Enviar</button>
+  </div>
+</app-modal>
+<div class="institution-home-wrapper">
+  <div>
+    <app-student-navbar></app-student-navbar>
+    <div class="image-ellipse-container">
+      <div class="image-ellipse">
+        <img src="assets/images/ucb-circle-background.png" alt="UCB">
+      </div>
+    </div>
+    <div class="internship-institution-content d-flex flex-center" *ngIf="internship">
+      <div class="shadow border-rd-12 content-card py-3 px-5 internship-card">
+        <div class="internship-header mb-3">
+          <div class="profile-picture-container mr-3">
+            <img class="profile-picture" [src]="internship!.institution.user.profilePicture" alt="profile picture">
+          </div>
+          <div class="institution-data">
+            <h2 class="text-secondary">{{internship!.institution.name}}</h2>
+            <div class="d-flex switch-container">
+              <app-toggle-switch (toggleSwitch)="toggleView($event)"></app-toggle-switch>
+              <div
+                  class="text-regular ml-2 switch-details">{{displayInternship ? 'Detalles de la pasantía' : 'Acerca de la institución'}}</div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div *ngIf="displayInternship">
+          <app-internship-description [internship]="internship"></app-internship-description>
+          <div class="d-flex flex-center align-center mt-3">
+            <button class="btn btn-primary btn-rounded px-6" (click)="displayApplicantOptions()">Postular</button>
+          </div>
+        </div>
+        <div *ngIf="!displayInternship">
+          <h3 class="text-primary">Sector</h3>
+          <span class="text-regular">{{internship!.institution.area}}</span>
+          <h3 class="text-primary">Acerca de {{internship!.institution.name}}</h3>
+          <span class="text-regular">{{internship!.description}}</span>
+          <h3 class="text-primary">Datos de Contacto</h3>
+          <div class="d-flex flex-column"><span
+              class="text-regular">{{internship!.institution.contactFirstName}}  {{internship!.institution.contactLastName}}</span>
+            <span class="text-regular">{{internship!.institution.contactPosition}}</span>
+            <span class="text-regular">{{internship!.institution.contactEmail}}</span>
+            <span class="text-regular">{{internship!.institution.contactPhone}}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+

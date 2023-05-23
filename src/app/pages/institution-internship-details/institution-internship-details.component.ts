@@ -23,6 +23,7 @@ export class InstitutionInternshipDetailsComponent {
   applicants: Array<ApplicantDto> = [];
   selectedApplicant: ApplicantDto = {
     id: -1,
+    applicationId: -1,
     firstName: "",
     lastName: "",
     major: "",
@@ -30,7 +31,8 @@ export class InstitutionInternshipDetailsComponent {
     submittedOn: new Date(),
     status: "",
     cvUrl: "",
-    profilePictureUrl: ""
+    profilePictureUrl: "",
+    questionResponses: []
   }
   submissionStatus: Array<string> = ["Pendiente", "Aceptado", "Rechazado"];
 
@@ -67,7 +69,16 @@ export class InstitutionInternshipDetailsComponent {
   }
 
   submitForm() {
-    // TODO: send data to the backend
+    const status = this.applicantOptions.get('value')?.value;
+    const message = this.applicantOptions.get('message')?.value;
+    this.internshipService.updateApplicationStatus(this.internshipId, this.selectedApplicant.applicationId, status, message).subscribe({
+      next: (response: ResponseDto<ApplicantDto>) => {
+
+      },
+      error: (error: Error) => {
+        console.error(error);
+      }
+    });
   }
 
   displayApplicantOptions(applicant: ApplicantDto) {

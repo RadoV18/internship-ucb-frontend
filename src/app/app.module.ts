@@ -23,6 +23,8 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
 import { InstitutionNavbarComponent } from './components/institution-navbar/institution-navbar.component';
 import { InstitutionSidebarComponent } from './components/institution-sidebar/institution-sidebar.component';
+import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-admin-graduates.component';
+import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/home-admin-institution.component';
 import { NotificationsService } from './services/notifications.service';
 import { NotificationsServiceFactory } from './notifications-service-factory';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -30,6 +32,18 @@ import { ActiveInternshipsPageComponent } from './pages/active-internships-page/
 import { InstitutionInternshipCardComponent } from './components/institution-internship-card/institution-internship-card.component';
 import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
 import { InternshipApplicantsTableComponent } from './components/internship-applicants-table/internship-applicants-table.component';
+import { CommonModule } from '@angular/common';
+import { InternshipListComponent } from './pages/internship-list/internship-list.component';
+import { InternshipCardComponent } from './components/internship-card/internship-card.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { StudentNavbarComponent } from './components/student-navbar/student-navbar.component';
+import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
+import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
+import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
+import { SkillFilterPipe } from './pipes/skill-filter.pipe';
+import { InternshipDescriptionComponent } from './components/internship-description/internship-description.component';
+import { InstitutionDescriptionComponent } from './components/institution-description/institution-description.component';
+import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +55,6 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     VerificationCodePageComponent,
     VerificationCodeComponent,
     ModalComponent,
-    LoginComponent,
-    LoginFormComponent,
     HomeComponent,
     PdfFileInputComponent,
     AdminNavbarComponent,
@@ -50,18 +62,29 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     StudentSignUpComponent,
     GraduateSignUpComponent,
     LoginComponent,
-    LoginFormComponent,
-    HomeComponent,
-    PdfFileInputComponent,
     HomeAdminComponent,
     HomeInstitutionComponent,
     InstitutionNavbarComponent,
     InstitutionSidebarComponent,
+    HomeAdminInstitutionComponent,
+    HomeAdminGraduatesComponent,
+    LoginFormComponent,
     NotificationsComponent,
     ActiveInternshipsPageComponent,
     InstitutionInternshipCardComponent,
     InstitutionInternshipDetailsComponent,
-    InternshipApplicantsTableComponent
+    InternshipApplicantsTableComponent,
+    InternshipListComponent,
+    InternshipCardComponent,
+    FooterComponent,
+    StudentNavbarComponent,
+    AdminConvocationsComponent,
+    StudentInternshipApplicationComponent,
+    PersonSkillComponent,
+    SkillFilterPipe,
+    InternshipDescriptionComponent,
+    InstitutionDescriptionComponent,
+    ToggleSwitchComponent
   ],
   imports: [
     BrowserModule,
@@ -69,14 +92,14 @@ import { InternshipApplicantsTableComponent } from './components/internship-appl
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule
+    CommonModule,
   ],
   providers: [
     {
       provide: NotificationsService,
-      useFactory: NotificationsServiceFactory
-    }
+      useFactory: NotificationsServiceFactory,
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -20,12 +20,14 @@
                 </div>
                 <div #dropdownMenu class="dropdown-menu shadow border-rd-8" [ngClass]="{'show': showOptions}">
                     <ul class="dropdown-list">
-                        <a href="/ingresar">
-                            <li class="dropdown-item d-flex align-center">
-                                <img src="assets/images/logout.svg" alt="Cerrar Sesión">
-                                <span class="ml-2 logout">Cerrar sesión</span>
-                            </li>
-                        </a>
+                        <li class="dropdown-item d-flex align-center">
+                            <img src="assets/images/student-lg.svg" alt="Cerrar Sesión">
+                            <a class="ml-2 logout" href="/ingresar">Editar Perfil</a>
+                        </li>
+                        <li class="dropdown-item d-flex align-center">
+                            <img src="assets/images/logout.svg" alt="Cerrar Sesión">
+                            <a class="ml-2 logout" href="/ingresar">Cerrar sesión</a>
+                        </li>
                     </ul>
                 </div>
             </div>
