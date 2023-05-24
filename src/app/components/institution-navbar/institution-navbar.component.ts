@@ -1,4 +1,5 @@
 import {Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild} from '@angular/core';
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-institution-navbar',
@@ -14,7 +15,9 @@ export class InstitutionNavbarComponent {
   name: string = 'InstitutionName';
   profilePicture: string = '/assets/images/user.svg'
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private authService: AuthenticationService) {
+    this.name = this.authService.getAuthenticatedUserName() || '';
+    this.profilePicture = this.authService.getAuthenticatedUserPicture() || '';
     this.renderer.listen('window', 'click', (e: Event) => {
       if(this.toggleButton.nativeElement.contains(e.target)) {
         this.showOptions = !this.showOptions;

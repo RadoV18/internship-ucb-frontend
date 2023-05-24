@@ -3,13 +3,14 @@
         <img src="assets/images/logo-white.svg" alt="Internship by Cato">
     </div>
     <ul class="profile-list">
-        <li class="profile d-flex align-center">
+      <li><app-notifications></app-notifications></li>
+        <li class="profile d-flex align-center ml-3">
             <div class="profile-picture mr-2">
-                <img src="assets/images/user.svg" alt="Usuario"/>
+                <img [src]="profilePicture" alt="Usuario"/>
             </div>
             <div class="d-flex flex-column profile-options-container">
                 <div #toggleButton class="profile-options d-flex">
-                    <div class="profile-name text-white mr-2 d-flex align-center">StudentName</div>
+                    <div class="profile-name text-white mr-2 d-flex align-center">{{ name }}</div>
                     <div class="profile-button d-flex align-center">
                         <img src="assets/images/arrow-down.svg" alt="Opciones de usuario"/>
                     </div>

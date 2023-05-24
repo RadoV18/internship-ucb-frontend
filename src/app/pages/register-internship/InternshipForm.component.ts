@@ -184,7 +184,7 @@ export class InternshipFormComponent {
     if (question) {
       this.questionList = [
         ...this.questionList,
-        { id: this.questionList.length + 1, question: question },
+        { id: this.questionList.length + 1, description: question },
       ];
       this.internshipForm.get('question')?.reset();
       if (this.questionList.length === 3) {
@@ -254,7 +254,7 @@ export class InternshipFormComponent {
       internshipRoles: this.roleList,
       internshipRequirements: this.requirementList,
       internshipBenefits: this.benefitList,
-      institutionId: 1,
+      institutionId: Number(localStorage.getItem('id')),
       cityId: this.internshipForm.get('city')?.value!.cityId,
     };
     this.internshipService.saveInternship(internship).subscribe({

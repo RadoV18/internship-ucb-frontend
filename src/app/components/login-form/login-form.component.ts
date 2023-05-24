@@ -2,6 +2,8 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import {AuthDto} from "../../dto/auth.dto";
+import {ResponseDto} from "../../dto/response.dto";
 
 interface ILoginForm {
   email: string;
@@ -43,9 +45,16 @@ export class LoginFormComponent {
 
     if (this.error === '') {
       this.authenticationService.postLogin(this.form.value.email, this.form.value.password).subscribe({
-        next: (response) => {
-          this.authenticationService.setAuthenticatedUser(this.form.value.email);
-          this.router.navigate(['/']);
+        next: (response: ResponseDto<AuthDto>) => {
+          this.authenticationService.setAuthenticatedUser(response.data);
+          const type = response.data.accountType;
+          if(type === 0) {
+            this.router.navigate(['/administrador/graduados']);
+          } else if (type === 1) {
+            this.router.navigate(['/institucion/convocatorias']);
+          } else if (type === 2) {
+            this.router.navigate(['/pasantias']);
+          }
         },
         error: (error) => {
           if (error.status === 401) {

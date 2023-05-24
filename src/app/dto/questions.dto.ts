@@ -1,9 +1,9 @@
 export class QuestionsDto {
   id: number;
-  question: string;
+  description: string;
 
-  constructor(id: number, question: string) {
+  constructor(id: number, description: string) {
     this.id = id;
-    this.question = question;
+    this.description = description;
   }
 }

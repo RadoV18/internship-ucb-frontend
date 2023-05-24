@@ -25,6 +25,12 @@
       <p class="text-regular pl-3">{{internshipView.description}}</p>
     </div>
     <div class="section-container">
+      <h2 class="text-primary">Carreras</h2>
+      <ul class="ml-5">
+        <li *ngFor="let major of internshipView.majorList" class="text-regular my-1">{{major}}</li>
+      </ul>
+    </div>
+    <div class="section-container">
       <h2 class="text-primary">Requisitos</h2>
       <ul class="ml-5">
         <li *ngFor="let requirement of internshipView.internshipRequirements" class="text-regular my-1">{{requirement}}</li>
