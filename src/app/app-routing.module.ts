@@ -24,19 +24,10 @@ const routes: Routes = [
   { path: 'administrador/inicio', component: HomeAdminComponent },
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
-  {
-    path: 'institucion/convocatorias/nueva',
-    component: InternshipFormComponent,
-  },
+  { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent },
   { path: 'pasantias', component: InternshipListComponent },
-  {
-    path: 'institucion/convocatorias',
-    component: ActiveInternshipsPageComponent,
-  },
-  {
-    path: 'institucion/convocatorias/:id',
-    component: InstitutionInternshipDetailsComponent,
-  },
+  { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent },
+  { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'perfil/estudiante', component: StudentEditProfileComponent },
 ];

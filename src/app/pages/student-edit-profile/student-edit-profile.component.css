@@ -34,9 +34,18 @@
     max-width: 100%;
 }
 
-.image-input {
+.image-input-container {
+    width: 160px;
+    height: 160px;
     background-color: #7f7f7f;
     border-radius: 50%;
+}
+
+.image-input-container img {
+    height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 img{
