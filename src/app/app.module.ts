@@ -44,6 +44,8 @@ import { SkillFilterPipe } from './pipes/skill-filter.pipe';
 import { InternshipDescriptionComponent } from './components/internship-description/internship-description.component';
 import { InstitutionDescriptionComponent } from './components/institution-description/institution-description.component';
 import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.component';
+import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
+import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,9 @@ import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.
     SkillFilterPipe,
     InternshipDescriptionComponent,
     InstitutionDescriptionComponent,
-    ToggleSwitchComponent
+    ToggleSwitchComponent,
+    InstitutionEditComponent,
+    InternshipEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,4 +106,4 @@ import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
