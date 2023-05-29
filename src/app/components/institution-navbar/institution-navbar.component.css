@@ -35,6 +35,16 @@
     cursor: pointer;
 }
 
+.profile-picture {
+    border-radius: 50%;
+}
+
+.profile-picture img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
 .dropdown-menu {
     display: none;

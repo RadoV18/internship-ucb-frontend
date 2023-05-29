@@ -73,7 +73,17 @@ export class InstitutionInternshipDetailsComponent {
     const message = this.applicantOptions.get('message')?.value;
     this.internshipService.updateApplicationStatus(this.internshipId, this.selectedApplicant.applicationId, status, message).subscribe({
       next: (response: ResponseDto<ApplicantDto>) => {
-
+        this.displayModal = false;
+        this.applicants = this.applicants.map((applicant: ApplicantDto) => {
+          if (applicant.applicationId === this.selectedApplicant.applicationId) {
+            return {
+              ...applicant,
+              status: status
+            }
+          }
+          return applicant;
+        });
+        this.applicantOptions.reset();
       },
       error: (error: Error) => {
         console.error(error);

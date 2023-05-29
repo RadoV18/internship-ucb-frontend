@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { InstitutionDto } from 'src/app/dto/institution.dto';
-import { InternshipAplicationDto, InternshipAplicationQuestionDto } from 'src/app/dto/internship.application.dto';
+import { InternshipApplicationDto, InternshipAplicationQuestionDto } from 'src/app/dto/internship.application.dto';
 import { InternshipDto } from 'src/app/dto/internship.dto';
 import { InstitutionService } from 'src/app/services/institution.service';
 import { InternshipApplicationService } from 'src/app/services/internship-application.service';
@@ -26,9 +26,9 @@ export class StudentInternshipApplicationComponent implements OnInit {
     answer: new FormArray([])
   });
 
-  internshipAplicationDto = { internshipApplicationQuestionDtos: [] as InternshipAplicationQuestionDto[] } as InternshipAplicationDto;
+  internshipAplicationDto = { internshipApplicationQuestions: [] as InternshipAplicationQuestionDto[] } as InternshipApplicationDto;
 
-  constructor(private internshipService: InternshipService, private activatedRoute: ActivatedRoute, private internshipApplicationService: InternshipApplicationService, private institutionService: InstitutionService) {
+  constructor(private internshipService: InternshipService, private activatedRoute: ActivatedRoute) {
   }
 
   toggleView(e: boolean) {
@@ -59,20 +59,21 @@ export class StudentInternshipApplicationComponent implements OnInit {
 
   disposeModal() {
     this.displayModal = false;
-    this.internshipAplicationDto = { internshipApplicationQuestionDtos: [] as InternshipAplicationQuestionDto[] } as InternshipAplicationDto;
+    this.internshipAplicationDto = { internshipApplicationQuestions: [] as InternshipAplicationQuestionDto[] } as InternshipApplicationDto;
     this.answerForm.reset();
   }
 
   submitForm() {
-    console.log(this.internshipAplicationDto);
     this.internshipAplicationDto.internshipId = this.internshipId;
-    this.internshipAplicationDto.personId = 1;
+    this.internshipAplicationDto.personId = Number(localStorage.getItem('id'));
     this.answerForm.controls.answer.controls.forEach((control: FormControl, i) => {
-      this.internshipAplicationDto.internshipApplicationQuestionDtos.push({ internshipId: this.internshipId, internshipQuestionId: this.internship!.internshipQuestions[i].id, response: control.value });
+      this.internshipAplicationDto.internshipApplicationQuestions.push({
+        questionId: this.internship!.internshipQuestions[i].id,
+        response: control.value
+      });
     });
-    console.log(this.internshipAplicationDto);
-    this.internshipApplicationService.saveInternshipAplication(this.internshipAplicationDto).subscribe((data: any) => {
-      this.internshipAplicationDto = { internshipApplicationQuestionDtos: [] as InternshipAplicationQuestionDto[] } as InternshipAplicationDto;
+    this.internshipService.applyToInternship(this.internshipId, this.internshipAplicationDto).subscribe((data: any) => {
+      this.internshipAplicationDto = { internshipApplicationQuestions: [] as InternshipAplicationQuestionDto[] } as InternshipApplicationDto;
       this.answerForm.reset();
     });
     this.displayModal = false;
