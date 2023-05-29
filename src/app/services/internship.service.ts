@@ -82,4 +82,12 @@ export class InternshipService {
   applyToInternship(id: number, body: InternshipApplicationDto): Observable<ResponseDto<any>> {
     return this.http.post<ResponseDto<any>>(`${environment.API_URL}/api/internships/${id}`, body);
   }
+  
+  getInternshipById(id: number){
+    return this.http.get<ResponseDto<InternshipDto>>(`${environment.API_URL}/api/internships/${id}`);
+  }
+
+  updateInternship(internship: any){
+    return this.http.put<ResponseDto<any>>(`${environment.API_URL}/api/internships`,internship);
+  }
 }
