@@ -18,4 +18,11 @@ export class InstitutionService {
   getInstitutionById(id: number) {
     return this.http.get<InstitutionDto>(`${environment.API_URL}/api/institutions` + `/` + id);
   }
+
+  getInstitutionByUserEmail(email: string) {
+    return this.http.get<InstitutionDto>(`${environment.API_URL}/api/institutions/email` + `/` + email);
+  }
+  updateInstitution(institution: InstitutionDto) {
+    return this.http.put(`${environment.API_URL}/api/institutions`, institution);
+  }
 }

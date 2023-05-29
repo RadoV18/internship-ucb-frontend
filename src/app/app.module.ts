@@ -45,6 +45,7 @@ import { InternshipDescriptionComponent } from './components/internship-descript
 import { InstitutionDescriptionComponent } from './components/institution-description/institution-description.component';
 import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.component';
 import { StudentEditProfileComponent } from './pages/student-edit-profile/student-edit-profile.component';
+import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 
 @NgModule({
@@ -78,7 +79,6 @@ import { InternshipEditComponent } from './pages/internship-edit/internship-edit
     InternshipApplicantsTableComponent,
     InternshipListComponent,
     InternshipCardComponent,
-    InternshipEditComponent,
     FooterComponent,
     StudentNavbarComponent,
     AdminConvocationsComponent,
@@ -89,6 +89,8 @@ import { InternshipEditComponent } from './pages/internship-edit/internship-edit
     InstitutionDescriptionComponent,
     ToggleSwitchComponent,
     StudentEditProfileComponent,
+    InstitutionEditComponent,
+    InternshipEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,4 +108,4 @@ import { InternshipEditComponent } from './pages/internship-edit/internship-edit
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
