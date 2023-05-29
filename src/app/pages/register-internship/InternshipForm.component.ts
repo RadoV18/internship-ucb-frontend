@@ -184,7 +184,7 @@ export class InternshipFormComponent {
     if (question) {
       this.questionList = [
         ...this.questionList,
-        { id: this.questionList.length + 1, question: question },
+        { id: this.questionList.length + 1, description: question },
       ];
       this.internshipForm.get('question')?.reset();
       if (this.questionList.length === 3) {

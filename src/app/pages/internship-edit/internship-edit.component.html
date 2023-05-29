@@ -3,16 +3,16 @@
   (onDispose)="disposeModal()"
 >
   <h3 title class="mb-2 text-center text-primary">
-    Convocatoria para pasantía creada
+    Convocatoria para pasantía actualizada
   </h3>
   <div body>
     <p class="mb-1 text-justify">
-      La convocatoria para pasantía ha sido creada exitosamente.
+      La convocatoria para pasantía ha sido actualizada exitosamente.
     </p>
-    <p class="mb-2 text-justify">
+    <!-- <p class="mb-2 text-justify">
       Un administrador de la plataforma se encargará de revisar la convocatoria
       y publicarla.
-    </p>
+    </p> -->
   </div>
   <div footer class="w-100 d-flex flex-center mt-3">
     <button
@@ -98,13 +98,15 @@
             placeholder="Fecha de inicio"
             name="start-date"
             id="start-date"
-            type="text"
+            type="date"
+            (change)="this.isStartingDateChanged = true"
             onfocus="(this.type='date')"
             formControlName="startDate"
             [ngClass]="{
               'invalid-input':
                 this.internshipForm.get('startDate')?.invalid &&
-                this.internshipForm.get('startDate')?.touched
+                this.internshipForm.get('startDate')?.touched && 
+                this.isStartingDateChanged
             }"
           />
           <span
@@ -117,7 +119,7 @@
             class="text-error"
             *ngIf="
               this.internshipForm.get('startDate')?.errors?.['invalidDate'] &&
-              this.internshipForm.get('startDate')?.touched
+              this.internshipForm.get('startDate')?.touched && this.isStartingDateChanged
             "
           >
             La fecha debe ser minimamente hoy
@@ -128,14 +130,14 @@
             placeholder="Fecha de finalización"
             name="end-date"
             id="end-date"
-            type="text"
-            onfocus="(this.type='date')"
+            type="date"
+            (change)="this.isEndingDateChanged = true"
             formControlName="endDate"
             [ngClass]="{
               'invalid-input':
                 (this.internshipForm.get('endDate')?.invalid &&
                   this.internshipForm.get('endDate')?.touched) ||
-                validateDate()
+                validateDate() || this.isEndingDateChanged
             }"
           />
           <span
@@ -148,7 +150,7 @@
             class="text-error"
             *ngIf="
               this.internshipForm.get('endDate')?.errors?.['invalidDate'] &&
-              this.internshipForm.get('endDate')?.touched
+              this.internshipForm.get('endDate')?.touched && this.isEndingDateChanged
             "
           >
             La fecha debe ser mayor a hoy
