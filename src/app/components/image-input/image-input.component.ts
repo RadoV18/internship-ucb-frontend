@@ -7,7 +7,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class ImageInputComponent {
   @Output() imageChanged = new EventEmitter<File>();
-  defaultImageUrl: string = './assets/images/input-camera.svg'
+  defaultImageUrl: string = './assets/images/input-camera.svg';
   imageUrl: string = this.defaultImageUrl;
 
   previewImage(fileInput: HTMLInputElement): void {

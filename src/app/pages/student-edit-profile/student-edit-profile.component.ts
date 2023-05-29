@@ -10,7 +10,7 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./student-edit-profile.component.css'],
 })
 export class StudentEditProfileComponent implements OnInit {
-  person: ProfileDto | any = {
+  person: ProfileDto = {
     personId: 0,
     firstName: '',
     lastName: '',
@@ -20,6 +20,8 @@ export class StudentEditProfileComponent implements OnInit {
     profilePicture: '',
     semester: 0,
     major: '',
+    graduate: false,
+    graduationDate: new Date(),
   };
   cvFile: File | null = null;
   formSubmitted: boolean = false;
@@ -50,7 +52,7 @@ export class StudentEditProfileComponent implements OnInit {
         next: (response: ResponseDto<ProfileDto>) => {
           this.person = response.data;
           this.personForm.get('phoneNumber')?.setValue(this.person.phoneNumber);
-          this.personForm.get('semester')?.setValue(this.person.semester);
+          this.personForm.get('semester')?.setValue(this.person.semester.toString());
           console.log(this.person);
           console.log(this.person.graduate);
         },
@@ -116,7 +118,7 @@ export class StudentEditProfileComponent implements OnInit {
   updateProfile(profileDto: ProfileDto) {
     this.profileService.updateStudent(profileDto).subscribe((response) => {
       console.log(response);
-      alert('Se actualizo correctamente');
+      alert('Datos actualizados correctamente');
     });
   }
 }
