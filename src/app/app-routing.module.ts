@@ -37,11 +37,6 @@ const routes: Routes = [
   { path: 'home/institucion', component: HomeInstitutionComponent },
   { path: 'pasantias', component: InternshipListComponent },
   { path: 'footer', component: FooterComponent },
-  { path: 'administrador/convocatorias', component: AdminConvocationsComponent },
-  { path: 'pasantias/:id', component: StudentInternshipApplicationComponent },
-  // TODO: put this route into the profile update component
-  { path: 'person/skill', component: PersonSkillComponent },
-  { path: 'perfil/estudiante', component: StudentEditProfileComponent },
 ];
 
 @NgModule({
