@@ -1,0 +1,36 @@
+.top-internship{
+    width: 30%;
+    height: fit-content;
+    margin-top: 30px;
+}
+.search-input{
+    height: fit-content ;
+    width: 100%;
+}
+.search{
+    margin-top: 30px;
+    width: 50%;
+    height: fit-content;
+}
+.search-list{
+    background-color: var(--white);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: fit-content;
+    overflow-y: scroll;
+
+}
+.home-content{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+input{
+    width: 100%;
+} 
+img{
+    height: 200px;
+}
+

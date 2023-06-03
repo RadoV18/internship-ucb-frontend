@@ -1,0 +1,29 @@
+<div class="d-flex flex-column">
+    <app-student-navbar (toggleSidebarEvent)="toggleSidebar()"></app-student-navbar>
+    <div class="d-flex flex-center">
+        <h1 class="text-primary">Bienvenido</h1>
+    </div>
+    <div class="d-flex flex-row home-content">
+        <div class="top-internship card border-rd-12 shadow">
+            <h2 class="text-secondary">Ultimas pasantias</h2>
+            <ul>
+                <li *ngFor="let internship of topInternships">
+                    <app-internship-card [internship]="internship"></app-internship-card>
+                </li>
+            </ul>
+        </div>
+        <div class="search d-flex flex-column card border-rd-12 shadow">
+            <div class="search-input ">
+                <input type="text" (keyup)="onChange($event)" placeholder="Busqueda" />
+            </div>
+            <div class="search-list border-rd-24">
+                <ul>
+                    <li *ngFor="let internship of searchedInternships">
+                        <app-internship-card [internship]="internship"></app-internship-card>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

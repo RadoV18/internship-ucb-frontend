@@ -90,4 +90,11 @@ export class InternshipService {
   updateInternship(internship: any){
     return this.http.put<ResponseDto<any>>(`${environment.API_URL}/api/internships`,internship);
   }
+
+  getLastInternships() {
+    return this.http.get<ResponseDto<InternshipListDto[]>>(`${environment.API_URL}/api/internships/last`);
+  }
+  getInternshipByTitle(title: string) {
+    return this.http.get<ResponseDto<InternshipListDto[]>>(`${environment.API_URL}/api/internships/search?title=${title}`);
+  }
 }
