@@ -44,6 +44,7 @@ import { SkillFilterPipe } from './pipes/skill-filter.pipe';
 import { InternshipDescriptionComponent } from './components/internship-description/internship-description.component';
 import { InstitutionDescriptionComponent } from './components/institution-description/institution-description.component';
 import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.component';
+import { StudentEditProfileComponent } from './pages/student-edit-profile/student-edit-profile.component';
 import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 
@@ -89,6 +90,7 @@ import { InternshipEditComponent } from './pages/internship-edit/internship-edit
     ToggleSwitchComponent,
     InstitutionEditComponent,
     InternshipEditComponent,
+    StudentEditProfileComponent
   ],
   imports: [
     BrowserModule,

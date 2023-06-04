@@ -30,6 +30,22 @@
     display: none;
 }
 
+.profile-list {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture {
+    border-radius: 50%;
+}
+
+.profile-picture img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .dropdown-menu.show {
     display: block;
     background-color: var(--white);
@@ -47,6 +63,12 @@
 .dropdown-item:hover {
     background-color: #efefef;
     cursor: pointer;
+}
+
+.dropdown-item img {
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
 }
 
 a {

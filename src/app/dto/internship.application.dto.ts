@@ -1,11 +1,10 @@
-export interface InternshipAplicationDto {
+export interface InternshipApplicationDto {
     internshipId: number;
     personId: number;
-    internshipApplicationQuestionDtos: InternshipAplicationQuestionDto[]
+    internshipApplicationQuestions: InternshipAplicationQuestionDto[]
 }
 
 export interface InternshipAplicationQuestionDto {
-    internshipId: number;
-    internshipQuestionId: number;
+    questionId: number;
     response: string;
 }

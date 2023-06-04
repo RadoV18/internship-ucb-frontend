@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InternshipAplicationDto } from '../dto/internship.application.dto';
+import { InternshipApplicationDto } from '../dto/internship.application.dto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class InternshipApplicationService {
   constructor(private http: HttpClient) { }
 
-  saveInternshipAplication(internshipApplication: InternshipAplicationDto) {
+  saveInternshipAplication(internshipApplication: InternshipApplicationDto) {
 
     return this.http.post<any>(`${environment.API_URL}/api/internshipapplications`, internshipApplication);
   }

@@ -26,7 +26,8 @@ export class ActiveInternshipsPageComponent {
   }
 
   ngOnInit() {
-    this.internshipService.getActiveInternshipsByInstitutionId(1).subscribe({
+    const institutionId = Number(localStorage.getItem('id') || '0');
+    this.internshipService.getActiveInternshipsByInstitutionId(institutionId).subscribe({
       next: (response: ResponseDto<Array<ActiveInternshipDto>>) => {
         this.activeInternships = response.data
       },

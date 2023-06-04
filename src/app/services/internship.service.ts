@@ -9,6 +9,7 @@ import { Page } from '../dto/page.dto';
 import { InternshipListDto } from '../dto/internship.list.dto';
 import { Internship } from '../dto/internship';
 import { InternshipDto } from '../dto/internship.dto';
+import {InternshipApplicationDto} from "../dto/internship.application.dto";
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +79,10 @@ export class InternshipService {
     return this.http.put<ResponseDto<any>>(`${environment.API_URL}/api/internships/${id}/applications/${applicationId}/status/${status}`,message);
   }
 
+  applyToInternship(id: number, body: InternshipApplicationDto): Observable<ResponseDto<any>> {
+    return this.http.post<ResponseDto<any>>(`${environment.API_URL}/api/internships/${id}`, body);
+  }
+  
   getInternshipById(id: number){
     return this.http.get<ResponseDto<InternshipDto>>(`${environment.API_URL}/api/internships/${id}`);
   }
