@@ -18,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
 import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
 import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
+import { StudentEditProfileComponent } from './pages/student-edit-profile/student-edit-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'administrador/convocatorias', component: AdminConvocationsComponent },
   { path: 'pasantias/:id', component: StudentInternshipApplicationComponent },
   // TODO: put this route into the profile update component
-  { path: 'person/skill', component: PersonSkillComponent }
+  { path: 'person/skill', component: PersonSkillComponent },
+  { path: 'perfil/estudiante', component: StudentEditProfileComponent },
 ];
 
 @NgModule({

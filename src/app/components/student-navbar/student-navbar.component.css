@@ -65,6 +65,12 @@
     cursor: pointer;
 }
 
+.dropdown-item img {
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+}
+
 a {
     color: var(--text);
     text-decoration: none;

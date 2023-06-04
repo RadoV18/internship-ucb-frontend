@@ -1,0 +1,127 @@
+<app-student-navbar></app-student-navbar>
+<div class="card px-6 my-6 card border-rd-24 mx-auto border">
+  <form class="d-flex flex-column" [formGroup]="personForm">
+    <h1 class="text-secondary text-center">Editar Perfil</h1>
+    <h2 class="text-secondary">Datos Personales</h2>
+    <div class="d-flex flex-space-between image-input-data">
+      <div class="mr-3 image-input-container" #imageInput id="imageInput">
+        <img [src]="this.person.profilePicture" alt="profile-image" />
+      </div>
+      <div class="d-flex flex-column data">
+        <!-- FIRST NAME INPUT -->
+        <label for="firstName" class="text-primary">Nombres</label>
+        <input
+          type="text"
+          placeholder="Nombres"
+          class="focus-primary my-2"
+          id="firstName"
+          [value]="this.person.firstName"
+          disabled
+        />
+
+        <!-- LAST NAME INPUT -->
+        <label for="firstName" class="text-primary">Apellidos</label>
+        <input
+          type="text"
+          placeholder="Apellidos"
+          class="focus-primary my-2"
+          id="lastName"
+          [value]="this.person.lastName"
+          disabled
+        />
+      </div>
+    </div>
+    <!-- C.I. INPUT -->
+    <label for="firstName" class="text-primary">C.I.</label>
+    <input
+      type="text"
+      placeholder="C.I."
+      class="focus-primary my-2"
+      id="ci"
+      [value]="this.person.ci"
+      disabled
+    />
+
+    <!-- PHONE NUMBER INPUT -->
+    <label for="firstName" class="text-primary">Nro de Celular</label>
+    <input
+      type="text"
+      placeholder="Celular"
+      class="focus-primary my-2"
+      id="phoneNumber"
+      formControlName="phoneNumber"
+      [value]="this.person.phoneNumber"
+    />
+    <span
+      *ngIf="this.personForm.get('phoneNumber')?.touched && this.personForm.get('phoneNumber')?.errors?.['required']"
+      class="text-error text-center span-center"
+      >El Numero de telefono es requerido</span
+    >
+    <!-- Major INPUT -->
+    <label for="major" class="text-primary">Carrera</label>
+    <input
+      type="text"
+      placeholder="Carrera"
+      class="focus-primary my-2"
+      id="major"
+      disabled
+      [disabled]="true"
+      [value]="this.person.major"
+    />
+    <!-- Semester INPUT -->
+    <div *ngIf="!this.person.graduate" class="d-flex flex-column">
+      <label for="semester" class="text-primary">Semestre</label>
+      <input
+        type="number"
+        max="10"
+        min="1"
+        placeholder="Semestre"
+        class="focus-primary my-2"
+        id="semester"
+        formControlName="semester"
+        [value]="this.person.semester"
+      />
+      <span
+        *ngIf="this.personForm.get('semester')?.touched && !validateSemester()"
+        class="text-error text-center span-center"
+        >El semestre debe estar entre 1 y 10</span
+      >
+      <span
+        *ngIf="this.personForm.get('semester')?.errors?.['required'] && this.personForm.get('semester')?.touched"
+        class="text-error text-center span-center"
+        >El semestre es requerido</span
+      >
+    </div>
+
+    <!-- Graduation Year INPUT -->
+    <div class="d-flex flex-column" *ngIf="this.person.graduate">
+      <label for="graduation-year" class="text-primary"
+        >Año de Graduación</label
+      >
+      <input
+        type="text"
+        class="focus-primary my-2"
+        id="graduation-year"
+        disabled
+        [value]="formatDate()"
+      />
+    </div>
+    <!-- PDF file input -->
+    <app-pdf-file-input
+      (fileChanged)="handleFileChange($event)"
+    ></app-pdf-file-input>
+    <span
+      *ngIf="formSubmitted && this.cvFile === null"
+      class="text-error text-center span-center"
+      ><sup>&ast;</sup>El CV es requerido.</span
+    >
+    <button
+      (click)="submit()"
+      type="button"
+      class="btn btn-primary btn-rounded w-50 mx-auto my-3"
+    >
+      Guardar
+    </button>
+  </form>
+</div>
+<app-footer></app-footer>
