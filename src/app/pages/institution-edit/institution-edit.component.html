@@ -1,4 +1,3 @@
-<p>institution-edit works!</p>
 <div class="background">
   <app-login-navbar></app-login-navbar>
   <div class="sign-up-card px-6 my-6 card border-rd-24 mx-auto">
@@ -121,17 +120,17 @@
         formControlName="contactPhone"
       />
       <span
-        *ngIf="institutionForm.get('contactPhone')?.errors?.['required'] && institutionForm.get('contactPhone')?.touched"
+        *ngIf="institutionForm.get('contactPhone')?.errors?.['required'] "
         class="text-error"
         ><sup>&ast;</sup> El teléfono es requerido. Ej: 77788999</span
       >
       <span
-        *ngIf="institutionForm.get('contactPhone')?.errors?.['numbersOnly'] && institutionForm.get('contactPhone')?.touched"
+        *ngIf="institutionForm.get('contactPhone')?.errors?.['numbersOnly']"
         class="text-error"
         ><sup>&ast;</sup> El teléfono debe contener números.</span
       >
       <span
-        *ngIf="institutionForm.get('contactPhone')?.errors?.['pattern'] && institutionForm.get('contactPhone')?.touched"
+        *ngIf="institutionForm.get('contactPhone')?.errors?.['pattern'] "
         class="text-error"
         ><sup>&ast;</sup> El teléfono debe contener 8 dígitos.</span
       >

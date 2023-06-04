@@ -58,6 +58,7 @@ const routes: Routes = [
   // TODO: put this route into the profile update component
   { path: 'person/skill', component: PersonSkillComponent },
   { path: 'institucion/convocatoria/editar/:id', component: InternshipEditComponent },
+  { path: 'institucion/editar', component: InstitutionEditComponent },
 ];
 
 @NgModule({

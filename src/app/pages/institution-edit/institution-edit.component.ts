@@ -2,12 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InstitutionDto } from 'src/app/dto/institution.dto';
-import { InstitutionSignUpDto } from 'src/app/dto/institution.sign.up.dto';
-import { ResponseDto } from 'src/app/dto/response.dto';
-import { VerificationCodeDto } from 'src/app/dto/verification.code.dto';
 import { InstitutionService } from 'src/app/services/institution.service';
-import { SignUpService } from 'src/app/services/sign-up.service';
-import { matchingPasswordValidator } from 'src/app/validators/matching-password-validator';
 import { numbersOnlyValidator } from 'src/app/validators/numbers-only-validator';
 import { wordCountValidator } from 'src/app/validators/word-count-validator';
 
