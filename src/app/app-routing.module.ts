@@ -17,10 +17,10 @@ import { InternshipListComponent } from './pages/internship-list/internship-list
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
 import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
-import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
 import { StudentEditProfileComponent } from './pages/student-edit-profile/student-edit-profile.component';
 import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: 'institucion/convocatorias/:id/editar', component: InternshipEditComponent },
   { path: 'institucion/editar', component: InstitutionEditComponent },
   { path: 'estudiante/perfil', component: StudentEditProfileComponent },
+  { path: 'estudiante/inicio', component: HomePageComponent },
 ];
 
 @NgModule({

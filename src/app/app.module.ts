@@ -47,6 +47,7 @@ import { ToggleSwitchComponent } from './components/toggle-switch/toggle-switch.
 import { StudentEditProfileComponent } from './pages/student-edit-profile/student-edit-profile.component';
 import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
+import { HomePageComponent } from "./pages/home-page/home-page.component";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { InternshipEditComponent } from './pages/internship-edit/internship-edit
     ToggleSwitchComponent,
     InstitutionEditComponent,
     InternshipEditComponent,
-    StudentEditProfileComponent
+    StudentEditProfileComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
