@@ -5,4 +5,9 @@ export interface AuthDto {
   name: string;
   email: string;
   profilePictureUrl: string;
+
+  token: string;
+  type: string;
+  refreshToken: string;
+  roles: [string];
 }
