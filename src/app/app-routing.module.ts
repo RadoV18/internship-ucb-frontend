@@ -7,18 +7,20 @@ import { GraduateSignUpComponent } from './pages/graduate-sign-up/graduate-sign-
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
-import { HomeAdminComponent } from "./pages/home-admin/home-admin.component";
-import { HomeInstitutionComponent } from "./pages/home-institution/home-institution.component";
+import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
+import { HomeInstitutionComponent } from './pages/home-institution/home-institution.component';
 import { HomeAdminInstitutionComponent } from './pages/home-admin-institution/home-admin-institution.component';
 import { HomeAdminGraduatesComponent } from './pages/home-admin-graduates/home-admin-graduates.component';
-import { ActiveInternshipsPageComponent } from "./pages/active-internships-page/active-internships-page.component";
-import { InstitutionInternshipDetailsComponent } from "./pages/institution-internship-details/institution-internship-details.component";
+import { ActiveInternshipsPageComponent } from './pages/active-internships-page/active-internships-page.component';
+import { InstitutionInternshipDetailsComponent } from './pages/institution-internship-details/institution-internship-details.component';
 import { InternshipListComponent } from './pages/internship-list/internship-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminConvocationsComponent } from './pages/admin-convocations/admin-convocations.component';
 import { StudentInternshipApplicationComponent } from './pages/student-internship-application/student-internship-application.component';
 import { PersonSkillComponent } from './pages/person-skill/person-skill.component';
 import { StudentEditProfileComponent } from './pages/student-edit-profile/student-edit-profile.component';
+import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
+import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,23 +31,23 @@ const routes: Routes = [
   { path: 'administrador/inicio', component: HomeAdminComponent },
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
-  { path: 'administrador/instituciones', component: HomeAdminInstitutionComponent },
+  { path: 'administrador/instituciones', component: HomeAdminInstitutionComponent, },
   { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
-  { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent },
-  { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent },
-  { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent },
+  { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent, },
+  { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent,},
+  { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent, },
   { path: 'home/institucion', component: HomeInstitutionComponent },
   { path: 'pasantias', component: InternshipListComponent },
   { path: 'footer', component: FooterComponent },
-  { path: 'administrador/convocatorias', component: AdminConvocationsComponent },
+  { path: 'administrador/convocatorias', component: AdminConvocationsComponent,},
   { path: 'pasantias/:id', component: StudentInternshipApplicationComponent },
-  // TODO: put this route into the profile update component
-  { path: 'person/skill', component: PersonSkillComponent },
-  { path: 'perfil/estudiante', component: StudentEditProfileComponent },
+  { path: 'institucion/convocatorias/:id/editar', component: InternshipEditComponent },
+  { path: 'institucion/editar', component: InstitutionEditComponent },
+  { path: 'estudiante/perfil', component: StudentEditProfileComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
