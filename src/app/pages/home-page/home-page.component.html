@@ -1,29 +1,35 @@
 <div class="d-flex flex-column">
     <app-student-navbar (toggleSidebarEvent)="toggleSidebar()"></app-student-navbar>
-    <div class="d-flex flex-center">
-        <h1 class="text-primary">Bienvenido</h1>
+    <div class="image-ellipse-container">
+      <div class="image-ellipse">
+        <img src="assets/images/ucb-circle-background.png" alt="UCB">
+      </div>
     </div>
-    <div class="d-flex flex-row home-content">
-        <div class="top-internship card border-rd-12 shadow">
-            <h2 class="text-secondary">Ultimas pasantias</h2>
-            <ul>
-                <li *ngFor="let internship of topInternships">
-                    <app-internship-card [internship]="internship"></app-internship-card>
-                </li>
-            </ul>
-        </div>
-        <div class="search d-flex flex-column card border-rd-12 shadow">
-            <div class="search-input ">
-                <input type="text" (keyup)="onChange($event)" placeholder="Busqueda" />
-            </div>
-            <div class="search-list border-rd-24">
-                <ul>
-                    <li *ngFor="let internship of searchedInternships">
-                        <app-internship-card [internship]="internship"></app-internship-card>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div class="search-container d-flex flex-column align-center my-6">
+    <div class="d-flex flex-center mt-6">
+      <h1 class="text-white">Bienvenido a Internship by Cato!</h1>
     </div>
-    <app-footer></app-footer>
+    <div class="search d-flex flex-column card border-rd-12 shadow">
+      <div class="search-input d-flex align-center">
+        <input class="search-text-input mr-3" type="text" (keyup)="onChange($event)" placeholder="Busqueda"/>
+        <a href="/pasantias" class="btn btn-primary btn-rounded">Ver todas las pasantías</a>
+      </div>
+      <div class="search-list">
+        <ul>
+          <li *ngFor="let internship of searchedInternships">
+            <app-internship-card [internship]="internship"></app-internship-card>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="top-internship card border-rd-12 shadow">
+      <h2 class="text-secondary text-center">Pasantías creadas recientemente</h2>
+      <ul>
+          <li *ngFor="let internship of topInternships">
+              <app-internship-card [internship]="internship"></app-internship-card>
+          </li>
+      </ul>
+  </div>
+  <app-footer></app-footer>
 </div>

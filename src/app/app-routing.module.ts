@@ -44,7 +44,8 @@ const routes: Routes = [
   { path: 'institucion/convocatorias/:id/editar', component: InternshipEditComponent },
   { path: 'institucion/editar', component: InstitutionEditComponent },
   { path: 'estudiante/perfil', component: StudentEditProfileComponent },
-  { path: 'estudiante/home', component: HomePageComponent },
+  { path: 'estudiante/inicio', component: HomePageComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
