@@ -31,34 +31,17 @@ const routes: Routes = [
   { path: 'administrador/inicio', component: HomeAdminComponent },
   { path: 'institucion/inicio', component: HomeInstitutionComponent },
   { path: 'ingresar', component: LoginComponent },
-  {
-    path: 'administrador/instituciones',
-    component: HomeAdminInstitutionComponent,
-  },
+  { path: 'administrador/instituciones', component: HomeAdminInstitutionComponent, },
   { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
-  {
-    path: 'institucion/convocatorias/nueva',
-    component: InternshipFormComponent,
-  },
-  {
-    path: 'institucion/convocatorias',
-    component: ActiveInternshipsPageComponent,
-  },
-  {
-    path: 'institucion/convocatorias/:id',
-    component: InstitutionInternshipDetailsComponent,
-  },
+  { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent, },
+  { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent,},
+  { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent, },
   { path: 'home/institucion', component: HomeInstitutionComponent },
   { path: 'pasantias', component: InternshipListComponent },
   { path: 'footer', component: FooterComponent },
-  {
-    path: 'administrador/convocatorias',
-    component: AdminConvocationsComponent,
-  },
+  { path: 'administrador/convocatorias', component: AdminConvocationsComponent,},
   { path: 'pasantias/:id', component: StudentInternshipApplicationComponent },
-  // TODO: put this route into the profile update component
-  { path: 'person/skill', component: PersonSkillComponent },
-  { path: 'institucion/convocatoria/editar/:id', component: InternshipEditComponent },
+  { path: 'institucion/convocatorias/:id/editar', component: InternshipEditComponent },
   { path: 'institucion/editar', component: InstitutionEditComponent },
   { path: 'estudiante/perfil', component: StudentEditProfileComponent },
 ];

@@ -14,6 +14,7 @@ import { wordCountValidator } from 'src/app/validators/word-count-validator';
 export class InstitutionEditComponent implements OnInit{
   institutionForm: FormGroup;
   formSubmitted: boolean = false;
+  show: boolean = false;
   @ViewChild('imageInput') imageInput: ElementRef;
   institution: InstitutionDto = {
     institutionId: 0,
@@ -56,6 +57,15 @@ export class InstitutionEditComponent implements OnInit{
       }
     );
   }
+
+  toggleSidebar() {
+    this.show = !this.show;
+  }
+
+  setShow(show: boolean) {
+    this.show = show;
+  }
+
   ngOnInit(): void {
     const email = localStorage.getItem('email');
     if(email){
