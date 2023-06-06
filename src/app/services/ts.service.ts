@@ -44,7 +44,7 @@ export class TsService {
     window.sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
     localStorage.setItem('userId', user.userId);
     localStorage.setItem('id', user.id);
-
+    localStorage.setItem('email', user.email);
   }
 
   public getUser(): any {

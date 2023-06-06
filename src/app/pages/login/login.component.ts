@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   displayModal : boolean = false;
   constructor(private router : Router) { }
 
@@ -15,5 +15,10 @@ export class LoginComponent {
   }
   redirectTo(type : string) {
     this.router.navigate([`/registro/${type}`]);
+  }
+
+  ngOnInit(): void {
+    localStorage.clear();
+    sessionStorage.clear();
   }
 }
