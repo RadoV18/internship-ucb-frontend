@@ -51,15 +51,25 @@ export class LoginFormComponent {
           this.tsService.saveRefreshToken(response.data.refreshToken);
           this.tsService.saveUser(response.data);
 
-          this.authenticationService.setAuthenticatedUser(response.data);
-          const type = response.data.accountType;
-          if (type === 0) {
+          if (response.data.roles[0] === "ROLE_ADMIN") {
             this.router.navigate(['/administrador/graduados']);
-          } else if (type === 1) {
+          }
+          if (response.data.roles[0] === "ROLE_INSTITUTION") {
             this.router.navigate(['/institucion/convocatorias']);
-          } else if (type === 2) {
+          }
+          if (response.data.roles[0] === "ROLE_STUDENT") {
             this.router.navigate(['/pasantias']);
           }
+
+          // this.authenticationService.setAuthenticatedUser(response.data);
+          // const type = response.data.accountType;
+          // if (type === 0) {
+          //   this.router.navigate(['/administrador/graduados']);
+          // } else if (type === 1) {
+          //   this.router.navigate(['/institucion/convocatorias']);
+          // } else if (type === 2) {
+          //   this.router.navigate(['/pasantias']);
+          // }
         },
         error: (error) => {
           if (error.status === 401) {
