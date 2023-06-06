@@ -21,6 +21,7 @@ import { StudentEditProfileComponent } from './pages/student-edit-profile/studen
 import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { RequestedInternshipsComponent } from './pages/requested-internships/requested-internships.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'ingresar', component: LoginComponent },
   { path: 'administrador/instituciones', component: HomeAdminInstitutionComponent, },
   { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
+  { path: 'institucion/convocatorias/solicitadas', component: RequestedInternshipsComponent },
   { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent, },
   { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent,},
   { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent, },

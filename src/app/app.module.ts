@@ -48,6 +48,7 @@ import { StudentEditProfileComponent } from './pages/student-edit-profile/studen
 import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 import { HomePageComponent } from "./pages/home-page/home-page.component";
+import { RequestedInternshipsComponent } from './pages/requested-internships/requested-internships.component';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { BearerInterceptor } from './interceptors/bearer.interceptor';
@@ -95,7 +96,8 @@ import { BearerInterceptor } from './interceptors/bearer.interceptor';
     InstitutionEditComponent,
     InternshipEditComponent,
     StudentEditProfileComponent,
-    HomePageComponent
+    HomePageComponent,
+    RequestedInternshipsComponent
   ],
   imports: [
     BrowserModule,
