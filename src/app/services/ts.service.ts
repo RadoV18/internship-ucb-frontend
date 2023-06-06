@@ -42,6 +42,9 @@ export class TsService {
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(this.USER_KEY);
     window.sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    localStorage.setItem('userId', user.userId);
+    localStorage.setItem('id', user.id);
+
   }
 
   public getUser(): any {

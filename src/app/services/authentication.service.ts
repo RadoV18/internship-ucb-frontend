@@ -38,10 +38,10 @@ export class AuthenticationService {
 
   setAuthenticatedUser(authDto: AuthDto): void {
     if (authDto.userId) {
-      localStorage.setItem('userId', authDto.userId.toString());
+      // localStorage.setItem('userId', authDto.userId.toString());
     }
     if (authDto.id) {
-      localStorage.setItem('id', authDto.id.toString());
+      // localStorage.setItem('id', authDto.id.toString());
     }
     if (authDto.accountType) {
       localStorage.setItem('accountType', authDto.accountType.toString());
