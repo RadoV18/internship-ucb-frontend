@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'ingresar', component: LoginComponent },
   { path: 'administrador/instituciones', component: HomeAdminInstitutionComponent, },
   { path: 'administrador/graduados', component: HomeAdminGraduatesComponent },
+  { path: 'institucion/convocatorias/solicitadas', component: RequestedInternshipsComponent },
   { path: 'institucion/convocatorias/nueva', component: InternshipFormComponent, },
   { path: 'institucion/convocatorias', component: ActiveInternshipsPageComponent,},
   { path: 'institucion/convocatorias/:id', component: InstitutionInternshipDetailsComponent, },
@@ -46,7 +47,6 @@ const routes: Routes = [
   { path: 'institucion/editar', component: InstitutionEditComponent },
   { path: 'estudiante/perfil', component: StudentEditProfileComponent },
   { path: 'estudiante/inicio', component: HomePageComponent },
-  { path: 'institucion/convocatoria/solicitadas', component: RequestedInternshipsComponent },
 ];
 
 @NgModule({
