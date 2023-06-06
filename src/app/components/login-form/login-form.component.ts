@@ -58,7 +58,7 @@ export class LoginFormComponent {
             this.router.navigate(['/institucion/convocatorias']);
           }
           if (response.data.roles[0] === "ROLE_STUDENT") {
-            this.router.navigate(['/pasantias']);
+            this.router.navigate(['/estudiante/inicio']);
           }
 
           // this.authenticationService.setAuthenticatedUser(response.data);

@@ -87,7 +87,7 @@ export class InstitutionEditComponent implements OnInit{
           }
         }
       )
-    }else{
+    } else {
       alert("You are not logged in");
     }
   }
@@ -118,7 +118,7 @@ export class InstitutionEditComponent implements OnInit{
     };
       this.institutionService.updateInstitution(institution).subscribe({
         next: (response) => {
-          alert("Institution updated successfully");
+          alert("Datos actualizados correctamente");
         }
       })
   }
