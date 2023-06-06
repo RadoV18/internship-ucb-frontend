@@ -16,7 +16,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { HomeComponent } from './pages/home/home.component';
 import { PdfFileInputComponent } from './components/pdf-file-input/pdf-file-input.component';
 import { InternshipFormComponent } from './pages/register-internship/InternshipForm.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
@@ -48,6 +48,9 @@ import { StudentEditProfileComponent } from './pages/student-edit-profile/studen
 import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 import { HomePageComponent } from "./pages/home-page/home-page.component";
+
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { BearerInterceptor } from './interceptors/bearer.interceptor';
 
 @NgModule({
   declarations: [
@@ -103,11 +106,17 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
     CommonModule,
   ],
   providers: [
+    AuthenticationGuard,
     {
       provide: NotificationsService,
       useFactory: NotificationsServiceFactory,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BearerInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
