@@ -82,7 +82,7 @@ export class InternshipService {
   applyToInternship(id: number, body: InternshipApplicationDto): Observable<ResponseDto<any>> {
     return this.http.post<ResponseDto<any>>(`${environment.API_URL}/api/internships/${id}`, body);
   }
-  
+
   getInternshipById(id: number){
     return this.http.get<ResponseDto<InternshipDto>>(`${environment.API_URL}/api/internships/${id}`);
   }
@@ -96,5 +96,8 @@ export class InternshipService {
   }
   getInternshipByTitle(title: string) {
     return this.http.get<ResponseDto<InternshipListDto[]>>(`${environment.API_URL}/api/internships/search?title=${title}`);
+  }
+  getRequestedInternships(institutionId: number, status: number) {
+    return this.http.get<ResponseDto<InternshipDto[]>>(`${environment.API_URL}/api/internships/institution/${institutionId}/status/${status}`);
   }
 }

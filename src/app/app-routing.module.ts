@@ -21,6 +21,7 @@ import { StudentEditProfileComponent } from './pages/student-edit-profile/studen
 import { InstitutionEditComponent } from './pages/institution-edit/institution-edit.component';
 import { InternshipEditComponent } from './pages/internship-edit/internship-edit.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { RequestedInternshipsComponent } from './pages/requested-internships/requested-internships.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'institucion/editar', component: InstitutionEditComponent },
   { path: 'estudiante/perfil', component: StudentEditProfileComponent },
   { path: 'estudiante/inicio', component: HomePageComponent },
+  { path: 'institucion/convocatoria/solicitadas', component: RequestedInternshipsComponent },
 ];
 
 @NgModule({

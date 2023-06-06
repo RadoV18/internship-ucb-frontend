@@ -1,0 +1,30 @@
+.content{
+    margin-left: 282px;
+    background-color: #f2f2f2;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--gray-light);
+}
+
+.internships-table {
+  min-width: 1000px;
+}
+.content-card {
+  flex: 1 1 auto;
+  background-color: white;
+  display: inline-block;
+}
