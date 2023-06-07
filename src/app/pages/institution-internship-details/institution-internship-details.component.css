@@ -1,0 +1,119 @@
+.radio-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+}
+
+.radio-container input {
+    margin: 0;
+    margin-right: 4px;
+}
+
+.institution-home-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.institution-content {
+    margin-left: 250px;
+    background-color: #f2f2f2;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.content-card {
+    flex: 1 1 auto;
+    background-color: white;
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid var(--gray-light);
+}
+
+.applicants-table {
+    min-width: 1000px;
+}
+
+.applicants-table th {
+    text-align: left;
+}
+
+.applicants-table .profile-picture {
+  width: 5%;
+  text-align: center;
+}
+
+.applicants-table .col-10 {
+    width: 10%;
+}
+
+.applicants-table .col-20 {
+    width: 20%;
+}
+
+.applicants-table .col-25 {
+    width: 25%;
+}
+
+.profile-picture img {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
+
+.col-actions {
+  text-align: center;
+}
+
+.col-actions div {
+  display: inline;
+}
+
+.applicant-options:hover {
+  cursor: pointer;
+}
+
+.internship-details-modal {
+    width: 30vw;
+}
+
+#message {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media(max-width: 960px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .internship-details-modal {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .institution-content {
+        margin-left: 0;
+        padding: 0;
+    }
+
+    .internship-details-modal {
+        width: 95vw;
+    }
+}
+

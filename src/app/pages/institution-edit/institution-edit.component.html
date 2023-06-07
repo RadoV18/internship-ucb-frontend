@@ -1,0 +1,149 @@
+<div class="institution-home-wrapper">
+  <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
+  <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
+  <div class="institution-content">
+    <div class="shadow border-rd-12 pb-4 px-6 content-card">
+      <h2 class="text-secondary text-center my-3">Editar perfil</h2>
+      <form class="d-flex flex-column" [formGroup]="institutionForm">
+        <h3 class="text-secondary">Datos Institucionales</h3>
+        <div class="d-flex flex-space-between image-input-data">
+          <div class="mr-3 image-input-container" #imageInput id="imageInput">
+            <img [src]="this.institution.user.s3ProfilePicture" alt="Institution Profile Picture" />
+          </div>
+          <div class="d-flex flex-column sign-up-data">
+            <input
+                type="text"
+                placeholder="Nombre de la Institución"
+                class="focus-primary my-2"
+                id="name"
+                formControlName="name"
+            />
+            <input
+                type="text"
+                placeholder="Sector al que pertenece"
+                class="focus-primary my-2"
+                id="area"
+                formControlName="area"
+            />
+            <span
+                *ngIf="institutionForm.get('area')?.errors?.['required'] && institutionForm.get('area')?.touched"
+                class="text-error"
+            ><sup>&ast;</sup>El sector es requerido. Ej: Educativo</span
+            >
+          </div>
+        </div>
+        <textarea
+            cols="30"
+            rows="10"
+            class="focus-primary my-2"
+            placeholder="Descripción de la Institución (max. 200 palabras)"
+            id="description"
+            formControlName="description"
+        ></textarea>
+        <span
+            *ngIf="institutionForm.get('description')?.errors?.['required'] && institutionForm.get('description')?.touched"
+            class="text-error"
+        ><sup>&ast;</sup> La descripción es requerida.</span
+        >
+        <span
+            *ngIf="institutionForm.get('description')?.errors?.['wordCount'] && institutionForm.get('description')?.touched"
+            class="text-error"
+        ><sup>&ast;</sup> La descripción no puede exceder 200 palabras.</span
+        >
+        <h3 class="text-secondary">Contacto de la Institución</h3>
+        <div class="d-flex flex-space-between sign-up-names">
+          <div class="d-flex flex-column my-2 w-50 mr-1">
+            <input
+                type="text"
+                placeholder="Nombres"
+                class="focus-primary"
+                id="contactFirstName"
+                formControlName="contactFirstName"
+            />
+            <span
+                *ngIf="institutionForm.get('contactFirstName')?.errors?.['required'] && institutionForm.get('contactFirstName')?.touched"
+                class="text-error"
+            ><sup>&ast;</sup> Los nombres son requeridos.</span
+            >
+          </div>
+          <div class="d-flex flex-column my-2 w-50 mr-1">
+            <input
+                type="text"
+                placeholder="Apellidos"
+                class="focus-primary"
+                id="contactLastName"
+                formControlName="contactLastName"
+            />
+            <span
+                *ngIf="institutionForm.get('contactLastName')?.errors?.['required'] && institutionForm.get('contactLastName')?.touched"
+                class="text-error"
+            ><sup>&ast;</sup> Los apellidos son requeridos.</span
+            >
+          </div>
+        </div>
+        <input
+            type="email"
+            inputmode="email"
+            placeholder="Correo electrónico"
+            class="focus-primary my-2"
+            formnovalidate
+            id="contactEmail"
+            formControlName="contactEmail"
+        />
+        <span
+            *ngIf="institutionForm.get('contactEmail')?.errors?.['required'] && institutionForm.get('contactEmail')?.touched"
+            class="text-error"
+        ><sup>&ast;</sup> El correo electrónico es requerido.</span
+        >
+        <span
+            *ngIf="institutionForm.get('contactEmail')?.errors?.['email'] && institutionForm.get('contactEmail')?.touched"
+            class="text-error"
+        ><sup>&ast;</sup> Ingrese un correo electrónico válido. Ej:
+        admin@ucb.edu.bo</span
+        >
+        <input
+            type="text"
+            placeholder="Cargo"
+            class="focus-primary my-2"
+            id="contactPosition"
+            formControlName="contactPosition"
+            formnovalidate
+        />
+        <span
+            *ngIf="institutionForm.get('contactPosition')?.errors?.['required'] && institutionForm.get('contactPosition')?.touched"
+            class="text-error"
+        ><sup>&ast;</sup> El cargo es requerido. Ej: Director</span
+        >
+        <input
+            type="text"
+            placeholder="Teléfono"
+            class="focus-primary my-2"
+            id="contactPhone"
+            formControlName="contactPhone"
+        />
+        <span
+            *ngIf="institutionForm.get('contactPhone')?.errors?.['required'] "
+            class="text-error"
+        ><sup>&ast;</sup> El teléfono es requerido. Ej: 77788999</span
+        >
+        <span
+            *ngIf="institutionForm.get('contactPhone')?.errors?.['numbersOnly']"
+            class="text-error"
+        ><sup>&ast;</sup> El teléfono debe contener números.</span
+        >
+        <span
+            *ngIf="institutionForm.get('contactPhone')?.errors?.['pattern'] "
+            class="text-error"
+        ><sup>&ast;</sup> El teléfono debe contener 8 dígitos.</span
+        >
+        <button
+            type="button"
+            class="btn btn-primary btn-rounded w-50 mx-auto my-3"
+            (click)="submit()"
+        >
+          Actualizar datos
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

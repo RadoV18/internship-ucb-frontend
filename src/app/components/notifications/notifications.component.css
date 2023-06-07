@@ -1,0 +1,135 @@
+.notifications-container {
+    position: relative;
+}
+
+.notification-alert {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--error);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.notification-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.notification-box {
+    display: none;
+}
+
+.notification-box-header {
+    border-bottom: 1px solid var(--gray);
+}
+
+.notification-box-header span {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.notification-box.show {
+    display: block;
+    background-color: var(--white);
+    position: absolute;
+    top: 42px;
+    right: 0;
+    min-width: 300px;
+}
+
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 8px;
+}
+
+.message:not(:last-child) {
+    border-bottom: 1px solid var(--gray);
+}
+
+.empty-notifications {
+    color: var(--text);
+    font-size: 14px;
+    padding: 8px;
+}
+
+.notification-image {
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+}
+
+.notification-image img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.notification-message {
+    font-size: 14px;
+    line-height: 1.25;
+    color: var(--text);
+}
+
+.notification-time-ago {
+    font-size: 12px;
+    line-height: 1.25;
+    color: var(--gray);
+}
+
+.msg-info {
+    background-color: #e9f0ff;
+}
+
+.msg-info:not(:last-child) {
+    border-bottom: 1px solid var(--tertiary-dark);
+}
+
+.msg-success {
+    background-color: #e9ffef;
+}
+
+.msg-success:not(:last-child) {
+    border-bottom: 1px solid #0c640c;
+}
+
+.msg-error {
+    background-color: #ffe9e9;
+}
+
+.msg-error:not(:last-child) {
+    border-bottom: 1px solid #801010;
+}
+
+@media (max-width: 900px) {
+    .notification-box.show {
+        right: 0;
+        left: -50px;
+    }
+}

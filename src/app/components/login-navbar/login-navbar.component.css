@@ -1,0 +1,38 @@
+.navbar {
+  height: 70px;
+  align-items: center;
+}
+
+.navbar-list {
+  height: 100%;
+  align-items: center;
+}
+
+.navbar-list li {
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-list li:first-child {
+  border-right: 1px solid white;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-link:hover {
+  color: #00aaad;
+}
+
+.navbar-logo {
+  height: 100%;
+}
+
+.navbar-logo img {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+}

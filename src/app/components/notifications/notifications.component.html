@@ -1,0 +1,27 @@
+<div class="notifications-container">
+    <button #toggleButton class="notification-btn">
+        <div *ngIf="newNotifications" class="notification-alert">
+            {{notifications.length}}
+        </div>
+        <img src="assets/images/notification-bell.svg" alt="Notificaciones">
+    </button>
+    <div #notificationBox id="messages" class="notification-box shadow border-rd-8" [ngClass]="showNotifications ? 'show' : ''">
+        <div class="notification-box-header d-flex flex-space-between align-center px-2 py-2">
+            <h4>Notificaciones</h4>
+            <span (click)="markRead()">Marcar como leídas</span>
+        </div>
+        <ol>
+            <li class="empty-notifications" *ngIf="notifications.length == 0">No tienes notificaciones</li>
+            <li *ngFor="let notification of notifications" class="message d-flex align-center" [ngClass]="'msg-' + notification.type">
+                <div class="notification-image">
+                    <img [src]="notification.url ? notification.url : 'assets/images/ucb-background.png'" alt="">
+                </div>
+                <div class="notification-content d-flex flex-column flex-space-between">
+                    <span class="notification-message">{{notification.message}}</span>
+                    <span class="notification-time-ago">{{timeAgo(notification.date)}}</span>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+  

@@ -1,0 +1,79 @@
+<app-modal [displayModal]="displayModal" [disposable]="true" (onDispose)="disposeModal()">
+    <div body class="internship-details-modal">
+      <h3 class="text-secondary mb-2">Respuestas de {{selectedApplicant.firstName + " " + selectedApplicant.lastName}}</h3>
+      <div class="d-flex flex-column">
+        <div *ngFor = "let answer of selectedApplicant.questionResponses" class="d-flex flex-column">
+          <h4 class="text">{{answer.question}}</h4>
+          <span class="text mb-2">{{answer.response}}</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-secondary">Respuesta a la postulación</h3>
+        <form [formGroup]="applicantOptions">
+          <div class="radio-buttons">
+            <div class="radio-container">
+              <input type="radio" name="value" id="accept" value="1" formControlName="value">
+              <label for="accept">Aceptar solicitud</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" name="value" id="decline" value="2" formControlName="value">
+              <label for="decline">Rechazar solicitud</label>
+            </div>
+          </div>
+          <textarea name="message" rows="5" id="message" [placeholder]="getTextareaPlaceholder()"
+                    formControlName="message"></textarea>
+        </form>
+      </div>
+    </div>
+    <div footer class="d-flex flex-center align-center mt-3">
+        <button (click)="disposeModal()" class="btn btn-rounded btn-primary mx-3">Cancelar</button>
+        <button class="btn btn-rounded btn-primary mx-3 " (click)="submitForm()">Confirmar</button>
+    </div>
+</app-modal>
+<div class="institution-home-wrapper">
+    <app-institution-navbar (toggleSidebarEvent)="toggleSidebar()"></app-institution-navbar>
+    <app-institution-sidebar (toggleSidebarEvent)="setShow($event)" [show]="show"></app-institution-sidebar>
+    <div class="institution-content">
+        <div class="shadow border-rd-12 pb-4 content-card">
+            <h2 class="text-secondary text-center my-3">{{this.title}}</h2>
+            <a class="btn btn-primary my-3" [href]="'/institucion/convocatorias/' + this.internshipId + '/editar'">Editar convocatoria</a>
+            <div class="table-container border-rd-8 w-100">
+                <table class="applicants-table">
+                    <thead>
+                        <tr>
+                            <th class="profile-picture"></th>
+                            <th class="col-25">Nombre</th>
+                            <th class="col-20">Carrera</th>
+                            <th class="col-20">Correo electrónico</th>
+                            <th class="col-10">Fecha</th>
+                            <th class="col-10">Estado</th>
+                            <th class="col-10"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let applicant of applicants">
+                            <td class="profile-picture">
+                                <img [src]="applicant.profilePictureUrl" [alt]="applicant.firstName + ' ' + applicant.lastName" >
+                            </td>
+                            <td>{{applicant.firstName + " " + applicant.lastName}}</td>
+                            <td>{{applicant.major}}</td>
+                            <td>{{applicant.email}}</td>
+                            <td>{{applicant.submittedOn | date: 'dd/MM/YYYY'}}</td>
+                            <td>{{this.submissionStatus[Number(applicant.status)]}}</td>
+                            <td class="col-actions">
+                                <div class="cv">
+                                    <a [href]="applicant.cvUrl" target="_blank">
+                                        <img src="assets/images/cv-icon.svg" alt="CV">
+                                    </a>
+                                </div>
+                                <div class="applicant-options" (click)="displayApplicantOptions(applicant)">
+                                    <img src="assets/images/internship-details.svg" alt="Opciones">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

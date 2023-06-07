@@ -1,0 +1,158 @@
+.institution-home-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.internship-institution-content {
+    display: flex;
+    flex-direction: row;
+    margin: 50px 0;
+}
+
+.image-ellipse-container {
+    position: absolute;
+    width: 100%;
+    overflow: hidden !important;
+    height: 500px;
+    z-index: -1;
+}
+
+.image-ellipse {
+    position: absolute;
+    width: 3500px;
+    top: -500px;
+}
+
+.image-ellipse img {
+    width: 100vw;
+    margin: 0 auto;
+}
+
+.content-card {
+    background-color: white;
+    display: inline-block;
+    flex-direction: column;
+}
+
+.switch-container {
+    height: 24px;
+}
+
+.switch-details {
+    line-height: 24px;
+}
+
+/* internship card styles */
+
+.internship-card {
+    width: 50%;
+}
+
+.internship-header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture-container {
+    height: 92px;
+    width: 92px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+}
+
+.profile-picture-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.institution-data {
+    flex: 1;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+/* end of internship card styles */
+
+.institution-card {
+    width: 15%;
+}
+
+.internship-card-pictures img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--tertiary);
+    border: 2px solid white;
+    box-sizing: border-box;
+}
+
+.internship-card-data {
+    display: flex;
+    align-items: center;
+}
+
+.internship-details {
+    display: flex;
+}
+
+.questions-info {
+    line-height: 1.25;
+    color: var(--gray-dark);
+}
+
+@media (max-width: 1700px) {
+    .image-ellipse img {
+        width: 150vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .image-ellipse img {
+        width: 200vw;
+    }
+}
+
+@media(max-width: 960px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-ellipse img {
+        width: 250vw;
+    }
+
+    .internship-card {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-ellipse img {
+        position: relative;
+        top: 200px;
+        left: -100px;
+        width: 300vw;
+    }
+
+    .internship-card {
+        width: 80%;
+    }
+}
+
+@media (max-width: 600px) {
+    .internship-card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 320px) {
+    .image-ellipse img {
+        width: 400vw;
+    }
+}

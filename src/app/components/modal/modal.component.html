@@ -1,0 +1,20 @@
+<div *ngIf="displayModal" class="modal">
+  <div [class]="'modal-content ' + widthClass">
+    <div class="modal-header">
+      <div *ngIf="disposable">
+        <button class="close" (click)="onDispose.emit()">
+          &times;
+        </button>
+      </div>
+    </div>
+    <div>
+      <ng-content select="[title]"></ng-content>
+    </div>
+    <div class="modal-body">
+      <ng-content select="[body]"></ng-content>
+    </div>
+    <div class="modal-footer">
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </div>
+</div>

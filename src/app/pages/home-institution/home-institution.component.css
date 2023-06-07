@@ -1,0 +1,29 @@
+.institution-home-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.institution-content {
+    margin-left: 250px;
+    background-color: #f2f2f2;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.content-card {
+    flex: 1 1 auto;
+    background-color: white;
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
+    .institution-content {
+        margin-left: 0;
+        padding: 0;
+    }
+}
