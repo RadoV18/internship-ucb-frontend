@@ -14,14 +14,17 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Docker
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can also run the project with a docker container. This repository contains a single container. You need to have set up the backend repository in order for this to work
 
-## Running end-to-end tests
+|Service|Location|
+|-------|--------|
+|Frontend|/|
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run the following commands in the root folder:
+```console
+> docker build -t ucb/internship-frontend:1.0.0 .
+> docker run -p 80:80 ucb/internship-frontend:1.0.0
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
